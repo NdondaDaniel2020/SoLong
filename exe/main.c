@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:45:18 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/16 14:19:46 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/18 11:48:25 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,25 @@ int main()
 	int img_width;       // Largura da imagem
     int img_height;      // Altura da imagem
 
-    // Inicializa a conexão com o sistema gráfico
-    mlx = mlx_init();
-    if (mlx == NULL)
-    {
-        return (1);
-    }
 
-    // Cria uma janela com largura, altura e título especificados
-    window = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "./so_long");
-    if (window == NULL)
-    {
-        return (1);
-    }
+	// width = (50 * get_column_number(av[1]));
+	// height = (50 * get_line_number(av[1]));
 	
-	// base para criar mapa
+	// if (!map_validator(av[1]))
+	// 	return (1);
+	
+
+    mlx = mlx_init();
+    window = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "./so_long");
 	int i = 0;
 	while (i < 4)
 	{
-		// Carrega a imagem XPM
-		img[i] = mlx_xpm_file_to_image(mlx, "img/block.xpm", &img_width, &img_height);
-
-		// Coloca a imagem na janela na posição (0, 0)
+		img[i] = mlx_xpm_file_to_image(mlx, "img/block49x49.xpm", &img_width, &img_height);
 		mlx_put_image_to_window(mlx, window, img[i], 100*i, 100*i);
 		i++;
 	}
-
-    // Define uma função de saída que será chamada quando a janela for fechada
     mlx_hook(window, 17, 0, close_window, NULL);
-
-    // Entra no loop de eventos, aguardando interações do usuário
     mlx_loop(mlx);
-
     return (0);
 }
 

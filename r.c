@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   r.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 14:17:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/18 13:17:15 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/18 13:14:42 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "so_long.h"
 
-# include "minilibx-linux/mlx.h"
-# include  "minilibx-linux/mlx_int.h"
-# include "Libft/libft.h"
-# include <fcntl.h>
+char *read_map(char *file)
+{
+	int		fd;
+	char	*inf;
+	char	*aux;
 
-/*interfeice*/
-int		key_press(int keycode, void *param);
-int		close_window(void *param);
+	ft_initstr(&inf);
+	fd = open(file, O_RDONLY);
+	aux = get_next_line(fd);
+	while (aux)
+	{
+		inf = ft_strjoin_free(inf, aux);
+		aux = get_next_line(fd);
+	}
+	free(aux);
+	close(fd);
+	return (inf);
+}
 
-/*normal*/
-int		ft_findchar(char *str, char c);
-
-char	*read_map(char *file);
-
-#endif
+int main(void)
+{
+	ft_printf("%s\n", read_map("map/map1.txt"));
+}
