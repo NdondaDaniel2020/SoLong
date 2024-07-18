@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/18 14:11:38 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:51:42 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,22 @@ int	close_window(void *param)
 	return (0);
 }
 
-char *read_map(char *file)
-{
-	int		fd;
-	char	*inf;
-	char	*aux;
+// char *read_map(char *file)
+// {
+// 	int		fd;
+// 	char	*inf;
+// 	char	*aux;
 
-	ft_initstr(&inf);
-	fd = open(file, O_RDONLY);
-	aux = get_next_line(fd);
-	if (!aux)
-		return (NULL);
-	while (aux)
-	{
-		inf = ft_strjoin_free(inf, aux);
-		aux = get_next_line(fd);
-	}
-	free(aux);
-	close(fd);
-	return (inf);
-}
+// 	inf = (char *)malloc(sizeof(char) * 1);
+// 	inf[0] = '\0';
+// 	fd = open(file, O_RDONLY);
+// 	aux = get_next_line(fd);
+// 	while (aux)
+// 	{
+// 		inf = ft_strjoin_free(inf, aux);
+// 		aux = get_next_line(fd);
+// 	}
+// 	free(aux);
+// 	close(fd);
+// 	return (inf);
+// }
