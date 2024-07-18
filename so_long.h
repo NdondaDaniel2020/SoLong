@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:17:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/18 13:17:15 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:52:35 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		close_window(void *param);
 /*normal*/
 int		ft_findchar(char *str, char c);
 
-char	*read_map(char *file);
+// char	*read_map(char *file);
 
 #endif
