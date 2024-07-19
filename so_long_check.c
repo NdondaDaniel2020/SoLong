@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   so_long_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:26:36 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/19 15:35:34 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "so_long.h"
 
-
+/*check map*/
 int	get_line_number(char *map)
 {
 	int	i;
@@ -48,30 +43,6 @@ int	get_column_number(char *map)
 	return (i);
 }
 
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_findchar(char *str, char c)
-{
-	while (*str)
-	{
-		if (*str == c)
-			return (1);
-		++str;
-	}
-	return (0);
-}
-
-
-/*check map*/
 int	check_line(char *map_line, int *column)
 {
 	static int	i=0;
@@ -136,20 +107,4 @@ int	check_map(char *map)
 	if (valid && column > 3 && line > 3)
 		return (1);
 	return (0);
-}
-
-
-int	main(int ac, char **av)
-{
-	char	*map="1111111111111111111111111111111111\n1E0000000000000C00000C000000000001\n1010010100100000101001000000010101\n1010010010101010001001000000010101\n1P0000000C00C0000000000000000000C1\n1111111111111111111111111111111111";
-	int		line;
-	int		colu;
-
-	// check_map(map);
-	printf("\n%i", check_map(av[1]));
-	
-	// printf("%i\n", percorer_mapa(map));
-	// colu = get_column_number("1111111111111111111111111111111111");
-	// printf("line=%i\ni", line);
-	// printf("column=%i", colu);
 }

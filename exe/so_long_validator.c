@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:14:06 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/18 07:59:57 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:20:11 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	get_column_number(char *file_name)
 	close(fd);
 	return (i);
 }
+
 
 /*validator map*/
 int	loop_map(char *txt)
