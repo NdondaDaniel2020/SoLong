@@ -6,34 +6,35 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 08:51:57 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:34:57 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int 	key_press(int keycode, void *param)
+/*window*/
+int	key_press(int keycode, void *param)
 {
-    (void)param;
-    ft_printf("Tecla: %d\n", keycode);
-    if (keycode == 65307) // ESC no Linux
-        exit(0);
-
-    return (0);
+	(void)param;
+	ft_printf("Tecla: %d\n", keycode);
+	if (keycode == 65307) /*ESC no Linux*/
+		exit(0);
+	return (0);
 }
 
-int		close_window(void *param)
+int	close_window(void *param)
 {
 	(void)param;
 	exit(0);
 	return (0);
 }
 
-char	*read_file(int	fd)
+/*file*/
+char	*read_file(int fd)
 {
 	char	*str;
 	char	*aux;
-	int 	bytes_read;
+	int		bytes_read;
 
 	bytes_read = 1;
 	str = (char *)malloc(sizeof(char));
@@ -53,19 +54,19 @@ char	*read_file(int	fd)
 		aux[bytes_read] = '\0';
 		str = ft_strjoin(str, aux);
 	}
-    close(fd);
-    return (str);
+	close(fd);
+	return (str);
 }
 
 char	*open_file(const char *filename)
 {
-    int		fd;
+	int		fd;
 	char	*str;
 
 	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-        return (NULL);
+		return (NULL);
 	str = read_file(fd);
-    return (str);
+	return (str);
 }
