@@ -6,69 +6,48 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:23:41 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/18 15:09:41 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/19 09:08:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_read_file(int fd, char *str)
+int main(void)
 {
-	char	*buffer;
-	int		rd_bytes;
+	int 	img_width; 
+    int		img_height;
+	void	*img;
+    char	*file;
+	t_data	data;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	rd_bytes = 1;
-	while (!ft_find_char_in_point(str, '\n') && rd_bytes != 0)
+	file = open_file("map/map1.txt");
+	if (file == NULL)
+        return (1);
+
+    data.mlx = mlx_init();
+    if (data.mlx == NULL)
 	{
-		rd_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (rd_bytes == -1)
-		{
-			free(buffer);
-			return (NULL);
-		}
-		buffer[rd_bytes] = '\0';
-		str = ft_strjoin_free(str, buffer);
-	}
-	free(buffer);
-	return (str);
-}
+        fprintf(stderr, "Erro ao inicializar MiniLibX\n");
+        free(file);
+        return (1);
+    }
 
-int	main(int ac, char **av)
-{
-	void	*mlx;
-	void	*win;
-	
-	int		width = 500;
-	int		height = 230;
-	
-	void *img;           // Ponteiro para a imagem
-	int img_width;       // Largura da imagem
-    int img_height;      // Altura da imagem
-	
-	// char *map;
+    data.win = mlx_new_window(data.mlx, 800, 600, "Exemplo com Arquivo");
+    if (data.win == NULL)
+	{
+        fprintf(stderr, "Erro ao criar a janela\n");
+        free(file);
+        return (1);
+    }
 
-	// map = read_map(av[1]);
+    mlx_string_put(data.mlx, data.win, 50, 50, 0xFFFFFF, file);	
+	img = mlx_xpm_file_to_image(data.mlx, "img/terra.xpm", &img_width, &img_height);
+	mlx_put_image_to_window(data.mlx, data.win, img, 0, 0);
+	
+	mlx_key_hook(data.win, key_press, &data);
+	mlx_hook(data.win, 17, 0, close_window, &data);
 
-	int fd;
-	int rd_bytes;
-	char *txt;
-	
-	fd = open(av[1], O_RDONLY);
-	
-	ft_printf("%s", ft_read_file(fd, txt));
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, width, height, "./so_long");
-
-	// map = read_map(av[1]);
-	// img = mlx_xpm_file_to_image(mlx, "img/terra.xpm", &img_width, &img_height);
-	// mlx_put_image_to_window(mlx, win, img, 0, 0);
-	
-	mlx_key_hook(win, key_press, NULL);
-	mlx_hook(win, 17, 0, close_window, NULL);
-	
-	mlx_loop(mlx);
+    mlx_loop(data.mlx);
+    free(file);
+    return (0);
 }
