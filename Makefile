@@ -1,7 +1,7 @@
 # -lbsd # ./so_long map1.bar
 
 all:
-	gcc so_long.c so_long_utils.c so_long.h ./libft/libft.a -L./minilibx_linux -lmlx -lXext -lX11 -lm -o so_long
+	cc so_long.c so_long_utils.c so_long_check.c so_long.h ./libft/libft.a -L./minilibx_linux -lmlx -lXext -lX11 -lm -o so_long
 	./so_long map/map1.txt
 al:
 	gcc r.c -o r
