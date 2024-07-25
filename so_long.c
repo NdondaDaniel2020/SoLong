@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	file = open_file(av[1]);
-	printf("%s", file);
+	ft_printf("%s", file);
 	/*if (file == NULL)
 		return (1);
 	data.mlx = mlx_init();
