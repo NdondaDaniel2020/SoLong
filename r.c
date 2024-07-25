@@ -20,5 +20,5 @@
 
 int	main(int ac, char **av)
 {
-	printf("arquivo de rascunho");
+	printf("arquivo de rascunho\n");
 }
