@@ -13,8 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
-# include  "minilibx-linux/mlx_int.h"
+# include "minilibx_mms/mlx.h"
+# include "minilibx_linux/mlx.h"
+# include "minilibx_linux/mlx_int.h"
 # include "Libft/libft.h"
 # include <fcntl.h>
 

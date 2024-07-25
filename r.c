@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
+// # include "minilibx_mms/mlx.h"
+# include "minilibx_linux/mlx.h"
 #include <fcntl.h> // Para open
 #include <unistd.h> // Para read e close
 #include <stdlib.h>
