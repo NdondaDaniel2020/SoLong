@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_initstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/07/18 13:04:14 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/18 13:08:13 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_initstr(char **str)
 {
-	printf("arquivo de rascunho\n");
+	free(*str);
+	(*str) = (char *)malloc(sizeof(char) * 1);
+	str[0]='\0';
 }

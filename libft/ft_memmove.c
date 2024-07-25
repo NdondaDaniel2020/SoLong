@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/05/15 08:28:46 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/05/24 13:03:11 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	printf("arquivo de rascunho\n");
+	unsigned char	*de;
+	unsigned char	*sr;
+
+	de = (unsigned char *)dest;
+	sr = (unsigned char *)src;
+	if (!dest && !src)
+		return (dest);
+	if (src < dest)
+	{
+		while (n--)
+			de[n] = sr[n];
+	}
+	else
+	{
+		while (n--)
+			*de++ = *sr++;
+	}
+	return (dest);
 }

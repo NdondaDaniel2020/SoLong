@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/05/14 11:19:02 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/05/24 12:55:34 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isalnum(int c)
 {
-	printf("arquivo de rascunho\n");
+	if ((c >= '0' && c <= '9'))
+		return (1);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

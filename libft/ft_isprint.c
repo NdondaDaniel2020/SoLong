@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/05/14 13:17:32 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/05/24 12:55:54 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isprint(int c)
 {
-	printf("arquivo de rascunho\n");
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

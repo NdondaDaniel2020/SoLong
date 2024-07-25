@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/05/14 15:26:49 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/05/15 12:08:46 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	printf("arquivo de rascunho\n");
+	unsigned char	*sr;
+	unsigned char	*de;
+
+	sr = (unsigned char *)src;
+	de = (unsigned char *)dest;
+	if (!src && !dest)
+		return (dest);
+	while (n--)
+		de[n] = sr[n];
+	return (dest);
 }

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:41:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:44:58 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/05/20 11:39:59 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/03 13:17:35 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// # include "minilibx_mms/mlx.h"
-# include "minilibx_linux/mlx.h"
-#include <fcntl.h> // Para open
-#include <unistd.h> // Para read e close
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_putstr(char *s, int count)
 {
-	printf("arquivo de rascunho\n");
+	if (s == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		count += 6;
+	}
+	else
+	{
+		count += ft_strlen(s);
+		while (*s)
+		{
+			ft_putchar_fd(*s, 1);
+			++s;
+		}
+	}
+	return (count);
 }
