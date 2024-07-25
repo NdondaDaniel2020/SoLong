@@ -1,8 +1,10 @@
 # -lbsd # ./so_long map1.bar
 
-all:
-	cc so_long.c so_long_utils.c so_long_check.c so_long.h ./libft/libft.a -L./minilibx_linux -lmlx -lXext -lX11 -lm -o so_long
+make:
+	cc so_long.c so_long_utils.c so_long_check.c so_long.h ./libft/*.c -L./minilibx_linux -lmlx -lXext -lX11 -lm -o so_long
 	./so_long map/map1.txt
+az:
+	cc so_long.c so_long_utils.c so_long_check.c so_long.h ./libft/libft.a -L./minilibx_linux -lmlx -lXext -lX11 -lm -o so_long
 al:
 	gcc r.c -o r
 	./r
