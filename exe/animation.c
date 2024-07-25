@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
+#include "../minilibx_linux/mlx.h"
 #include <fcntl.h> // Para open
 #include <unistd.h> // Para read e close
 #include <stdlib.h>
@@ -59,9 +59,9 @@ int main()
     }
 
     // Carrega as imagens a partir de arquivos XPM
-    data.imgs[0] = mlx_xpm_file_to_image(data.mlx, "img/terra.xpm", &data.img_width, &data.img_height);
-    data.imgs[1] = mlx_xpm_file_to_image(data.mlx, "img/block.xpm", &data.img_width, &data.img_height);
-    data.imgs[2] = mlx_xpm_file_to_image(data.mlx, "img/caixa.xpm", &data.img_width, &data.img_height);
+    data.imgs[0] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
+    data.imgs[1] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
+    data.imgs[2] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
 
     // Verifica se as imagens foram carregadas corretamente
     for (int i = 0; i < 3; i++)
