@@ -6,7 +6,7 @@
 #    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 13:12:46 by nmatondo          #+#    #+#              #
-#    Updated: 2024/07/18 13:12:50 by nmatondo         ###   ########.fr        #
+#    Updated: 2024/07/26 11:42:47 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ BOBJS = $(BFILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-all:	$(NAME)
+all:	$(bonus)
 
 $(OBJS): %.o: %.c
 	@gcc $(FLAGS) -c $< -o $@
