@@ -39,10 +39,11 @@ int	main(int ac, char **av)
 	}
 	// mlx_string_put(data.mlx, data.win, 50, 50, 0xFFFFFF, file);
 	// img = mlx_xpm_file_to_image(data.mlx, "img/terra.xpm", &img_wid, &img_hei);
+	// img = mlx_png_file_to_image(data.mlx, "img/terra.xpm", &img_wid, &img_hei);
 	// mlx_put_image_to_window(data.mlx, data.win, img, 0, 0);
 
-	// mlx_key_hook(data.win, key_press, &data);
-	// mlx_hook(data.win, 17, 0, close_window, &data);
+	mlx_key_hook(data.win, key_press, &data);
+	mlx_hook(data.win, 17, 0, close_window, &data);
 
 	mlx_loop(data.mlx);
 	free(file);
