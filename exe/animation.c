@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../minilibx_linux/mlx.h"
+#include "../minilibx_mms/mlx.h"
 #include <fcntl.h> // Para open
 #include <unistd.h> // Para read e close
 #include <stdlib.h>
@@ -38,6 +39,15 @@ int update_image(t_data *data)
     return 0;
 }
 
+int	key_press(int keycode, void *param)
+{
+	(void)param;
+	printf("Tecla: %d\n", keycode);
+	if (keycode == 65307) /*ESC no Linux*/
+		exit(0);
+	return (0);
+}
+
 int main() 
 {
     t_data  data;
@@ -59,9 +69,9 @@ int main()
     }
 
     // Carrega as imagens a partir de arquivos XPM
-    data.imgs[0] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
-    data.imgs[1] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
-    data.imgs[2] = mlx_xpm_file_to_image(data.mlx, "../img/block.xpm", &data.img_width, &data.img_height);
+    data.imgs[0] = mlx_png_file_to_image(data.mlx, "../img/terra.xpm", &data.img_width, &data.img_height);
+    data.imgs[1] = mlx_png_file_to_image(data.mlx, "../img/caixa.xpm", &data.img_width, &data.img_height);
+    data.imgs[2] = mlx_png_file_to_image(data.mlx, "../img/terra.xpm", &data.img_width, &data.img_height);
 
     // Verifica se as imagens foram carregadas corretamente
     for (int i = 0; i < 3; i++)
@@ -76,6 +86,7 @@ int main()
 
     // Configura o loop para atualizar a imagem a cada intervalo (FRAME_RATE)
     mlx_loop_hook(data.mlx, (int (*)())update_image, &data);
+    mlx_key_hook(data.win, key_press, &data);
 
     // Loop para manter a janela aberta até que o usuário a feche
     mlx_loop(data.mlx);
