@@ -22,7 +22,8 @@ void	fill(char **tab, t_point size, t_point cur, char to_fill)
 
 void	flood_fill(char **tab, t_point size, t_point begin)
 {
-	fill(tab, size, begin, tab[begin.y][begin.x]);
+    printf("%i %c\n\n", begin, tab[begin.y][begin.x]);
+	// fill(tab, size, begin, tab[begin.y][begin.x]); //tab[begin.y][begin.x]
 }
 /**/
 
@@ -48,7 +49,7 @@ int main(void)
 	char *zone[] = {
 		"1111111111111",
 		"10011000000C1",
-		"1000111110001",
+		"1000111111001",
 		"1P0010E001001",
 		"1111111111111",
 	};
