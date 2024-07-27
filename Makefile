@@ -34,4 +34,9 @@ pull:
 	make -C libft/
 	all
 	make fclean -C libft/
-	
+
+push:
+	git add .; git commit -m "caso resolvido" ;git push
+
+to_fill;
+	gcc flood_fill.c -o flood_fill && ./flood_fill 
