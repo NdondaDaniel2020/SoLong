@@ -22,8 +22,12 @@ void	fill(char **tab, t_point size, t_point cur, char to_fill)
 
 void	flood_fill(char **tab, t_point size, t_point begin)
 {
-    printf("%i %c\n\n", begin, tab[begin.y][begin.x]);
-	// fill(tab, size, begin, tab[begin.y][begin.x]); //tab[begin.y][begin.x]
+    // printf("{x-%i y-%i} {%c = %i}\n\n", begin.x, begin.y, tab[begin.y][begin.x], tab[begin.y][begin.x]);
+	// fill(tab, size, begin, '0');
+    fill(tab, size, (t_point){begin.x - 1, begin.y}, '0');
+	fill(tab, size, (t_point){begin.x + 1, begin.y}, '0');
+	fill(tab, size, (t_point){begin.x, begin.y - 1}, '0');
+	fill(tab, size, (t_point){begin.x, begin.y + 1}, '0');
 }
 /**/
 
@@ -48,9 +52,9 @@ int main(void)
 	t_point size = {13, 5};
 	char *zone[] = {
 		"1111111111111",
-		"10011000000C1",
+		"10000000000C1",
 		"1000111111001",
-		"1P0010E001001",
+		"1P0010E000001",
 		"1111111111111",
 	};
 
@@ -59,7 +63,7 @@ int main(void)
 		printf("%s\n", area[i]);
 	printf("\n");
 
-	t_point begin = {7, 4};
+	t_point begin = {7, 3};
 	flood_fill(area, size, begin);
 	for (int i = 0; i < size.y; ++i)
 		printf("%s\n", area[i]);
