@@ -20,7 +20,8 @@
 
 #define FRAME_RATE 10 // Define a taxa de frames por segundo (FPS)
 
-typedef struct {
+typedef struct s_
+{
     void    *mlx;
     void    *win;
     void    *imgs[10]; // Array para armazenar as imagens
