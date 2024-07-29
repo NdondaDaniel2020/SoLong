@@ -157,14 +157,32 @@ char	*open_file(const char *filename)
 	return (str);
 }
 
-char	**str_to_matr(char *str)
+char	**str_to_matr(char *map)
 {
-	int	i;
-	char **map_matrix;
+	int		l;
+	int		c;
+	int		line;
+	int		column;
+	char	**map_matrix;
 
-	map = (char **)ft_calloc(sizeof(char *) *);
-	if (!str)
-		return (0);
+	if (!map)
+		return (NULL);
+	l = 0;
+	c = 0;
+	line = get_line_number(map);
+	column = get_column_number(map);
+	map_matrix = (char **)ft_calloc(column*line, sizeof(char *));
+	if (!map_matrix)
+		return (NULL);
+	while (*map)
+	{
+		if (*map == '\n')
+		{
+			++map;
+		}
+		map_matrix[][] = ;
+		++map;
+	}
 }
 
 int	main(int ac, char **av)
@@ -172,5 +190,5 @@ int	main(int ac, char **av)
 	char *map;
 
 	map = open_file(av[1]);
-	printf("%s", map);
+	printf("%s\n%i", map, get_column_number(map));
 }
