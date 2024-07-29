@@ -179,8 +179,9 @@ char	**str_to_matr(char *map)
 		if (*map == '\n')
 		{
 			++map;
+			l++;c++;
 		}
-		map_matrix[][] = ;
+		map_matrix[l][c] = *map;
 		++map;
 	}
 }
