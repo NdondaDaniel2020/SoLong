@@ -1,14 +1,12 @@
-# -lbsd # ./so_long map1.bar                                                          
-libft = ./libft/libft.a
 
 all:
+	make bonus -C ./libft
+	make -C ./minilibx_linux
+	clear
 	gcc so_long.c so_long_utils.c ./libft/libft.a -L./minilibx_linux -l mlx -lXext -lX11 -lm -o so_long
 	@echo -e "\n"
 	./so_long map/map1.txt | cat -e
 	@echo -e "\n"
-
-$(libft):
-	make -C libft/
 
 al:
 	gcc r.c -o r
@@ -38,5 +36,5 @@ pull:
 push:
 	git add .; git commit -m "caso resolvido" ;git push
 
-to_fill;
+to_fill:
 	gcc flood_fill.c -o flood_fill && ./flood_fill 
