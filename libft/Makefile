@@ -74,7 +74,7 @@ BOBJS = $(BFILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-all:	$(bonus)
+all:
 
 $(OBJS): %.o: %.c
 	@gcc $(FLAGS) -c $< -o $@
