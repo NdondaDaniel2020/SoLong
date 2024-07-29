@@ -157,7 +157,7 @@ char	*open_file(const char *filename)
 	return (str);
 }
 
-char	**str_to_matr(char *map)
+char	**str_to_matrix(char *map)
 {
 	int		l;
 	int		c;
@@ -167,29 +167,40 @@ char	**str_to_matr(char *map)
 
 	if (!map)
 		return (NULL);
-	l = 0;
-	c = 0;
 	line = get_line_number(map);
 	column = get_column_number(map);
-	map_matrix = (char **)ft_calloc(column*line, sizeof(char *));
+	map_matrix = (char **)ft_calloc(line + 1, sizeof(char *));
 	if (!map_matrix)
 		return (NULL);
+	l = 0;
 	while (*map)
 	{
-		if (*map == '\n')
+		c = 0;
+		map_matrix[l] = (char *)ft_calloc(column +1, sizeof(char));
+		while (*map && *map != '\n')
 		{
-			++map;
-			l++;c++;
+			map_matrix[l][c] = *map;
+			c++;
 		}
-		map_matrix[l][c] = *map;
+		map_matrix[l][c] = '\0';
+		l++;
 		++map;
 	}
+	map_matrix[l] = '\0';
+	return (map_matrix);
+}
+
+char	**free_matrix(char **matrix)
+{
+	free(matrix);
 }
 
 int	main(int ac, char **av)
 {
 	char *map;
 
-	map = open_file(av[1]);
-	printf("%s\n%i", map, get_column_number(map));
+	// map = open_file(av[1]);
+	// printf("%s\n%i", map, get_column_number(map));
+	// printf("%s", str_to_matrix(map)[0]);
+
 }
