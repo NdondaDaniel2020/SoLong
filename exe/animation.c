@@ -23,7 +23,7 @@
 typedef struct {
     void    *mlx;
     void    *win;
-    void    *imgs[3]; // Array para armazenar as imagens
+    void    *imgs[12]; // Array para armazenar as imagens
     int     img_width;
     int     img_height;
     int     current_img;
@@ -33,7 +33,7 @@ typedef struct {
 int update_image(t_data *data) 
 {
     mlx_clear_window(data->mlx, data->win);
-    data->current_img = (data->current_img + 1) % 3; // Alterna entre 0, 1 e 2
+    data->current_img = (data->current_img + 1) % 9; // Alterna entre 0, 1 e 2
     mlx_put_image_to_window(data->mlx, data->win, data->imgs[data->current_img], 0, 0);
 	usleep(100000);
     return 0;
@@ -69,9 +69,16 @@ int main()
     }
 
     // Carrega as imagens a partir de arquivos XPM
-    data.imgs[0] = mlx_png_file_to_image(data.mlx, "../img/terra.xpm", &data.img_width, &data.img_height);
-    data.imgs[1] = mlx_png_file_to_image(data.mlx, "../img/caixa.xpm", &data.img_width, &data.img_height);
-    data.imgs[2] = mlx_png_file_to_image(data.mlx, "../img/terra.xpm", &data.img_width, &data.img_height);
+    data.imgs[0] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_1.xpm", &data.img_width, &data.img_height);
+    data.imgs[1] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_2.xpm", &data.img_width, &data.img_height);
+    data.imgs[2] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_3.xpm", &data.img_width, &data.img_height);
+    data.imgs[3] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_4.xpm", &data.img_width, &data.img_height);
+    data.imgs[4] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_5.xpm", &data.img_width, &data.img_height);
+    data.imgs[5] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_6.xpm", &data.img_width, &data.img_height);
+    data.imgs[6] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_7.xpm", &data.img_width, &data.img_height);
+    data.imgs[7] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_8.xpm", &data.img_width, &data.img_height);
+    data.imgs[8] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_9.xpm", &data.img_width, &data.img_height);
+    data.imgs[9] = mlx_xpm_file_to_image(data.mlx, "../img/xpm/block_10.xpm", &data.img_width, &data.img_height);
 
     // Verifica se as imagens foram carregadas corretamente
     for (int i = 0; i < 3; i++)
