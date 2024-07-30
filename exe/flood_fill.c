@@ -15,11 +15,11 @@ typedef struct	s_size
 	int 		height;
 }	 			t_size;
 
-
 void	fill(char **tab, t_point size, t_point cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x || tab[cur.y][cur.x] != to_fill)
 		return;
+
 	tab[cur.y][cur.x] = 'F';
 	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
 	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
@@ -36,19 +36,26 @@ void	flood_fill(char **tab, t_point size, t_point begin)
 }
 /**/
 
-char** make_area(char** zone, t_point size)
+char** cpy_matrix(char** zone, t_point size)
 {
-	char** new;
+	int	l;
+	int	c;
+	char	**new;
 
+	l = 0;
 	new = malloc(sizeof(char*) * size.y);
-	for (int i = 0; i < size.y; ++i)
+	while (l < size.y)
 	{
-		new[i] = malloc(size.x + 1);
-		for (int j = 0; j < size.x; ++j)
-			new[i][j] = zone[i][j];
-		new[i][size.x] = '\0';
+		c = 0;
+		new[l] = malloc(size.x + 1);
+		while (c < size.x)
+		{
+			new[l][c] = zone[l][c];
+			c++;
+		}
+		new[l][size.x] = '\0';
+		l++;
 	}
-
 	return new;
 }
 
@@ -59,8 +66,6 @@ t_point	find_in_matrix(char **matrix,char ch)
 
 	l = 0;
 	while (matrix[l])
-	{
-		c = 0;
 		while (matrix[l][c])
 		{
 			if (matrix[l][c] == ch)
@@ -72,7 +77,7 @@ t_point	find_in_matrix(char **matrix,char ch)
 	return ((t_point){-1, -1});
 }
 
-int	check_way(char **matrix, t_point cur, t_size size)
+int	check_way_matrix(char **matrix, t_point cur, t_size size)
 {
 	if ((cur.x + 1 >= 0 && cur.x + 1 < size.width) && (matrix[cur.x + 1][cur.y] == 'F'))
 		return (1);
@@ -85,6 +90,30 @@ int	check_way(char **matrix, t_point cur, t_size size)
 	return (0);
 }
 
+int	check_way(char *map)
+{
+	char**  area;
+	t_point size;
+	t_point begin;
+	t_point	end;
+	t_point f;
+
+	size = size_map(map);
+	matrix = str_to_matrix(map);
+	area = cpy_matrix(matrix, size);
+
+	begin = find_in_matrix(area, 'P');
+	end = find_in_matrix(area, 'E');
+	
+	flood_fill(area, size, begin);
+	
+	if (check_way(area, end, (t_size){13, 5}))
+		return (1);
+	else
+		return (0);
+}
+
+/*
 int main(void)
 {
 	char**  area;
@@ -101,7 +130,7 @@ int main(void)
 		"1111111111111",
 	};
 
-	area = make_area(zone, size);
+	area = cpy_matrix(zone, size);
 	for (int i = 0; i < size.y; ++i)
 		printf("%s\n", area[i]);
 	printf("\n");
@@ -119,3 +148,4 @@ int main(void)
 
 	return (0);
 }
+*/
