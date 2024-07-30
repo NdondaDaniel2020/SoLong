@@ -19,20 +19,39 @@
 #include <stdio.h>
 #include <string.h>
 
-int	get_line_number(char *map)
+typedef struct	s_size
+{
+	int			width;
+	int 		height;
+}	 			t_size;
+
+int	width(char *map)
 {
 	int	i;
+	int	aux;
 
 	i = 0;
-	while (*map && *map != '\n')
+	aux = 0;
+	while (*map)
 	{
-		i++;
-		++map;
+	    i = 0;
+		while (*map != '\0' && *map != '\n')
+		{
+			i++;
+			++map;
+		}
+		if (*map == '\0' && i == aux)
+	        return (i);
+	    else if (aux == 0 || i == aux)
+	    {
+		    aux = i;
+		    ++map;
+	    }
 	}
-	return (i);
+	return (0);
 }
 
-int	get_column_number(char *map)
+int	height(char *map)
 {
 	int	i;
 
@@ -49,71 +68,18 @@ int	get_column_number(char *map)
 	return (i);
 }
 
-int	check_line(char *map_line, int *column)
+t_size	size_map(char *map)
 {
-	static int	i=0;
-	int	len;
-
-	if (i == 0 || column == 0)
-	{
-		i++;
-		*column--;
-		if (!ft_findchar(map_line, '0'))
-			return (1);
-	}
-	else
-	{
-		len = ft_strlen(map_line);
-		if (map_line[0] == '1' && map_line[len-1] == '1')
-			return (1);
-	}
-	free(map_line);
-	return (0);
-}
-
-int	check_struct_map(char *map)
-{
-	char	*str;
-	int		colu;
-	int		i;
-
-	colu = get_column_number(map);
-	str = (char *)malloc(sizeof(char) * (get_line_number(map) + 1));
-	if (!str)
-		return (0);
-	while (*map)
-	{
-		i = 0;
-		while (*map && *map != '\n')
-		{
-			str[i++] = *map;
-			++map;
-		}
-		str[i] = '\0';
-		if (!check_line(str, &colu))
-			return (0);
-		if (*map)
-			++map;
-	}
-	free(str);
-	return (1);
-}
-
-int	check_map(char *map)
-{
-	int	column;
-	int	line;
-	int	valid;
+	t_size	size;
 
 	if (!map)
-		return (0);
-	valid = check_struct_map(map);
-	column = get_column_number(map);
-	line = get_line_number(map);
-	if (valid && column > 3 && line > 3)
-		return (1);
-	return (0);
+		return ((t_size){0, 0});
+	size.width = width(map);
+	size.height = height(map);
+	return (size);
 }
+
+
 
 /*file*/
 char	*read_file(int fd)
@@ -123,7 +89,10 @@ char	*read_file(int fd)
 	int		bytes_read;
 
 	bytes_read = 1;
-	if (!ft_initstr(&aux) || !ft_initstr(&str))
+	str = (char *)malloc(sizeof(char));
+	str[0] = '\0';
+	aux = (char *)malloc(sizeof(char) * 1);
+	if (!aux)
 		return (NULL);
 	while (bytes_read)
 	{
@@ -153,8 +122,10 @@ char	*open_file(const char *filename)
 	str = read_file(fd);
 	return (str);
 }
+/**/
 
 
+/**/
 char	*create_line_map(char *map, int size)
 {
 	int		i;
@@ -179,21 +150,19 @@ char	*create_line_map(char *map, int size)
 char	**str_to_matrix(char *map)
 {
 	int		i;
-	int		line;
-	int		column;
+	t_size	size;
 	char	**map_matrix;
 
 	if (!map)
 		return (NULL);
 	i = 0;
-	line = get_line_number(map);
-	column = get_column_number(map);
-	map_matrix = (char **)ft_calloc(line + 1, sizeof(char *));
+	size = size_map(map);
+	map_matrix = (char **)ft_calloc(size.height + 1, sizeof(char *));
 	if (!map_matrix)
 		return (NULL);
 	while (*map)
 	{
-		map_matrix[i] = create_line_map(map, column);
+		map_matrix[i] = create_line_map(map, size.width);
 		while (*map && *map != '\n')
 			++map;
 		++map;
@@ -215,6 +184,7 @@ void	free_matrix(char **map_matrix)
 	}
 	free(map_matrix);
 }
+/**/
 
 int	main(int ac, char **av)
 {
@@ -224,12 +194,8 @@ int	main(int ac, char **av)
 
 	i = 0;
 	map = open_file(av[1]);
+	// ft_printf("%s", map);
 	matrix_map = str_to_matrix(map);
-	ft_printf("\n");
-	while (matrix_map[i])
-	{
-		printf("%s\n", matrix_map[i]);
-		i++;
-	}
-	free_matrix(matrix_map);
+
+	// free_matrix(matrix_map);
 }

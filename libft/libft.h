@@ -110,6 +110,6 @@ size_t	ft_strlen_gnl(char *str);
 /*extra*/
 int	ft_findchar(char *str, char c);
 
-void	ft_initstr(char **str);
+int	ft_initstr(char **str);
 
 #endif

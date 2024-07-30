@@ -39,4 +39,14 @@ int		check_line(char *map_line, int *column);
 int		check_struct_map(char *map);
 int		check_map(char *map);
 
+
+
+////////////////////////////////////////////
+typedef struct	s_size
+{
+	int			width;
+	int 		height;
+}	 			t_size;
+
+
 #endif
