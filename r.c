@@ -123,10 +123,7 @@ char	*read_file(int fd)
 	int		bytes_read;
 
 	bytes_read = 1;
-	str = (char *)malloc(sizeof(char));
-	str[0] = '\0';
-	aux = (char *)malloc(sizeof(char) * 1);
-	if (!aux)
+	if (!ft_initstr(&aux) || !ft_initstr(&str))
 		return (NULL);
 	while (bytes_read)
 	{
@@ -138,9 +135,10 @@ char	*read_file(int fd)
 			return (NULL);
 		}
 		aux[bytes_read] = '\0';
-		str = ft_strjoin(str, aux);
+		str = ft_strjoin_free(str, aux);
 	}
 	close(fd);
+	free(aux);
 	return (str);
 }
 
@@ -149,7 +147,6 @@ char	*open_file(const char *filename)
 	int		fd;
 	char	*str;
 
-	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
@@ -157,50 +154,82 @@ char	*open_file(const char *filename)
 	return (str);
 }
 
+
+char	*create_line_map(char *map, int size)
+{
+	int		i;
+	char	*line_map;
+
+	if (!map)
+		return (NULL);
+	i = 0;
+	line_map = (char *)ft_calloc(size + 1, sizeof(char));
+	if (!line_map)
+		return (NULL);
+	while (*map && *map != '\n')
+	{
+		line_map[i] = *map;
+		++map;
+		i++;
+	}
+	line_map[i] = '\0';
+	return (line_map);
+}
+
 char	**str_to_matrix(char *map)
 {
-	int		l;
-	int		c;
+	int		i;
 	int		line;
 	int		column;
 	char	**map_matrix;
 
 	if (!map)
 		return (NULL);
+	i = 0;
 	line = get_line_number(map);
 	column = get_column_number(map);
 	map_matrix = (char **)ft_calloc(line + 1, sizeof(char *));
 	if (!map_matrix)
 		return (NULL);
-	l = 0;
 	while (*map)
 	{
-		c = 0;
-		map_matrix[l] = (char *)ft_calloc(column +1, sizeof(char));
+		map_matrix[i] = create_line_map(map, column);
 		while (*map && *map != '\n')
-		{
-			map_matrix[l][c] = *map;
-			c++;
-		}
-		map_matrix[l][c] = '\0';
-		l++;
+			++map;
 		++map;
+		i++;
 	}
-	map_matrix[l] = '\0';
+	map_matrix[i] = '\0';
 	return (map_matrix);
 }
 
-char	**free_matrix(char **matrix)
+void	free_matrix(char **map_matrix)
 {
-	free(matrix);
+	int	i;
+
+	i = 0;
+	while (map_matrix[i])
+	{
+		free(map_matrix[i]);
+		i++;
+	}
+	free(map_matrix);
 }
 
 int	main(int ac, char **av)
 {
-	char *map;
+	int		i;
+	char	*map;
+	char	**matrix_map;
 
-	// map = open_file(av[1]);
-	// printf("%s\n%i", map, get_column_number(map));
-	// printf("%s", str_to_matrix(map)[0]);
-
+	i = 0;
+	map = open_file(av[1]);
+	matrix_map = str_to_matrix(map);
+	ft_printf("\n");
+	while (matrix_map[i])
+	{
+		printf("%s\n", matrix_map[i]);
+		i++;
+	}
+	free_matrix(matrix_map);
 }
