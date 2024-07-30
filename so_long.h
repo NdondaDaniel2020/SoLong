@@ -40,7 +40,6 @@ int		check_struct_map(char *map);
 int		check_map(char *map);
 
 
-
 ////////////////////////////////////////////
 typedef struct	s_size
 {
@@ -48,5 +47,10 @@ typedef struct	s_size
 	int 		height;
 }	 			t_size;
 
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+}				t_point;
 
 #endif
