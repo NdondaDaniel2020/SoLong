@@ -15,9 +15,9 @@
 int	ft_initstr(char **str)
 {
 	free(*str);
-	(*str) = (char *)malloc(sizeof(char));
+	(*str) = (char *)malloc(sizeof(char) * 1);
 	if (!(*str))
 		return (0);
-	str[0]='\0';
+	(*str)[0]='\0';
 	return (1);
 }

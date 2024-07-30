@@ -13,36 +13,6 @@
 #include "so_long.h"
 
 /*check map*/
-int	get_line_number(char *map)
-{
-	int	i;
-
-	i = 0;
-	while (*map && *map != '\n')
-	{
-		i++;
-		++map;
-	}
-	return (i);
-}
-
-int	get_column_number(char *map)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return (0);
-	while (*map)
-	{
-		if (*map == '\n')
-			i++;
-		++map;
-	}
-	i++;
-	return (i);
-}
-
 int	check_line(char *map_line, int *column)
 {
 	static int	i=0;
@@ -95,16 +65,14 @@ int	check_struct_map(char *map)
 
 int	check_map(char *map)
 {
-	int	column;
-	int	line;
-	int	valid;
+	int		column;
+	t_size	size;
 
 	if (!map)
 		return (0);
 	valid = check_struct_map(map);
-	column = get_column_number(map);
-	line = get_line_number(map);
-	if (valid && column > 3 && line > 3)
+	size = size_map(map);
+	if (valid && size.width > 3 && size.height > 3)
 		return (1);
 	return (0);
 }
