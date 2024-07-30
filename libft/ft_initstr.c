@@ -12,9 +12,12 @@
 
 #include "libft.h"
 
-void	ft_initstr(char **str)
+int	ft_initstr(char **str)
 {
 	free(*str);
-	(*str) = (char *)malloc(sizeof(char) * 1);
+	(*str) = (char *)malloc(sizeof(char));
+	if (!(*str))
+		return (0);
 	str[0]='\0';
+	return (1);
 }
