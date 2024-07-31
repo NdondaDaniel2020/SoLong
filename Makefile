@@ -29,7 +29,7 @@ FMLX = -l mlx -lXext -lX11 -lm
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	$(CC) $(FLAGS) $(FILES) -L$(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
+	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
 
 $(LIBFT):
 	make bonus -C ./libft
@@ -37,8 +37,10 @@ $(LIBFT):
 $(MLX):
 	make -C ./minilibx_linux
 
+n:
+	python -m norminette ./*.c ./*.h
 clean:
-	@/bin/rm -f $(OBJS)
+	@/bin/rm -f $(NAME)
 
 fclean:	clean
 	@/bin/rm -f $(NAME)

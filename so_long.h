@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:17:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:33:55 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:40:06 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,12 @@ void	free_matrix(char **map_matrix);
 int		width(char *map);
 int		height(char *map);
 t_size	size_map(char *map);
+
+/**/
+void	fill(char **tab, t_size size, t_point cur);
+void	flood_fill(char **tab, t_size size, t_point begin);
+
+int		check_way_matrix(char **matrix, t_point cur, t_size size);
+int		check_way(char *map);
 
 #endif

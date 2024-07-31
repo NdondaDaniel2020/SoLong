@@ -6,15 +6,15 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 10:30:59 by kali             ###   ########.fr       */
+/*   Updated: 2024/07/31 12:40:10 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	fill(char **tab, t_point size, t_point cur)
+void	fill(char **tab, t_size size, t_point cur)
 {
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x)
+	if (cur.y < 0 || cur.y >= size.height || cur.x < 0 || cur.x >= size.width)
 		return ;
 	if (tab[cur.y][cur.x] != '0')
 		return ;
@@ -25,7 +25,7 @@ void	fill(char **tab, t_point size, t_point cur)
 	fill(tab, size, (t_point){cur.x, cur.y + 1});
 }
 
-void	flood_fill(char **tab, t_point size, t_point begin)
+void	flood_fill(char **tab, t_size size, t_point begin)
 {
 	fill(tab, size, (t_point){begin.x - 1, begin.y});
 	fill(tab, size, (t_point){begin.x + 1, begin.y});
@@ -55,32 +55,52 @@ int	check_way_matrix(char **matrix, t_point cur, t_size size)
 	return (0);
 }
 
+t_point	find_in_matrix(char **matrix, char ch)
+{
+	int		l;
+	int		c;
+
+	l = 0;
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			if (matrix[l][c] == ch)
+				return ((t_point){l, c});
+			c++;
+		}
+		l++;
+	}
+	return ((t_point){-1, -1});
+}
+
 int	check_way(char *map)
 {
 	t_point	end;
-	t_point	size;
+	t_size	size;
 	t_point	begin;
-	char	**area;
+	char	**matrix;
 
 	size = size_map(map);
 	matrix = str_to_matrix(map);
-	area = cpy_matrix(matrix, size);
-	begin = find_in_matrix(area, 'P');
-	end = find_in_matrix(area, 'E');
-	flood_fill(area, size, begin);
-	if (check_way(area, end, (t_size){13, 5}))
+	begin = find_in_matrix(matrix, 'P');
+	end = find_in_matrix(matrix, 'E');
+	flood_fill(matrix, size, begin);
+	if (check_way_matrix(matrix, end, size))
+	{
+		free_matrix(matrix);
 		return (1);
-	else
-		return (0);
+	}
+	free_matrix(matrix);
+	return (0);
 }
-
 /*
 int main(void)
 {
 	char**  area;
 	t_point size;
 	t_point begin;
-	t_point f;
 
 	size = (t_point){13, 5};
 	char *zone[] = {
