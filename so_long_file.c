@@ -19,24 +19,30 @@ char	*read_file(int fd)
 	int		bytes_read;
 
 	bytes_read = 1;
-	str = (char *)malloc(sizeof(char));
-	str[0] = '\0';
-	aux = (char *)malloc(sizeof(char) * 1);
-	if (!aux)
+	str = (char *)ft_calloc(1, sizeof(char));
+	aux = (char *)ft_calloc(1, sizeof(char) * 2);
+	if (!aux || !str)
+	{
+		free(str);
+		free(aux);
 		return (NULL);
+	}
 	while (bytes_read)
 	{
 		bytes_read = read(fd, aux, 1);
 		if (bytes_read == -1)
 		{
 			free(aux);
+			free(str);
 			close(fd);
 			return (NULL);
 		}
 		aux[bytes_read] = '\0';
-		str = ft_strjoin(str, aux);
+		str = ft_strjoin_free(str, aux);
 	}
 	close(fd);
+	ft_bzero(aux, 1);
+	free(aux);
 	return (str);
 }
 
@@ -45,7 +51,6 @@ char	*open_file(const char *filename)
 	int		fd;
 	char	*str;
 
-	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
