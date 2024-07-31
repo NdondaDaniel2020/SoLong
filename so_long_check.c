@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:35:34 by nmatondo         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:28:14 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_line(char *map_line, int *column)
 	if (i == 0 || column == 0)
 	{
 		i++;
-		*column--;
+		(*column)--;
 		if (!ft_findchar(map_line, '0'))
 			return (1);
 	}
@@ -41,8 +41,8 @@ int	check_struct_map(char *map)
 	int		colu;
 	int		i;
 
-	colu = get_column_number(map);
-	str = (char *)malloc(sizeof(char) * (get_line_number(map) + 1));
+	colu = height(map);
+	str = (char *)malloc(sizeof(char) * (width(map) + 1));
 	if (!str)
 		return (0);
 	while (*map)
@@ -85,7 +85,7 @@ int	check_duplicate(char *map)
 
 int	check_map(char *map)
 {
-	int		column;
+	int		valid;
 	t_size	size;
 
 	if (!map)
