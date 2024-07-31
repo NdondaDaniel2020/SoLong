@@ -43,7 +43,7 @@ char	*read_file(int fd)
 	close(fd);
 	ft_bzero(aux, 1);
 	free(aux);
-	return (str); 
+	return (str);
 }
 
 char	*open_file(const char *filename)
