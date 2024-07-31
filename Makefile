@@ -1,37 +1,48 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/06 01:32:20 by nmatondo          #+#    #+#              #
+#    Updated: 2024/07/31 11:03:16 by kali             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-all:
-	gcc so_long.c so_long_utils.c ./libft/libft.a -L./minilibx_linux -l mlx -lXext -lX11 -lm -o so_long
-	@echo -e "\n"
-	./so_long map/map1.txt | cat -e
-	@echo -e "\n"
+# so_long.h
+CC = gcc
+NAME = ./so_long
+FILES = so_long.c \
+		so_long_check_way.c \
+		so_long_size.c \
+		so_long_check.c \
+		so_long_file.c \
+		so_long_matrix.c \
+		so_long_wind.c
 
-al:
-	gcc r.c -o r
-	./r
-a:
-	gcc so_long.c so_long.h so_long_utils.c ./Libft/libft.a -L./minilibx-linux -lmlx -lXext -lX11 -lm -o so_long                                                      
-        
-m:
-	gcc main.c ./Libft/libft.a -L./minilibx-linux -lmlx -lXext -lX11 -lm -o so_long
-	./so_long map1.bar
-	./so_long map2.bar
+FLAGS = -Wall -Wextra -Werror
+LIBFT = ./libft/libft.a
+MLX = ./minilibx_linux
+FMLX = -l mlx -lXext -lX11 -lm
 
-mm:
-	gcc main.c ./Libft/libft.a -L./minilibx-linux -lmlx -lXext -lX11 -lm -o so_long
-	./so_long map1.bar
-	./so_long map2.bar
+all:	$(NAME)
 
-n:
-	norminette ./*.c ./*.h
+$(NAME):	$(LIBFT) $(MLX)
+	$(CC) $(FLAGS) $(FILES) -L$(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
 
-pull:
-	@git pull
-	make -C libft/
-	all
-	make fclean -C libft/
+$(LIBFT):
+	make bonus -C ./libft
 
-push:
-	git add .; git commit -m "caso resolvido" ;git push
+$(MLX):
+	make -C ./minilibx_linux
 
-to_fill:
-	gcc flood_fill.c -o flood_fill && ./flood_fill 
+clean:
+	@/bin/rm -f $(OBJS)
+
+fclean:	clean
+	@/bin/rm -f $(NAME)
+
+re:	fclean all
+
+.PHONY: all clean fclean re

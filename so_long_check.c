@@ -15,8 +15,8 @@
 /*check map*/
 int	check_line(char *map_line, int *column)
 {
-	static int	i=0;
-	int	len;
+	static int	i = 0;
+	int			len;
 
 	if (i == 0 || column == 0)
 	{
@@ -28,7 +28,7 @@ int	check_line(char *map_line, int *column)
 	else
 	{
 		len = ft_strlen(map_line);
-		if (map_line[0] == '1' && map_line[len-1] == '1')
+		if (map_line[0] == '1' && map_line[len - 1] == '1')
 			return (1);
 	}
 	free(map_line);
@@ -61,6 +61,26 @@ int	check_struct_map(char *map)
 	}
 	free(str);
 	return (1);
+}
+
+int	check_duplicate(char *map)
+{
+	int	p;
+	int	e;
+
+	p = 0;
+	e = 0;
+	while (*map)
+	{
+		if (*map == 'e')
+			e++;
+		if (*map == 'p')
+			p++;
+		++map;
+	}
+	if (p == 1 && e == 1)
+		return (1);
+	return (0);
 }
 
 int	check_map(char *map)

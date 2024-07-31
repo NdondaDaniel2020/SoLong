@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_size.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/19 15:35:34 by nmatondo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -6,23 +17,22 @@ int	width(char *map)
 	int	i;
 	int	aux;
 
-	i = 0;
 	aux = 0;
 	while (*map)
 	{
-	    i = 0;
+		i = 0;
 		while (*map != '\0' && *map != '\n')
 		{
 			i++;
 			++map;
 		}
 		if (*map == '\0' && i == aux)
-	        return (i);
-	    else if (aux == 0 || i == aux)
-	    {
-		    aux = i;
-		    ++map;
-	    }
+			return (i);
+		else if (aux == 0 || i == aux)
+		{
+			aux = i;
+			++map;
+		}
 	}
 	return (0);
 }

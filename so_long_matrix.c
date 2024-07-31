@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_matrix.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/07/19 15:35:34 by nmatondo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "so_long.h"
+#include "so_long.h"
 
-char** cpy_matrix(char** zone, t_point size)
+char	**cpy_matrix(char **zone, t_point size)
 {
-	int	l;
-	int	c;
+	int		l;
+	int		c;
 	char	**new;
 
 	l = 0;
-	new = malloc(sizeof(char*) * size.y);
+	new = malloc(sizeof(char *) * size.y);
 	while (l < size.y)
 	{
 		c = 0;
@@ -21,7 +32,7 @@ char** cpy_matrix(char** zone, t_point size)
 		new[l][size.x] = '\0';
 		l++;
 	}
-	return new;
+	return (new);
 }
 
 char	*create_line_map(char *map, int size)
