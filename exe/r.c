@@ -186,6 +186,26 @@ void	free_matrix(char **map_matrix)
 }
 /**/
 
+int	check_duplicate(char *map)
+{
+	int	p;
+	int	e;
+
+	p = 0;
+	e = 0;
+	while (*map)
+	{
+		if (*map == 'e')
+			e++;
+		if (*map == 'p')
+			p++;
+		++map;
+	}
+	if (p == 1 && e == 1)
+		return (1);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	int		i;
@@ -193,10 +213,17 @@ int	main(int ac, char **av)
 	char	**matrix_map;
 
 	i = 0;
-	map = open_file(av[1]);
+	if (!ft_strnstr(av[1], ".ber", ft_strlen(av[1])))
+	{
+		ft_printf("Formato invalido: *.ber");
+		return (1);
+	}
+
+	// ft_substr(av[1], ".ber", 4);
+	// ft_printf("%s\n%s", ft_strnstr(av[1], ".ber", ft_strlen(av[1])), av[1]);
+	// map = open_file(av[1]);
 	// ft_printf("%s", map);
-	matrix_map = str_to_matrix(map);
+	// matrix_map = str_to_matrix(map);
 
 	// free_matrix(matrix_map);
 }
-
