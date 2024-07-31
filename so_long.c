@@ -21,6 +21,17 @@ void    validator_format(char *name)
     }
 }
 
+void	validator_map(char *map)
+{
+	ft_printf("Mapa invalido %i \n", check_way(map));
+	// if (!check_map(map) || !check_way(map))
+	// {
+	// 	ft_printf("Mapa invalido");
+	// 	free(map);
+	// 	exit(1);
+	// }
+}
+
 int	main(int ac, char **av)
 {
 	char	*map;
@@ -28,6 +39,10 @@ int	main(int ac, char **av)
 	(void)ac;
     validator_format(av[1]);
 	map = open_file(av[1]);
+	// validator_map(map);
+
+	// check_way(map);
+
 	ft_printf("%s\n", map);
 	free(map);
 	return (0);

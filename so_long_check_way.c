@@ -67,7 +67,7 @@ t_point	find_in_matrix(char **matrix, char ch)
 		while (matrix[l][c])
 		{
 			if (matrix[l][c] == ch)
-				return ((t_point){l, c});
+				return ((t_point){c, l});
 			c++;
 		}
 		l++;
@@ -95,6 +95,7 @@ int	check_way(char *map)
 	free_matrix(matrix);
 	return (0);
 }
+
 /*
 int main(void)
 {
