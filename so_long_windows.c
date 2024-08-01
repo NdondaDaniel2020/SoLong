@@ -13,19 +13,24 @@
 #include "so_long.h"
 
 /*window*/
-int	key_press(int keycode, void *param)
+int	key_press(int keycode, t_wind *window)
 {
-	(void)param;
 	ft_printf("Tecla: %d\n", keycode);
+	(void)window;
 	if (keycode == 65307)
-		exit(0);
+	{
+		mlx_destroy_window(window->mlx, window->win);
+		free(window->mlx);
+		exit(1);
+	}
 	return (0);
 }
 
-int	close_window(void *param)
+int	close_window(t_wind *window)
 {
-	(void)param;
-	exit(0);
+	mlx_destroy_window(window->mlx, window->win);
+	free(window->mlx);
+	exit(1);
 	return (0);
 }
 
