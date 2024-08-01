@@ -46,7 +46,7 @@ char	*create_line_map(char *map, int size)
 	line_map = (char *)ft_calloc(size + 1, sizeof(char));
 	if (!line_map)
 		return (NULL);
-	while (*map && *map != '\n')
+	while (*map && *map != '\n' && i < size)
 	{
 		line_map[i] = *map;
 		++map;
@@ -74,10 +74,11 @@ char	**str_to_matrix(char *map)
 		map_matrix[i] = create_line_map(map, size.width);
 		while (*map && *map != '\n')
 			++map;
-		++map;
+		if (*map == '\n')
+			++map;
 		i++;
 	}
-	map_matrix[i] = '\0';
+	map_matrix[i] = NULL;
 	return (map_matrix);
 }
 

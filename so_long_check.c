@@ -72,9 +72,9 @@ int	check_duplicate(char *map)
 	e = 0;
 	while (*map)
 	{
-		if (*map == 'e')
+		if (*map == 'E')
 			e++;
-		if (*map == 'p')
+		if (*map == 'P')
 			p++;
 		++map;
 	}

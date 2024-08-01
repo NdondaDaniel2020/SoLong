@@ -41,7 +41,7 @@ int		key_press(int keycode, void *param);
 int		close_window(void *param);
 
 /*file*/
-char	*read_file(int fd);
+char	*read_file(int fd, char *str, char *buffer);
 char	*open_file(const char *filename);
 
 /*check map*/
@@ -61,11 +61,16 @@ int		width(char *map);
 int		height(char *map);
 t_size	size_map(char *map);
 
-/**/
+/*grafos*/
 void	fill(char **tab, t_size size, t_point cur);
 void	flood_fill(char **tab, t_size size, t_point begin);
 
 int		check_way_matrix(char **matrix, t_point cur, t_size size);
 int		check_way(char *map);
+
+/*validator*/
+void	validator_format(char *name);
+void	validator_map(char *map);
+char	*get_map(char *name);
 
 #endif
