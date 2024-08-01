@@ -40,11 +40,12 @@ typedef struct s_
 }			t_wind;
 
 /*window*/
-int		key_press(int keycode, void *param);
-int		close_window(void *param);
+int		key_press(int keycode, t_wind *window);
+int		close_window(t_wind *window);
 void	add_background(t_wind window, char *map);
 void	connection(t_wind window);
 t_size	size_image(char *map);
+
 
 /*file*/
 char	*read_file(int fd, char *str, char *buffer);
