@@ -44,13 +44,13 @@ int	check_way_matrix(char **matrix, t_point cur, t_size size)
 	y = cur.y;
 	width = size.width;
 	height = size.height;
-	if ((x + 1 >= 0 && x + 1 < width) && (matrix[x + 1][y] == 'F'))
+	if ((x + 1 >= 0 && x + 1 < width) && (matrix[y][x + 1] == 'F'))
 		return (1);
-	if ((x - 1 >= 0 && x - 1 < width) && (matrix[x - 1][y] == 'F'))
+	if ((x - 1 >= 0 && x - 1 < width) && (matrix[y][x - 1] == 'F'))
 		return (1);
-	if ((y + 1 >= 0 && y + 1 < height) && (matrix[x][y + 1] == 'F'))
+	if ((y + 1 >= 0 && y + 1 < height) && (matrix[y + 1][x] == 'F'))
 		return (1);
-	if ((y - 1 >= 0 && y - 1 < height) && (matrix[x][y - 1] == 'F'))
+	if ((y - 1 >= 0 && y - 1 < height) && (matrix[y - 1][x] == 'F'))
 		return (1);
 	return (0);
 }

@@ -12,13 +12,31 @@
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	validator_format(char *name)
+{
+	if (ft_strnstr(name, ".ber", ft_strlen(name)) == NULL)
+	{
+		ft_printf("Formato do mapa errado\nFormato recomendado *.ber");
+		exit(1);
+	}
+}
+
+void	validator_map(char *map)
+{
+	if (!check_duplicate(map) || !check_map(map) || !check_way(map))
+	{
+		ft_printf("Mapa invalido");
+		free(map);
+		exit(1);
+	}
+}
+
+char	*get_map(char *name)
 {
 	char	*map;
 
-	(void)ac;
-	map = get_map(av[1]);
-	ft_printf("%s\n", map);
-	free(map);
-	return (0);
+	validator_format(name);
+	map = open_file(name);
+	validator_map(map);
+	return (map);
 }

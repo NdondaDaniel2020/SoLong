@@ -12,37 +12,27 @@
 
 #include "so_long.h"
 
-char	*read_file(int fd)
+char	*read_file(int fd, char *str, char *buffer)
 {
-	char	*str;
-	char	*aux;
 	int		bytes_read;
 
 	bytes_read = 1;
-	str = (char *)ft_calloc(1, sizeof(char));
-	aux = (char *)ft_calloc(1, sizeof(char) * 2);
-	if (!aux || !str)
-	{
-		free(str);
-		free(aux);
-		return (NULL);
-	}
 	while (bytes_read)
 	{
-		bytes_read = read(fd, aux, 1);
+		bytes_read = read(fd, buffer, 1);
 		if (bytes_read == -1)
 		{
-			free(aux);
+			free(buffer);
 			free(str);
 			close(fd);
 			return (NULL);
 		}
-		aux[bytes_read] = '\0';
-		str = ft_strjoin_free(str, aux);
+		buffer[bytes_read] = '\0';
+		str = ft_strjoin_free(str, buffer);
 	}
 	close(fd);
-	ft_bzero(aux, 1);
-	free(aux);
+	ft_bzero(buffer, 1);
+	free(buffer);
 	return (str);
 }
 
@@ -50,10 +40,17 @@ char	*open_file(const char *filename)
 {
 	int		fd;
 	char	*str;
+	char	*buffer;
 
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	str = (char *)ft_calloc(1, sizeof(char));
+	buffer = (char *)ft_calloc(1, sizeof(char) * 2);
+	if (fd == -1 || !str || !buffer)
+	{
+		free(str);
+		free(buffer);
 		return (NULL);
-	str = read_file(fd);
+	}
+	str = read_file(fd, str, buffer);
 	return (str);
 }
