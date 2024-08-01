@@ -24,18 +24,20 @@ typedef struct s_
 {
     void    *mlx;
     void    *win;
-    void    *imgs[10]; // Array para armazenar as imagens
+    void    *imgs[4][10]; // Array para armazenar as imagens
     int     img_width;
     int     img_height;
     int     current_img;
 } t_data;
+
+int g_direction = 0;
 
 // Função que alterna as imagens
 int update_image(t_data *data) 
 {
     mlx_clear_window(data->mlx, data->win);
     data->current_img = (data->current_img + 1) % 9; // Alterna entre 0, 1 e 2
-    mlx_put_image_to_window(data->mlx, data->win, data->imgs[data->current_img], 0, 0);
+    mlx_put_image_to_window(data->mlx, data->win, data->imgs[g_direction][data->current_img], 0, 0);
 	usleep(100000);
     return 0;
 }
@@ -46,6 +48,14 @@ int	key_press(int keycode, void *param)
 	printf("Tecla: %d\n", keycode);
 	if (keycode == 65307) /*ESC no Linux*/
 		exit(0);
+    if (keycode == 65361)
+        g_direction = 0;
+    if (keycode == 65362)
+        g_direction = 1;
+    if (keycode == 65364)
+        g_direction = 2;
+    if (keycode == 65363)
+        g_direction = 3;
 	return (0);
 }
 
@@ -70,16 +80,50 @@ int main(void)
     }
 
     // Carrega as imagens a partir de arquivos XPM
-    data.imgs[0] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_1.xpm", &data.img_width, &data.img_height);
-    data.imgs[1] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_2.xpm", &data.img_width, &data.img_height);
-    data.imgs[2] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_3.xpm", &data.img_width, &data.img_height);
-    data.imgs[3] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_4.xpm", &data.img_width, &data.img_height);
-    data.imgs[4] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_5.xpm", &data.img_width, &data.img_height);
-    data.imgs[5] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_6.xpm", &data.img_width, &data.img_height);
-    data.imgs[6] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_7.xpm", &data.img_width, &data.img_height);
-    data.imgs[7] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_8.xpm", &data.img_width, &data.img_height);
-    data.imgs[8] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_9.xpm", &data.img_width, &data.img_height);
-    data.imgs[9] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_10.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][0] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_1.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][1] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_2.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][2] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_3.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][3] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_4.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][4] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_5.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][5] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_6.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][6] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_7.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][7] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_8.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][8] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_9.xpm", &data.img_width, &data.img_height);
+    data.imgs[0][9] = mlx_xpm_file_to_image(data.mlx, "../img/block/block_10.xpm", &data.img_width, &data.img_height);
+
+    data.imgs[1][0] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_1.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][1] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_2.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][2] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_3.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][3] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_4.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][4] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_5.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][5] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_6.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][6] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_7.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][7] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_8.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][8] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_9.xpm", &data.img_width, &data.img_height);
+    data.imgs[1][9] = mlx_xpm_file_to_image(data.mlx, "../img/Kunoichi-back/Idle_1.xpm", &data.img_width, &data.img_height);
+
+    data.imgs[2][0] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_1.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][1] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_2.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][2] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_3.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][3] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_4.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][4] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_5.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][5] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_6.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][6] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_7.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][7] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_8.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][8] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_9.xpm", &data.img_width, &data.img_height);
+    data.imgs[2][9] = mlx_xpm_file_to_image(data.mlx, "../img/portal-back/portal_1.xpm", &data.img_width, &data.img_height);
+
+    data.imgs[3][0] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_1.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][1] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_2.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][2] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_3.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][3] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_4.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][4] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_5.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][5] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_6.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][6] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_7.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][7] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_8.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][8] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_9.xpm", &data.img_width, &data.img_height);
+    data.imgs[3][9] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_1.xpm", &data.img_width, &data.img_height);
+
 
     // Verifica se as imagens foram carregadas corretamente
     for (int i = 0; i < 3; i++)
