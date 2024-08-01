@@ -37,6 +37,11 @@ char	*get_map(char *name)
 
 	validator_format(name);
 	map = open_file(name);
+	if (map == NULL)
+	{
+		ft_printf("Arquivo %s inexistente", name);
+		exit(1);
+	}
 	validator_map(map);
 	return (map);
 }

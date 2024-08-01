@@ -15,10 +15,20 @@
 int	main(int ac, char **av)
 {
 	char	*map;
+	t_wind	window;
+	t_size	size;
 
 	(void)ac;
 	map = get_map(av[1]);
-	ft_printf("%s\n", map);
+	size = size_map(map);
+	size.width *= 50;
+	size.height *= 50;
+	window.mlx = mlx_init();
+	window.win = mlx_new_window(window.mlx, size.width, size.height, "solong");
+	ft_printf("%i %i\n%s\n", size.width, size.height, map);
+	add_background(window, map);
+	connection(window);
+	mlx_loop(window.mlx);
 	free(map);
 	return (0);
 }

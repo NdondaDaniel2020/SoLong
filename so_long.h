@@ -32,13 +32,19 @@ typedef struct s_point
 
 typedef struct s_
 {
+	int		w;
+	int		h;
 	void	*mlx;
 	void	*win;
-}			t_data;
+	void	*img;
+}			t_wind;
 
 /*window*/
 int		key_press(int keycode, void *param);
 int		close_window(void *param);
+void	add_background(t_wind window, char *map);
+void	connection(t_wind window);
+t_size	size_image(char *map);
 
 /*file*/
 char	*read_file(int fd, char *str, char *buffer);
@@ -72,5 +78,10 @@ int		check_way(char *map);
 void	validator_format(char *name);
 void	validator_map(char *map);
 char	*get_map(char *name);
+
+/*name file*/
+char	*bg1(void);
+char	*bg2(void);
+char	*bg3(void);
 
 #endif
