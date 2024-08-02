@@ -75,6 +75,60 @@ t_point	find_in_matrix(char **matrix, char ch)
 	return ((t_point){-1, -1});
 }
 
+int	count_occurrence(char **matrix, char ch)
+{
+	int		l;
+	int		c;
+	int		len;
+
+	l = 0;
+	len = 0;
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			if (matrix[l][c] == ch)
+				len++;
+			c++;
+		}
+		l++;
+	}
+	return (len);
+}
+
+t_point	*find_in_all_matrix(char **matrix, char ch)
+{
+	int		l;
+	int		c;
+	int		i;
+	int		len;
+	t_point	*list_point;
+
+	l = 0;
+	i = 0;
+	len = count_occurrence(matrix, ch);
+	list_point = (t_point *)ft_calloc(len + 1, sizeof(t_point));
+	if (!list_point)
+		return (NULL);
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			if (matrix[l][c] == ch)
+			{
+				list_point[i] = (t_point){c, l};
+				i++;
+			}
+			c++;
+		}
+		l++;
+	}
+	list_point[i] = (t_point){-1, -1};
+	return (list_point);
+}
+
 int	check_way(char *map)
 {
 	t_point	end;
@@ -87,6 +141,10 @@ int	check_way(char *map)
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
 	flood_fill(matrix, size, begin);
+
+	t_point *list = find_in_all_matrix(matrix, 'C');
+	ft_printf("\n{%i %i}\n", list[0].x, list[0].y);
+
 	if (check_way_matrix(matrix, end, size))
 	{
 		free_matrix(matrix);
@@ -95,39 +153,3 @@ int	check_way(char *map)
 	free_matrix(matrix);
 	return (0);
 }
-
-/*
-int main(void)
-{
-	char**  area;
-	t_point size;
-	t_point begin;
-
-	size = (t_point){13, 5};
-	char *zone[] = {
-		"1111111111111",
-		"10000100000C1",
-		"1000111111001",
-		"1P0010E000001",
-		"1111111111111",
-	};
-
-	area = cpy_matrix(zone, size);
-	for (int i = 0; i < size.y; ++i)
-		printf("%s\n", area[i]);
-	printf("\n");
-
-	begin = find_in_matrix(area, 'P');
-
-	flood_fill(area, size, begin);
-	for (int i = 0; i < size.y; ++i)
-		printf("%s\n", area[i]);
-
-	if (check_way(area, find_in_matrix(area, 'E'), (t_size){13, 5}))
-		printf("\nvalido");
-	else
-		printf("\ninvalido");
-
-	return (0);
-}
-*/
