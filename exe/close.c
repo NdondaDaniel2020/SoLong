@@ -13,9 +13,13 @@ typedef struct s_vars
 void clean_and_exit(t_vars *vars)
 {
     if (vars->img)
+    {
         mlx_destroy_image(vars->mlx, vars->img);
+    }
     if (vars->win)
+    {
         mlx_destroy_window(vars->mlx, vars->win);
+    }
     if (vars->mlx)
     {
         mlx_destroy_display(vars->mlx);

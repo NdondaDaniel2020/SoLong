@@ -36,14 +36,14 @@ typedef struct s_
 	int		h;
 	void	*mlx;
 	void	*win;
-	void	*img;
+	void	*bg;
 }			t_wind;
 
 /*window*/
 int		key_press(int keycode, t_wind *window);
-int		close_window(t_wind *window);
-void	add_background(t_wind window, char *map);
-void	connection(t_wind window);
+int 	clean_and_exit(t_wind *window);
+void	add_background(t_wind *window, char *map);
+void	connection(t_wind *window);
 t_size	size_image(char *map);
 
 

@@ -18,23 +18,21 @@ int	key_press(int keycode, t_wind *window)
 	ft_printf("Tecla: %d\n", keycode);
 	(void)window;
 	if (keycode == 65307)
-	{
-		mlx_destroy_window(window->mlx, window->win);
-		free(window->mlx);
-		exit(1);
-	}
+		clean_and_exit(window);
 	return (0);
 }
 
-int	close_window(t_wind *window)
+int clean_and_exit(t_wind *window)
 {
-	mlx_destroy_window(window->mlx, window->win);
-	free(window->mlx);
-	exit(1);
-	return (0);
+	(void)window;
+	// mlx_destroy_image(window->mlx, window->bg);
+	// mlx_destroy_window(window->mlx, window->win);
+	// mlx_destroy_display(window->mlx);
+	// free(window->mlx);
+    exit(0);
 }
 
-t_size	size_image(char *map)
+t_size	size_image_background(char *map)
 {
 	t_size	size;
 
@@ -47,13 +45,13 @@ t_size	size_image(char *map)
 		return ((t_size){650, 250});
 }
 
-void	add_background(t_wind window, char *map)
+void	add_background(t_wind *window, char *map)
 {
 	int		x;
 	int		y;
 	char	*bg;
 	t_size	size;
-	t_size	size_img;
+	t_size	size_bg;
 
 	(void)map;
 	size = size_map(map);
@@ -63,15 +61,17 @@ void	add_background(t_wind window, char *map)
 		bg = bg2();
 	else
 		bg = bg1();
-	size_img = size_image(map);
-	x = ((50 * size.width) - size_img.width) / 2;
-	y = ((50 * size.height) - size_img.height) / 2;
-	window.img = mlx_xpm_file_to_image(window.mlx, bg, &window.w, &window.h);
-	mlx_put_image_to_window(window.mlx, window.win, window.img, x, y);
+	size_bg = size_image_background(map);
+	x = ((50 * size.width) - size_bg.width) / 2;
+	y = ((50 * size.height) - size_bg.height) / 2;
+	window->bg = mlx_xpm_file_to_image(window->mlx, bg, &window->w, &window->h);
+	if (!window->bg)
+		clean_and_exit(window);
+	mlx_put_image_to_window(window->mlx, window->win, window->bg, x, y);
 }
 
-void	connection(t_wind window)
+void	connection(t_wind *window)
 {
-	mlx_key_hook(window.win, key_press, &window);
-	mlx_hook(window.win, 17, 0, close_window, &window);
+	mlx_key_hook(window->win, key_press, &window);
+	mlx_hook(window->win, 17, 0, clean_and_exit, &window);
 }
