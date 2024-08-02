@@ -37,15 +37,17 @@ typedef struct s_
 	void	*mlx;
 	void	*win;
 	void	*bg;
+	char	*map;
+	char	**map_matrix;
 }			t_wind;
 
 /*window*/
 int		key_press(int keycode, t_wind *window);
-int 	clean_and_exit(t_wind *window);
+int		clean_and_exit(t_wind *window);
 void	add_background(t_wind *window, char *map);
 void	connection(t_wind *window);
+void	init(t_wind *window);
 t_size	size_image(char *map);
-
 
 /*file*/
 char	*read_file(int fd, char *str, char *buffer);
@@ -86,6 +88,6 @@ char	*bg2(void);
 char	*bg3(void);
 
 /*master*/
-void	master(t_wind *window, char *map);
+void	master(t_wind *window);
 
 #endif
