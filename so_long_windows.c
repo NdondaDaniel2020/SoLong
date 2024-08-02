@@ -24,11 +24,19 @@ int	key_press(int keycode, t_wind *window)
 
 int clean_and_exit(t_wind *window)
 {
-	// (void)window;
-	mlx_destroy_image(window->mlx, window->bg);
-	mlx_destroy_window(window->mlx, window->win);
-	mlx_destroy_display(window->mlx);
-	free(window->mlx);
+	if (window->bg)
+    {
+        mlx_destroy_image(window->mlx, window->bg);
+    }
+    if (window->win)
+    {
+        mlx_destroy_window(window->mlx, window->win);
+    }
+    if (window->mlx)
+    {
+        mlx_destroy_display(window->mlx);
+        free(window->mlx);
+    }
     exit(0);
 }
 

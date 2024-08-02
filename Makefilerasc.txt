@@ -52,3 +52,11 @@ $(NAME): $(OBJS)
 bonus: $(OBJS) $(BOBJS)
 	@ar rc $(NAME) $(OBJS) $(BOBJS)
 	@make clean
+
+
+
+	// mlx_destroy_image(window->mlx, window->bg);
+	// mlx_destroy_window(window->mlx, window->win);
+	// mlx_destroy_display(window->mlx);
+	// free(window->mlx);
+    // exit(0);

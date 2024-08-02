@@ -13,8 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx_mms/mlx.h"
 # include "minilibx_linux/mlx.h"
+# include "minilibx_mms/mlx.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 
