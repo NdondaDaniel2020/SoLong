@@ -35,6 +35,11 @@ char	*get_map(char *name)
 {
 	char	*map;
 
+	if (!name)
+	{
+		ft_printf("Mapa não encontrado\n");
+		exit (1);
+	}
 	validator_format(name);
 	map = open_file(name);
 	if (map == NULL)
