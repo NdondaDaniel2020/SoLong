@@ -16,7 +16,7 @@ void	validator_format(char *name)
 {
 	if (ft_strnstr(name, ".ber", ft_strlen(name)) == NULL)
 	{
-		ft_printf("Formato do mapa errado\nFormato recomendado *.ber");
+		ft_printf("Formato do mapa errado\nFormato recomendado *.ber\n");
 		exit(1);
 	}
 }
@@ -25,7 +25,7 @@ void	validator_map(char *map)
 {
 	if (!check_duplicate(map) || !check_map(map) || !check_way(map))
 	{
-		ft_printf("Mapa invalido");
+		ft_printf("Mapa invalido\n");
 		free(map);
 		exit(1);
 	}
@@ -39,7 +39,7 @@ char	*get_map(char *name)
 	map = open_file(name);
 	if (map == NULL)
 	{
-		ft_printf("Arquivo %s inexistente", name);
+		ft_printf("Arquivo %s inexistente\n", name);
 		exit(1);
 	}
 	validator_map(map);
