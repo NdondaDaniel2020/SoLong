@@ -12,29 +12,43 @@
 
 #include "so_long.h"
 
-void	master(t_wind *window, char *map)
+void	master(t_wind *window)
 {
-	ft_printf("%s\n", map);
-	add_background(window, map);
+	ft_printf("%s\n", window->map);
+	window->map_matrix = str_to_matrix(window->map);
+	add_background(window, window->map);
 	connection(window);
 	mlx_loop(window->mlx);
-	clean_and_exit(window);
+}
+
+void	init(t_wind *window)
+{
+	window->w = 0;
+	window->h = 0;
+	window->mlx = NULL;
+	window->win = NULL;
+	window->bg = NULL;
+	window->map = NULL;
+	window->map_matrix = NULL;
 }
 
 int	main(int ac, char **av)
 {
-	char	*map;
 	t_wind	window;
 	t_size	size;
 
 	(void)ac;
-	map = get_map(av[1]);
-	size = size_map(map);
+	init(&window);
+	window.map = get_map(av[1]);
+	size = size_map(window.map);
 	size.width *= 50;
 	size.height *= 50;
 	window.mlx = mlx_init();
+	if (!window.mlx)
+		clean_and_exit(&window);
 	window.win = mlx_new_window(window.mlx, size.width, size.height, "solong");
-	master(&window, map);
-	free(map);
+	if (!window.win)
+		clean_and_exit(&window);
+	master(&window);
 	return (0);
 }

@@ -22,22 +22,22 @@ int	key_press(int keycode, t_wind *window)
 	return (0);
 }
 
-int clean_and_exit(t_wind *window)
+int	clean_and_exit(t_wind *window)
 {
+	if (window->map_matrix)
+		free_matrix(window->map_matrix);
+	if (window->map)
+		free(window->map);
 	if (window->bg)
-    {
-        mlx_destroy_image(window->mlx, window->bg);
-    }
-    if (window->win)
-    {
-        mlx_destroy_window(window->mlx, window->win);
-    }
-    if (window->mlx)
-    {
-        mlx_destroy_display(window->mlx);
-        free(window->mlx);
-    }
-    exit(0);
+		mlx_destroy_image(window->mlx, window->bg);
+	if (window->win)
+		mlx_destroy_window(window->mlx, window->win);
+	if (window->mlx)
+	{
+		mlx_destroy_display(window->mlx);
+		free(window->mlx);
+	}
+	exit(0);
 }
 
 t_size	size_image_background(char *map)
@@ -80,6 +80,6 @@ void	add_background(t_wind *window, char *map)
 
 void	connection(t_wind *window)
 {
-	mlx_key_hook(window->win, key_press, &window);
-	mlx_hook(window->win, 17, 0, clean_and_exit, &window);
+	mlx_key_hook(window->win, key_press, window);
+	mlx_hook(window->win, 17, 0, clean_and_exit, window);
 }
