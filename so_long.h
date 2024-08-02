@@ -47,7 +47,7 @@ int		clean_and_exit(t_wind *window);
 void	add_background(t_wind *window, char *map);
 void	connection(t_wind *window);
 void	init(t_wind *window);
-t_size	size_image(char *map);
+t_size	size_image_background(char *map);
 
 /*file*/
 char	*read_file(int fd, char *str, char *buffer);
@@ -73,8 +73,8 @@ t_size	size_map(char *map);
 /*grafos*/
 void	fill(char **tab, t_size size, t_point cur);
 void	flood_fill(char **tab, t_size size, t_point begin);
-
-int		check_way_matrix(char **matrix, t_point cur, t_size size);
+int		check_matrix_reference_points(char **matrix, t_size size);
+int		check_matrix_way(char **matrix, t_point cur, t_size size);
 int		check_way(char *map);
 
 /*validator*/

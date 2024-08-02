@@ -60,3 +60,89 @@ bonus: $(OBJS) $(BOBJS)
 	// mlx_destroy_display(window->mlx);
 	// free(window->mlx);
     // exit(0);
+
+t_point	*find_in_all_matrix(char **matrix, char ch)
+{
+	int		l;
+	int		c;
+	int		i;
+	int		len;
+	t_point	*list_point;
+
+	l = 0;
+	i = 0;
+	len = count_occurrence(matrix, ch);
+	list_point = (t_point *)ft_calloc(len + 1, sizeof(t_point));
+	if (!list_point)
+		return (NULL);
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			if (matrix[l][c] == ch)
+			{
+				list_point[i] = (t_point){c, l};
+				i++;
+			}
+			c++;
+		}
+		l++;
+	}
+	list_point[i] = (t_point){-1, -1};
+	return (list_point);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////
+t_point	*find_in_all_matrix(char **matrix, char ch)
+{
+	int		l;
+	int		i;
+	int		len;
+	t_point	*list_point;
+
+	l = 0;
+	i = 0;
+	len = count_occurrence(matrix, ch);
+	list_point = (t_point *)ft_calloc(len + 1, sizeof(t_point));
+	if (!list_point)
+		return (NULL);
+	while (matrix[l])
+	{
+		c = 0;
+		list_point = loop_find_all(matrix[l], &list_point, &i);
+		l++;
+	}
+	list_point[i] = (t_point){-1, -1};
+	return (list_point);
+}
+
+t_point	*loop_find_all(char *line_matrix, t_point **list_point, int *i)
+{
+	int		c;
+	t_point	*list;
+
+	c = 0;
+	list = *list_point;
+	while (line_matrix[l][c])
+	{
+		if (line_matrix[l][c] == ch)
+		{
+			list_point[*i] = (t_point){c, l};
+			*i++;
+		}
+		c++;
+	}
+	return (list);
+}
