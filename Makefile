@@ -21,7 +21,8 @@ FILES = so_long.c \
 		so_long_matrix.c \
 		so_long_windows.c \
 		so_long_validator.c \
-		so_long_name_file.c
+		so_long_name_file.c	\
+		so_long_check_reference.c
 
 FLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
@@ -40,7 +41,7 @@ $(MLX):
 	make -C ./minilibx_linux
 
 n:
-	python -m norminette ./*.c ./*.h
+	python3 -m norminette ./*.c ./*.h
 clean:
 	@/bin/rm -f $(NAME)
 

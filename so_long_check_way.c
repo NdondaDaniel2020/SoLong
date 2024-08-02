@@ -33,7 +33,7 @@ void	flood_fill(char **tab, t_size size, t_point begin)
 	fill(tab, size, (t_point){begin.x, begin.y + 1});
 }
 
-int	check_way_matrix(char **matrix, t_point cur, t_size size)
+int	check_matrix_way(char **matrix, t_point cur, t_size size)
 {
 	int	x;
 	int	y;
@@ -75,77 +75,21 @@ t_point	find_in_matrix(char **matrix, char ch)
 	return ((t_point){-1, -1});
 }
 
-int	count_occurrence(char **matrix, char ch)
-{
-	int		l;
-	int		c;
-	int		len;
-
-	l = 0;
-	len = 0;
-	while (matrix[l])
-	{
-		c = 0;
-		while (matrix[l][c])
-		{
-			if (matrix[l][c] == ch)
-				len++;
-			c++;
-		}
-		l++;
-	}
-	return (len);
-}
-
-t_point	*find_in_all_matrix(char **matrix, char ch)
-{
-	int		l;
-	int		c;
-	int		i;
-	int		len;
-	t_point	*list_point;
-
-	l = 0;
-	i = 0;
-	len = count_occurrence(matrix, ch);
-	list_point = (t_point *)ft_calloc(len + 1, sizeof(t_point));
-	if (!list_point)
-		return (NULL);
-	while (matrix[l])
-	{
-		c = 0;
-		while (matrix[l][c])
-		{
-			if (matrix[l][c] == ch)
-			{
-				list_point[i] = (t_point){c, l};
-				i++;
-			}
-			c++;
-		}
-		l++;
-	}
-	list_point[i] = (t_point){-1, -1};
-	return (list_point);
-}
-
 int	check_way(char *map)
 {
 	t_point	end;
 	t_size	size;
 	t_point	begin;
 	char	**matrix;
+	int		reference;
 
 	size = size_map(map);
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
 	flood_fill(matrix, size, begin);
-
-	t_point *list = find_in_all_matrix(matrix, 'C');
-	ft_printf("\n{%i %i}\n", list[0].x, list[0].y);
-
-	if (check_way_matrix(matrix, end, size))
+	reference = check_matrix_reference_points(matrix, size);
+	if (check_matrix_way(matrix, end, size) && reference)
 	{
 		free_matrix(matrix);
 		return (1);
