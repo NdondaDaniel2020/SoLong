@@ -85,4 +85,7 @@ char	*bg1(void);
 char	*bg2(void);
 char	*bg3(void);
 
+/*master*/
+void	master(t_wind *window, char *map);
+
 #endif
