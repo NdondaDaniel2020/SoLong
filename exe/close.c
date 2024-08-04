@@ -1,5 +1,6 @@
 #include <stdlib.h>
-#include "../minilibx_linux/mlx.h"
+#include "../minilibx_mms/mlx.h"
+// #include "../minilibx_linux/mlx.h"
 
 typedef struct s_vars
 {
@@ -20,11 +21,11 @@ void clean_and_exit(t_vars *vars)
     {
         mlx_destroy_window(vars->mlx, vars->win);
     }
-    if (vars->mlx)
-    {
-        mlx_destroy_display(vars->mlx);
-        free(vars->mlx);
-    }
+    // if (vars->mlx)
+    // {
+    //     // mlx_destroy_display(vars->mlx);
+    //     free(vars->mlx);
+    // }
     exit(0);
 }
 
@@ -53,7 +54,7 @@ int main(void)
         return (1);
     }
 
-    vars.img = mlx_xpm_file_to_image(vars.mlx, "../img/block/block_1.xpm", &vars.w, &vars.h);
+    vars.img = mlx_png_file_to_image(vars.mlx, "Attack_2_1.png", &vars.w, &vars.h);
     if (!vars.img)
     {
         mlx_destroy_window(vars.mlx, vars.win);

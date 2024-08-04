@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
+# include "../minilibx_linux/mlx.h"
+#include <stdlib.h>
 // Definição da largura e altura da janela
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
