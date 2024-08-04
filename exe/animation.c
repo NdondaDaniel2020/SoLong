@@ -39,7 +39,7 @@ int update_image(t_data *data)
     data->current_img = (data->current_img + 1) % 9; // Alterna entre 0, 1 e 2
     mlx_put_image_to_window(data->mlx, data->win, data->imgs[g_direction][data->current_img], 0, 0);
 	usleep(100000);
-    return 0;
+    return (0);
 }
 
 int	key_press(int keycode, void *param)
@@ -49,13 +49,13 @@ int	key_press(int keycode, void *param)
 	if (keycode == 65307) /*ESC no Linux*/
 		exit(0);
     if (keycode == 65361)
-        g_direction = 0;
+        g_direction = 3;
     if (keycode == 65362)
         g_direction = 1;
     if (keycode == 65364)
-        g_direction = 2;
+        g_direction = 0;
     if (keycode == 65363)
-        g_direction = 3;
+        g_direction = 2;
 	return (0);
 }
 
@@ -123,7 +123,6 @@ int main(void)
     data.imgs[3][7] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_8.xpm", &data.img_width, &data.img_height);
     data.imgs[3][8] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_9.xpm", &data.img_width, &data.img_height);
     data.imgs[3][9] = mlx_xpm_file_to_image(data.mlx, "../img/portal-front/portal_1.xpm", &data.img_width, &data.img_height);
-
 
     // Verifica se as imagens foram carregadas corretamente
     for (int i = 0; i < 3; i++)

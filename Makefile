@@ -21,8 +21,10 @@ FILES = so_long.c \
 		so_long_matrix.c \
 		so_long_windows.c \
 		so_long_validator.c \
-		so_long_name_file.c	\
-		so_long_check_reference.c
+		so_long_name_file_1.c \
+		so_long_name_file_2.c \
+		so_long_check_reference.c \
+		so_long_draw.c
 
 FLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a

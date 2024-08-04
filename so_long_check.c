@@ -92,7 +92,7 @@ int	check_map(char *map)
 		return (0);
 	valid = check_struct_map(map);
 	size = size_map(map);
-	if (valid && size.width > 3 && size.height > 3)
+	if (valid && size.w > 3 && size.h > 3)
 		return (1);
 	return (0);
 }

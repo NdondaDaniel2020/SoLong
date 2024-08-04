@@ -12,43 +12,44 @@
 
 #include "so_long.h"
 
-void	master(t_wind *window)
+void	master(t_wind *win)
 {
-	ft_printf("%s\n", window->map);
-	window->map_matrix = str_to_matrix(window->map);
-	add_background(window, window->map);
-	connection(window);
-	mlx_loop(window->mlx);
+	ft_printf("%s\n", win->map);
+	win->map_matrix = str_to_matrix(win->map);
+	add_background(win);
+	draw_map(win);
+	connection(win);
+	mlx_loop(win->mlx);
 }
 
-void	init(t_wind *window)
+void	init(t_wind *win)
 {
-	window->w = 0;
-	window->h = 0;
-	window->mlx = NULL;
-	window->win = NULL;
-	window->bg = NULL;
-	window->map = NULL;
-	window->map_matrix = NULL;
+	win->bg_w = 0;
+	win->bg_h = 0;
+	win->mlx = NULL;
+	win->win = NULL;
+	win->bg = NULL;
+	win->map = NULL;
+	win->imgs = NULL;
+	win->map_matrix = NULL;
 }
 
 int	main(int ac, char **av)
 {
-	t_wind	window;
-	t_size	size;
+	t_wind	win;
 
 	(void)ac;
-	init(&window);
-	window.map = get_map(av[1]);
-	size = size_map(window.map);
-	size.width *= 50;
-	size.height *= 50;
-	window.mlx = mlx_init();
-	if (!window.mlx)
-		clean_and_exit(&window);
-	window.win = mlx_new_window(window.mlx, size.width, size.height, "solong");
-	if (!window.win)
-		clean_and_exit(&window);
-	master(&window);
+	init(&win);
+	win.map = get_map(av[1]);
+	win.size = size_map(win.map);
+	win.size.w *= 50;
+	win.size.h *= 50;
+	win.mlx = mlx_init();
+	if (!win.mlx)
+		clean_and_exit(&win);
+	win.win = mlx_new_window(win.mlx, win.size.w, win.size.h, "Ninja SoLong");
+	if (!win.win)
+		clean_and_exit(&win);
+	master(&win);
 	return (0);
 }

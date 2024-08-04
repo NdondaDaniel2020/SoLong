@@ -66,12 +66,12 @@ char	**str_to_matrix(char *map)
 		return (NULL);
 	i = 0;
 	size = size_map(map);
-	map_matrix = (char **)ft_calloc(size.height + 1, sizeof(char *));
+	map_matrix = (char **)ft_calloc(size.h + 1, sizeof(char *));
 	if (!map_matrix)
 		return (NULL);
 	while (*map)
 	{
-		map_matrix[i] = create_line_map(map, size.width);
+		map_matrix[i] = create_line_map(map, size.w);
 		while (*map && *map != '\n')
 			++map;
 		if (*map == '\n')

@@ -14,9 +14,9 @@
 
 void	fill(char **tab, t_size size, t_point cur)
 {
-	if (cur.y < 0 || cur.y >= size.height || cur.x < 0 || cur.x >= size.width)
+	if (cur.y < 0 || cur.y >= size.h || cur.x < 0 || cur.x >= size.w)
 		return ;
-	if (tab[cur.y][cur.x] != '0')
+	if (tab[cur.y][cur.x] != '0' && tab[cur.y][cur.x] != 'C')
 		return ;
 	tab[cur.y][cur.x] = 'F';
 	fill(tab, size, (t_point){cur.x - 1, cur.y});
@@ -42,8 +42,8 @@ int	check_matrix_way(char **matrix, t_point cur, t_size size)
 
 	x = cur.x;
 	y = cur.y;
-	width = size.width;
-	height = size.height;
+	width = size.w;
+	height = size.h;
 	if ((x + 1 >= 0 && x + 1 < width) && (matrix[y][x + 1] == 'F'))
 		return (1);
 	if ((x - 1 >= 0 && x - 1 < width) && (matrix[y][x - 1] == 'F'))

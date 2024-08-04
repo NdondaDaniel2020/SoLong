@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_name_file.c                                :+:      :+:    :+:   */
+/*   so_long_name_file_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -25,4 +25,14 @@ char	*bg2(void)
 char	*bg3(void)
 {
 	return ("img/background/dojo_2_3.xpm");
+}
+
+char	*tatame1(void)
+{
+	return ("img/block/tatame_1.xpm");
+}
+
+char	*tatame2(void)
+{
+	return ("img/block/tatame_3.xpm");
 }
