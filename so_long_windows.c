@@ -13,29 +13,33 @@
 #include "so_long.h"
 
 /*window*/
-int	key_press(int keycode, t_wind *window)
+int	key_press(int keycode, t_wind *win)
 {
 	ft_printf("Tecla: %d\n", keycode);
-	(void)window;
+	(void)win;
 	if (keycode == 65307)
-		clean_and_exit(window);
+		clean_and_exit(win);
 	return (0);
 }
 
-int	clean_and_exit(t_wind *window)
+int	clean_and_exit(t_wind *win)
 {
-	if (window->map_matrix)
-		free_matrix(window->map_matrix);
-	if (window->map)
-		free(window->map);
-	if (window->bg)
-		mlx_destroy_image(window->mlx, window->bg);
-	if (window->win)
-		mlx_destroy_window(window->mlx, window->win);
-	if (window->mlx)
+	if (win->ptl[0][0].img_ptr)
+		clean_portal(win);
+	if (win->imgs)
+		clean_occurrence(win);
+	if (win->map_matrix)
+		free_matrix(win->map_matrix);
+	if (win->map)
+		free(win->map);
+	if (win->bg)
+		mlx_destroy_image(win->mlx, win->bg);
+	if (win->win)
+		mlx_destroy_window(win->mlx, win->win);
+	if (win->mlx)
 	{
-		mlx_destroy_display(window->mlx);
-		free(window->mlx);
+		mlx_destroy_display(win->mlx);
+		free(win->mlx);
 	}
 	exit(0);
 }
@@ -45,41 +49,39 @@ t_size	size_image_background(char *map)
 	t_size	size;
 
 	size = size_map(map);
-	if (size.width > 30)
+	if (size.w > 30)
 		return ((t_size){2340, 1080});
-	else if (size.width > 13)
+	else if (size.w > 13)
 		return ((t_size){1170, 540});
 	else
 		return ((t_size){650, 250});
 }
 
-void	add_background(t_wind *window, char *map)
+void	add_background(t_wind *win)
 {
 	int		x;
 	int		y;
 	char	*bg;
-	t_size	size;
 	t_size	size_bg;
 
-	(void)map;
-	size = size_map(map);
-	if (size.width > 30)
+	if ((win->size.w / 50) > 30)
 		bg = bg3();
-	else if (size.width > 13)
+	else if ((win->size.w / 50) > 13)
 		bg = bg2();
 	else
 		bg = bg1();
-	size_bg = size_image_background(map);
-	x = ((50 * size.width) - size_bg.width) / 2;
-	y = ((50 * size.height) - size_bg.height) / 2;
-	window->bg = mlx_xpm_file_to_image(window->mlx, bg, &window->w, &window->h);
-	if (!window->bg)
-		clean_and_exit(window);
-	mlx_put_image_to_window(window->mlx, window->win, window->bg, x, y);
+	size_bg = size_image_background(win->map);
+	x = (win->size.w - size_bg.w) / 2;
+	y = (win->size.h - size_bg.h) / 2;
+	win->bg = mlx_xpm_file_to_image(win->mlx, bg, &win->bg_w, &win->bg_h);
+	if (!win->bg)
+		clean_and_exit(win);
+	mlx_put_image_to_window(win->mlx, win->win, win->bg, x, y);
 }
 
-void	connection(t_wind *window)
+void	connection(t_wind *win)
 {
-	mlx_key_hook(window->win, key_press, window);
-	mlx_hook(window->win, 17, 0, clean_and_exit, window);
+	mlx_key_hook(win->win, key_press, win);
+	mlx_hook(win->win, 17, 0, clean_and_exit, win);
+	mlx_loop_hook(win->mlx, (int (*)())update_portal_image, win);
 }
