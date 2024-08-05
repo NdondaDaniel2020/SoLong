@@ -93,15 +93,7 @@ t_point	*find_in_all_matrix(char **matrix, char ch)
 	return (list_point);
 }
 
-
-
-
-
 50x53
-
-
-
-
 
 ///////////////////////////////
 t_point	*find_in_all_matrix(char **matrix, char ch)
