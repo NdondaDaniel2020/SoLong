@@ -55,8 +55,8 @@ void	draw_line_map(t_wind *win, int l, int y, int *i)
 			draw_star(win, x, y, i);
 		if (win->map_matrix[l][c] == 'E')
 			draw_portal(win, x, y);
-		// if (win->map_matrix[l][c] == 'P')
-		// 	draw_player(win, x, y);
+		if (win->map_matrix[l][c] == 'P')
+			draw_player(win, x, y);
 		x += 50;
 		c++;
 	}

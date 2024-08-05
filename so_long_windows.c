@@ -24,6 +24,8 @@ int	key_press(int keycode, t_wind *win)
 
 int	clean_and_exit(t_wind *win)
 {
+	if (win->player[0][0][0].img_ptr)
+		clean_player(win);
 	if (win->ptl[0][0].img_ptr)
 		clean_portal(win);
 	if (win->imgs)

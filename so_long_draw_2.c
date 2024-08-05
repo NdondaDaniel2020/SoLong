@@ -35,8 +35,8 @@ static void	add_image_to_portal(t_wind *win, int l, int c)
 
 static int	pos_portal(t_wind *win)
 {
-	int	r;
-	int	l;
+	int		r;
+	int		l;
 	t_point	pos;
 
 	r = 1;
@@ -71,20 +71,13 @@ void	draw_portal(t_wind *win, int x, int y)
 		l++;
 	}
 	win->cur_ptl[1] = 0;
-	ft_printf("%i", pos_portal(win));
 	win->cur_ptl[0] = pos_portal(win);
-	// win->ptl[l][c].img_ptr = mlx_xpm_file_to_image(win->mlx, file, &w, &h);
 	win->ptl_x = x;
 	win->ptl_y = y;
 	mlx_put_image_to_window(win->mlx, win->win, win->ptl[0][0].img_ptr, x, y);
 }
 
-void	draw_player(t_wind win, int x, int y)
-{
-
-}
-
-int update_portal_image(t_wind *win)
+int	update_portal_image(t_wind *win)
 {
 	int		x;
 	int		y;
@@ -93,14 +86,13 @@ int update_portal_image(t_wind *win)
 	x = win->ptl_x;
 	y = win->ptl_y;
 	img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
-
 	win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
-    mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 	usleep(100000);
-    return (0);
+	return (0);
 }
 
-void 	clean_portal(t_wind *win)
+void	clean_portal(t_wind *win)
 {
 	int	l;
 	int	c;
