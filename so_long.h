@@ -50,7 +50,8 @@ typedef struct s_wind
 	t_image	ptl[2][9];
 	int		ptl_x;
 	int		ptl_y;
-	int		cur_ptl;
+	int		cur_ptl[2];
+	t_image	player[][];
 	char	**map_matrix;
 }			t_wind;
 
@@ -70,8 +71,9 @@ void	draw_tatami_1(t_wind *win, int x, int y, int *i);
 void	draw_tatami_2(t_wind *win, int x, int y, int *i);
 t_size	size_image_background(char *map);
 void	draw_portal(t_wind *win, int x, int y);
-void 	clean_portal(t_wind *win);
+void	clean_portal(t_wind *win);
 int		update_portal_image(t_wind *win);
+void	draw_player(t_wind win, int x, int y);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -82,6 +84,8 @@ int		check_map(char *map);
 int		check_duplicate(char *map);
 int		check_struct_map(char *map);
 int		check_line(char *map_line, int *column);
+t_point	find_in_matrix(char **matrix, char ch);
+t_point	*find_in_all_matrix(char **matrix, char ch);
 
 /*matrix*/
 char	**str_to_matrix(char *map);
