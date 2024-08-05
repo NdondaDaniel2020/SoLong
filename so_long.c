@@ -16,7 +16,6 @@ void	master(t_wind *win)
 {
 	ft_printf("%s\n", win->map);
 	win->map_matrix = str_to_matrix(win->map);
-	// add_background(win);
 	draw_map(win);
 	connection(win);
 	mlx_loop(win->mlx);
