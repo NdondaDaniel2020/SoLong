@@ -51,7 +51,10 @@ typedef struct s_wind
 	int		ptl_x;
 	int		ptl_y;
 	int		cur_ptl[2];
-	t_image	player[][];
+	t_image	player[2][3][9];
+	int		play_x;
+	int		play_y;
+	int		direct;
 	char	**map_matrix;
 }			t_wind;
 
@@ -73,7 +76,9 @@ t_size	size_image_background(char *map);
 void	draw_portal(t_wind *win, int x, int y);
 void	clean_portal(t_wind *win);
 int		update_portal_image(t_wind *win);
-void	draw_player(t_wind win, int x, int y);
+void	draw_player(t_wind *win, int x, int y);
+void	clean_player(t_wind *win);
+int		update_player_image(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -122,5 +127,9 @@ char	*porta_front(void);
 char	*porta_back(void);
 char	*format(void);
 char	*side_portal(int index);
+char	*side_player(int i);
+char	*jump(void);
+char	*idle(void);
+char	*run(void);
 
 #endif
