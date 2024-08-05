@@ -89,11 +89,11 @@ void	draw_player(t_wind *win, int x, int y)
 		m++;
 	}
 	win->play_x = x;
-	win->play_y = y;
+	win->play_y = y-20;
 	pos = pos_player(win);
 	win->direct = pos;
 	img = win->player[pos][0][0];
-	mlx_put_image_to_window(win->mlx, win->win, img.img_ptr, x, y);
+	mlx_put_image_to_window(win->mlx, win->win, img.img_ptr, x, y-20);
 }
 
 int	update_player_image(t_wind *win)
