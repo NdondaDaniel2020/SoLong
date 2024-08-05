@@ -66,7 +66,6 @@ void	init(t_wind *win);
 void	master(t_wind *win);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
-void	add_background(t_wind *win);
 void	clean_occurrence(t_wind *win);
 void	draw_star(t_wind *win, int x, int y, int *i);
 void	draw_line_map(t_wind *win, int l, int y, int *i);

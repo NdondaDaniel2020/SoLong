@@ -59,28 +59,6 @@ t_size	size_image_background(char *map)
 		return ((t_size){650, 250});
 }
 
-void	add_background(t_wind *win)
-{
-	int		x;
-	int		y;
-	char	*bg;
-	t_size	size_bg;
-
-	if ((win->size.w / 50) > 30)
-		bg = bg3();
-	else if ((win->size.w / 50) > 13)
-		bg = bg2();
-	else
-		bg = bg1();
-	size_bg = size_image_background(win->map);
-	x = (win->size.w - size_bg.w) / 2;
-	y = (win->size.h - size_bg.h) / 2;
-	win->bg = mlx_xpm_file_to_image(win->mlx, bg, &win->bg_w, &win->bg_h);
-	if (!win->bg)
-		clean_and_exit(win);
-	mlx_put_image_to_window(win->mlx, win->win, win->bg, x, y);
-}
-
 void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
