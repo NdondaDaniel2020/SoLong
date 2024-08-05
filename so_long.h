@@ -54,7 +54,7 @@ typedef struct s_wind
 	t_image	player[2][3][9];
 	int		play_x;
 	int		play_y;
-	int		direct;
+	int		cur_play[2];
 	char	**map_matrix;
 }			t_wind;
 

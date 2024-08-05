@@ -91,23 +91,31 @@ void	draw_player(t_wind *win, int x, int y)
 	win->play_x = x;
 	win->play_y = y-3;
 	pos = pos_player(win);
-	win->direct = pos;
+	win->cur_play[0] = pos;
+	win->cur_play[1] = 0;
 	img = win->player[pos][0][0];
 	mlx_put_image_to_window(win->mlx, win->win, img.img_ptr, x, y-3);
 }
 
 int	update_player_image(t_wind *win)
 {
-	// int		x;
-	// int		y;
-	// void	*img;
+	int		x;
+	int		y;
+	void	*img;
+
 	(void)win;
-	// x = win->ptl_x;
-	// y = win->ptl_y;
-	// img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
-	// win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
-	// mlx_put_image_to_window(win->mlx, win->win, img, x, y);
-	// usleep(100000);
+	x = win->play_x;
+	y = win->play_y;
+																
+	img = win->player[ variavel global da direcao que ira mudar com as setas ][ win->cur_play[0] ][ win->cur_play[1] ]
+
+	img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
+	
+	se o frame for de run tem que mudar de 9 para 8	
+	win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
+
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+	usleep(100000);
 	return (0);
 }
 
