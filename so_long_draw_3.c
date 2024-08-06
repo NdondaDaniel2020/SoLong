@@ -45,10 +45,13 @@ static void	add_image_to_player(t_wind *win, int m)
 		c = 0;
 		while (c < 9)
 		{
-			if (l == 1 && c == 8)
-				break ;
 			path = join_path(m, l, c);
 			ply.img_ptr = mlx_xpm_file_to_image(win->mlx, path, &ply.w, &ply.h);
+			if (!ply.img_ptr)
+			{
+				ft_printf("erro de carregamento da imagem do player\n%s\n", path);
+				clean_and_exit(win);
+			}
 			win->player[m][l][c] = ply;
 			free(path);
 			c++;
@@ -93,6 +96,7 @@ void	draw_player(t_wind *win, int x, int y)
 	pos = pos_player(win);
 	win->cur_play[0] = pos;
 	win->cur_play[1] = 0;
+	win->cur_play[2] = 0;
 	img = win->player[pos][0][0];
 	mlx_put_image_to_window(win->mlx, win->win, img.img_ptr, x, y-3);
 }
@@ -101,21 +105,21 @@ int	update_player_image(t_wind *win)
 {
 	int		x;
 	int		y;
+	int		cur[3];
 	void	*img;
 
 	(void)win;
 	x = win->play_x;
 	y = win->play_y;
-																
-	img = win->player[ variavel global da direcao que ira mudar com as setas ][ win->cur_play[0] ][ win->cur_play[1] ]
-
-	img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
-	
-	se o frame for de run tem que mudar de 9 para 8	
-	win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
-
+	cur[0] = win->cur_play[0];
+	cur[1] = win->cur_play[1];
+	cur[2] = win->cur_play[2];
+	img = win->player[cur[0]][cur[1]][cur[2]].img_ptr;
+	if (img == NULL)
+		clean_and_exit(win);
+	win->cur_play[2] = (win->cur_play[2] + 1) % 9;
 	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
-	usleep(100000);
+	usleep(90000);
 	return (0);
 }
 
@@ -134,8 +138,6 @@ void	clean_player(t_wind *win)
 			c = 0;
 			while (c < 9)
 			{
-				if (l == 1 && c == 8)
-					break ;
 				mlx_destroy_image(win->mlx, win->player[m][l][c].img_ptr);
 				c++;
 			}

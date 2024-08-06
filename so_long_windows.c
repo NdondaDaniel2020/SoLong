@@ -63,5 +63,5 @@ void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
 	mlx_hook(win->win, 17, 0, clean_and_exit, win);
-	mlx_loop_hook(win->mlx, (int (*)())update_portal_image, win);
+	mlx_loop_hook(win->mlx, (int (*)())update_image, win);
 }

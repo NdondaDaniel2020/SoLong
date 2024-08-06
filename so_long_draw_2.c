@@ -88,7 +88,14 @@ int	update_portal_image(t_wind *win)
 	img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
 	win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
 	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
-	usleep(100000);
+	usleep(20000);
+	return (0);
+}
+
+int	update_image(t_wind *win)
+{
+	update_portal_image(win);
+	update_player_image(win);
 	return (0);
 }
 

@@ -54,7 +54,7 @@ typedef struct s_wind
 	t_image	player[2][3][9];
 	int		play_x;
 	int		play_y;
-	int		cur_play[2];
+	int		cur_play[3];
 	char	**map_matrix;
 }			t_wind;
 
@@ -74,10 +74,11 @@ void	draw_tatami_2(t_wind *win, int x, int y, int *i);
 t_size	size_image_background(char *map);
 void	draw_portal(t_wind *win, int x, int y);
 void	clean_portal(t_wind *win);
-int		update_portal_image(t_wind *win);
 void	draw_player(t_wind *win, int x, int y);
 void	clean_player(t_wind *win);
+int		update_portal_image(t_wind *win);
 int		update_player_image(t_wind *win);
+int		update_image(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
