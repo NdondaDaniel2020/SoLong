@@ -241,25 +241,7 @@ int	key_press(int keycode, t_wind *win)
 
 void	draw_map(t_wind *win)
 {
-	int		l;
-	int		y;
-	int		i;
-	int		len;
 
-	l = 0;
-	y = 0;
-	i = 0;
-	len = count_occurrence(win->map_matrix, '1');
-	len += count_occurrence(win->map_matrix, 'C');
-	win->imgs = (t_image *)ft_calloc(len, sizeof(t_image));
-	if (!win->imgs)
-		clean_and_exit(win);
-	while (win->map_matrix[l])
-	{
-		draw_line_map(win, l, y, &i);
-		y += 50;
-		l++;
-	}
 }
 
 void	draw_line_map(t_wind *win, int l, int y, int *i)

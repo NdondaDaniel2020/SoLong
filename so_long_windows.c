@@ -24,7 +24,11 @@ int	key_press(int keycode, t_wind *win)
 
 int	clean_and_exit(t_wind *win)
 {
-	clean(t_wind win);
+	clean(win);
+	if (win->map_matrix)
+		free_matrix(win->map_matrix);
+	if (win->map)
+		free(win->map);
 	if (win->bg_img.img_ptr)
 		mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
 	if (win->win)
@@ -39,6 +43,8 @@ int	clean_and_exit(t_wind *win)
 
 int	clean(t_wind *win)
 {
+	if (win->star.img_ptr)
+		mlx_destroy_image(win->mlx, win->star.img_ptr);
 	if (win->block[0].img_ptr)
 		mlx_destroy_image(win->mlx, win->block[0].img_ptr);
 	if (win->block[1].img_ptr)
@@ -47,11 +53,11 @@ int	clean(t_wind *win)
 		mlx_destroy_image(win->mlx, win->player[0].img_ptr);
 	if (win->player[1].img_ptr)
 		mlx_destroy_image(win->mlx, win->player[1].img_ptr);
-	if (win->star.img_ptr)
-		mlx_destroy_image(win->mlx, win->star.img_ptr);
-	if (win->bg_img.img_ptr )
-		mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
-	if (win->ptl[0].img_ptr )
+	// if (win->star.img_ptr)
+	// 	mlx_destroy_image(win->mlx, win->star.img_ptr);
+	// if (win->bg_img.img_ptr)
+	// 	mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
+	if (win->ptl[0].img_ptr)
 		mlx_destroy_image(win->mlx, win->ptl[0].img_ptr);
 	if (win->ptl[1].img_ptr)
 		mlx_destroy_image(win->mlx, win->ptl[1].img_ptr);

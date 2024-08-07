@@ -12,56 +12,113 @@
 
 #include "so_long.h"
 
-void	upload_images(t_wind *win)
+static void	draw_block(t_wind *win, int l, int y)
 {
-	upload_images1(win);
-	upload_images2(win);
+	int		c;
+	int		x;
+	void	*img;
+
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if ((in->map_matrix[l][c] == '1') && is_border(win, l, c))
+		{
+			img = win->block[1].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		if ((in->map_matrix[l][c] == '1') && !is_border(win, l, c))
+		{
+			img = win->block[0].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
 }
 
-void	upload_images1(t_wind *win)
+static void	draw_star(t_wind *win, int l, int y)
 {
-	int		w;
-	int		h;
-	char	*path;
+	int		c;
+	int		x;
+	void	*img;
 
-	path = tatame1();
-	w = win->block[0].w;
-	h = win->block[0].h;
-	win->block[0].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = tatame2();
-	w = win->block[1].w;
-	h = win->block[1].h;
-	win->block[1].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = player_back();
-	w = win->player[0].w;
-	h = win->player[0].h;
-	win->player[0].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = player_front();
-	w = win->player[0].w;
-	h = win->player[0].h;
-	win->player[1].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'C')
+		{
+			img = win->star.img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
 }
 
-void	upload_images2(t_wind *win)
+void	draw_player(t_wind *win, int l, int y)
 {
-	int		w;
-	int		h;
-	char	*path;
+	int		c;
+	int		x;
+	void	*img;
 
-	path = star();
-	w = win->star.w;
-	h = win->star.h;
-	win->star.img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = empty();
-	w = win->bg_img.w;
-	h = win->bg_img.h;
-	win->bg_img.img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = porta_back();
-	w = win->ptl[0].w;
-	h = win->ptl[0].h;
-	win->ptl[0].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
-	path = porta_front();
-	w = win->ptl[1].w;
-	h = win->ptl[1].h;
-	win->ptl[1].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'C')
+		{
+			
+			img = win->star[].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
+}
+
+static void	draw_portal(t_wind *win, int l, int y)
+{
+	int		c;
+	int		x;
+	void	*img;
+
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'C')
+		{
+			img = win->star.img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
+}
+
+void	draw_map(t_wind *win, int l, int y)
+{
+	int		l;
+	int		y;
+
+	l = 0;
+	y = 0;
+	while (win->map_matrix[l])
+	{
+		// draw_line_map(win, l, y, &i);
+		draw_block(win, l, y);
+		draw_star(win, l, y);
+		y += 50;
+		l++;
+	}
+}
+
+void	draw_empty(t_wind *win, int x, int y)
+{
+	void	*img;
+
+	img = win->bg_img.img_ptr;
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 }

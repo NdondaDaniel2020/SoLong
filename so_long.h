@@ -66,8 +66,9 @@ void	connection(t_wind *win);
 void	draw_star(t_wind *win, int x, int y, int *i);
 void	draw_line_map(t_wind *win, int l, int y, int *i);
 void	upload_images(t_wind *win);
-void	upload_images1(t_wind *win);
-void	upload_images2(t_wind *win);
+int		clean(t_wind *win);
+void	draw_map(t_wind *win);
+void	draw_end(t_wind *win, int x, int y, char c);
 
 /*file*/
 char	*open_file(const char *filename);
