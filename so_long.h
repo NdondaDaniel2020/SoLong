@@ -63,12 +63,13 @@ void	init(t_wind *win);
 void	master(t_wind *win);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
-void	draw_star(t_wind *win, int x, int y, int *i);
-void	draw_line_map(t_wind *win, int l, int y, int *i);
 void	upload_images(t_wind *win);
 int		clean(t_wind *win);
 void	draw_map(t_wind *win);
-void	draw_end(t_wind *win, int x, int y, char c);
+
+void	draw_empty(t_wind *win, int x, int y);
+void	draw_player(t_wind *win, int l, int y);
+void	draw_portal(t_wind *win, int l, int y);
 
 /*file*/
 char	*open_file(const char *filename);
