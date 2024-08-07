@@ -24,18 +24,8 @@ int	key_press(int keycode, t_wind *win)
 
 int	clean_and_exit(t_wind *win)
 {
-	if (win->player[0][0][0].img_ptr)
-		clean_player(win);
-	if (win->ptl[0][0].img_ptr)
-		clean_portal(win);
-	if (win->imgs)
-		clean_occurrence(win);
-	if (win->map_matrix)
-		free_matrix(win->map_matrix);
-	if (win->map)
-		free(win->map);
-	if (win->bg)
-		mlx_destroy_image(win->mlx, win->bg);
+	if (win->bg_img.img_ptr)
+		mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
 	if (win->win)
 		mlx_destroy_window(win->mlx, win->win);
 	if (win->mlx)
@@ -50,5 +40,4 @@ void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
 	mlx_hook(win->win, 17, 0, clean_and_exit, win);
-	mlx_loop_hook(win->mlx, (int (*)())update_image, win);
 }

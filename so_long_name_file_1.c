@@ -12,21 +12,6 @@
 
 #include "so_long.h"
 
-char	*bg1(void)
-{
-	return ("img/background/dojo_2_1.xpm");
-}
-
-char	*bg2(void)
-{
-	return ("img/background/dojo_2_2.xpm");
-}
-
-char	*bg3(void)
-{
-	return ("img/background/dojo_2_3.xpm");
-}
-
 char	*tatame1(void)
 {
 	return ("img/block/tatame_1.xpm");
@@ -35,4 +20,19 @@ char	*tatame1(void)
 char	*tatame2(void)
 {
 	return ("img/block/tatame_3.xpm");
+}
+
+char	*star(void)
+{
+	return ("img/block/star.xpm");
+}
+
+char	*porta_front(void)
+{
+	return ("img/portal-front/portal_1.xpm");
+}
+
+char	*porta_back(void)
+{
+	return ("img/portal-back/portal_1.xpm");
 }

@@ -21,23 +21,6 @@ int	is_border(t_wind *win, int l, int c)
 	return (0);
 }
 
-void	clean_occurrence(t_wind *win)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = count_occurrence(win->map_matrix, '1');
-	len += count_occurrence(win->map_matrix, 'C');
-	while (i < len)
-	{
-		if (win->imgs[i].img_ptr)
-			mlx_destroy_image(win->mlx, win->imgs[i].img_ptr);
-		i++;
-	}
-	free(win->imgs);
-}
-
 int	width(char *map)
 {
 	int	i;

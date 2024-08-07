@@ -39,23 +39,19 @@ typedef struct s_image
 
 typedef struct s_wind
 {
-	int		bg_w;
-	int		bg_h;
-	t_size	size;
 	void	*mlx;
 	void	*win;
-	void	*bg;
 	char	*map;
-	t_image	*imgs;
-	t_image	ptl[2][9];
+	char	**map_matrix;
+	t_image	bg_img;
+	t_image	block[2];
+	t_size	size;
+	t_image	ptl[2];
 	int		ptl_x;
 	int		ptl_y;
-	int		cur_ptl[2];
-	t_image	player[2][3][9];
+	t_image	player[2];
 	int		play_x;
 	int		play_y;
-	int		cur_play[3];
-	char	**map_matrix;
 }			t_wind;
 
 /*window*/
@@ -66,18 +62,8 @@ void	init(t_wind *win);
 void	master(t_wind *win);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
-void	clean_occurrence(t_wind *win);
 void	draw_star(t_wind *win, int x, int y, int *i);
 void	draw_line_map(t_wind *win, int l, int y, int *i);
-void	draw_tatami_1(t_wind *win, int x, int y, int *i);
-void	draw_tatami_2(t_wind *win, int x, int y, int *i);
-void	draw_portal(t_wind *win, int x, int y);
-void	clean_portal(t_wind *win);
-void	draw_player(t_wind *win, int x, int y);
-void	clean_player(t_wind *win);
-int		update_portal_image(t_wind *win);
-int		update_player_image(t_wind *win);
-int		update_image(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -116,19 +102,12 @@ void	validator_format(char *name);
 char	*get_map(char *name);
 
 /*name file*/
-char	*bg1(void);
-char	*bg2(void);
-char	*bg3(void);
 char	*star(void);
 char	*tatame1(void);
 char	*tatame2(void);
 char	*porta_front(void);
 char	*porta_back(void);
-char	*format(void);
 char	*side_portal(int index);
 char	*side_player(int i);
-char	*jump(void);
-char	*idle(void);
-char	*run(void);
 
 #endif
