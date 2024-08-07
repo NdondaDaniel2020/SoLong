@@ -14,25 +14,25 @@
 
 char	*tatame1(void)
 {
-	return ("img/block/tatame_1.xpm");
+	return ("textures/block/tatame_1.xpm");
 }
 
 char	*tatame2(void)
 {
-	return ("img/block/tatame_3.xpm");
+	return ("textures/block/tatame_3.xpm");
 }
 
 char	*star(void)
 {
-	return ("img/block/star.xpm");
+	return ("textures/block/star.xpm");
 }
 
 char	*porta_front(void)
 {
-	return ("img/portal-front/portal_1.xpm");
+	return ("textures/portal-front/portal_1.xpm");
 }
 
 char	*porta_back(void)
 {
-	return ("img/portal-back/portal_1.xpm");
+	return ("textures/portal-back/portal_1.xpm");
 }
