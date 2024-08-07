@@ -44,6 +44,7 @@ typedef struct s_wind
 	char	*map;
 	char	**map_matrix;
 	t_image	bg_img;
+	t_image	star;
 	t_image	block[2];
 	t_size	size;
 	t_image	ptl[2];
@@ -64,6 +65,9 @@ void	draw_map(t_wind *win);
 void	connection(t_wind *win);
 void	draw_star(t_wind *win, int x, int y, int *i);
 void	draw_line_map(t_wind *win, int l, int y, int *i);
+void	upload_images(t_wind *win);
+void	upload_images1(t_wind *win);
+void	upload_images2(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -103,11 +107,14 @@ char	*get_map(char *name);
 
 /*name file*/
 char	*star(void);
+char	*empty(void);
 char	*tatame1(void);
 char	*tatame2(void);
-char	*porta_front(void);
 char	*porta_back(void);
-char	*side_portal(int index);
+char	*porta_front(void);
+char	*player_back(void);
+char	*player_front(void);
 char	*side_player(int i);
+char	*side_portal(int index);
 
 #endif

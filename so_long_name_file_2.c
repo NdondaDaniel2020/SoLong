@@ -17,11 +17,21 @@ char	*empty(void)
 	return ("img/block/vazio.xpm");
 }
 
+char	*player_back(void)
+{
+	return ("img/kunoichi-back/idle_1.xpm");
+}
+
+char	*player_front(void)
+{
+	return ("img/kunoichi-front/idle_1.xpm");
+}
+
 char	*side_player(int i)
 {
 	if (i == 0)
-		return ("img/Kunoichi-back/");
-	return ("img/Kunoichi-front/");
+		return ("img/kunoichi-back/");
+	return ("img/kunoichi-front/");
 }
 
 char	*side_portal(int index)

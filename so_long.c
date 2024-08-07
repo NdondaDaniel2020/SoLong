@@ -17,24 +17,9 @@ void	master(t_wind *win)
 	ft_printf("%s\n", win->map);
 	win->map_matrix = str_to_matrix(win->map);
 	// draw_map(win);
+	upload_images(win);
 	connection(win);
 	mlx_loop(win->mlx);
-}
-
-void	upload_images(t_wind *win)
-{
-	int		w;
-	int		h;
-	char	*file;
-
-	file = 
-	win->bg_img.img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->ptl[0].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->ptl[1].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->block[0].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->block[1].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->player[0].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
-	win->player[1].img_ptr = mlx_xpm_file_to_image(win->mlx, img, w, h);
 }
 
 void	init(t_wind *win)
