@@ -54,6 +54,7 @@ typedef struct s_wind
 	int		play_x;
 	int		play_y;
 	int		cur_play;
+	int		move;
 }			t_wind;
 
 /*window*/

@@ -23,9 +23,21 @@ void	validator_format(char *name)
 
 void	validator_map(char *map)
 {
-	if (!check_duplicate(map) || !check_map(map) || !check_way(map))
+	if (!check_duplicate(map))
 	{
-		ft_printf("Mapa invalido\n");
+		ft_printf("Duplicados encotrados\n");
+		free(map);
+		exit(1);
+	}
+	if (!check_map(map))
+	{
+		ft_printf("Erro no tamanho do mapa\n");
+		free(map);
+		exit(1);
+	}
+	if (!ft_findchar(map, 'C'))
+	{
+		ft_printf("Sem colecionaveis\n");
 		free(map);
 		exit(1);
 	}
@@ -45,6 +57,12 @@ char	*get_map(char *name)
 	if (map == NULL)
 	{
 		ft_printf("Arquivo %s inexistente\n", name);
+		exit(1);
+	}
+	if (!check_way(map))
+	{
+		ft_printf("Sem caminho de fuga\n");
+		free(map);
 		exit(1);
 	}
 	validator_map(map);

@@ -14,20 +14,16 @@
 
 static int	condition_move(t_wind *win, int x, int y)
 {
+	int		c;
 	t_point	point;
 
+	c = count_occurrence(win->map_matrix, 'C');
 	point = find_in_matrix(win->map_matrix, 'P');
-	ft_printf("(x%i y%i)\n", point.y, point.x);
-	// ft_printf("   {%c}\n", win->map_matrix[point.x][point.y + y]);
-	// ft_printf("{%c}", win->map_matrix[point.x][point.y - y]);
-	// ft_printf("{%c}", win->map_matrix[point.x][point.y]);
-	// ft_printf("{%c}\n", win->map_matrix[point.x + x][point.y]);
-	// ft_printf("   {%c}\n", win->map_matrix[point.x - x][point.y]);
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')
 		return (1);
-	if (win->map_matrix[point.y + y][point.x + x] == 'E')
+	if (win->map_matrix[point.y + y][point.x + x] == 'E' && c == 0)
 		clean_and_exit(win);
 	return (0);
 }
@@ -44,6 +40,8 @@ void	move_left(t_wind *win)
 		win->map_matrix[point.y][point.x - 1] = 'P';
 		draw_empty(win, win->play_x, win->play_y);
 		win->play_x -= 50;
+		win->move += 1;
+		ft_printf("move: %i\n", win->move);
 		move_player(win, win->play_x, win->play_y);
 	}
 }
@@ -60,6 +58,8 @@ void	move_right(t_wind *win)
 		win->map_matrix[point.y][point.x + 1] = 'P';
 		draw_empty(win, win->play_x, win->play_y);
 		win->play_x += 50;
+		win->move += 1;
+		ft_printf("move: %i\n", win->move);
 		move_player(win, win->play_x, win->play_y);
 	}
 }
@@ -75,6 +75,8 @@ void	move_up(t_wind *win)
 		win->map_matrix[point.y - 1][point.x] = 'P';
 		draw_empty(win, win->play_x, win->play_y);
 		win->play_y -= 50;
+		win->move += 1;
+		ft_printf("move: %i\n", win->move);
 		move_player(win, win->play_x, win->play_y);
 	}
 }
@@ -90,6 +92,8 @@ void	move_down(t_wind *win)
 		win->map_matrix[point.y + 1][point.x] = 'P';
 		draw_empty(win, win->play_x, win->play_y);
 		win->play_y += 50;
+		win->move += 1;
+		ft_printf("move: %i\n", win->move);
 		move_player(win, win->play_x, win->play_y);
 	}
 }

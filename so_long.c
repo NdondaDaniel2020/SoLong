@@ -14,7 +14,6 @@
 
 void	master(t_wind *win)
 {
-	ft_printf("%s\n", win->map);
 	win->map_matrix = str_to_matrix(win->map);
 	upload_images(win);
 	draw_map(win);
@@ -27,6 +26,7 @@ void	init(t_wind *win)
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
+	win->move = 0;
 	win->map_matrix = NULL;
 	win->star.img_ptr = NULL;
 	win->bg_img.img_ptr = NULL;

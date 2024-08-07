@@ -14,29 +14,8 @@
 
 /*window*/
 
-static void	print_matrix(char **matrix)
-{
-	int		l;
-	int		c;
-
-	l = 0;
-	while (matrix[l])
-	{
-		c = 0;
-		while (matrix[l][c])
-		{
-			ft_printf("%c", matrix[l][c]);
-			c++;
-		}
-		ft_printf("\n");
-		l++;
-	}
-}
-
-
 int	key_press(int keycode, t_wind *win)
 {
-	ft_printf("Tecla: %d\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
@@ -47,7 +26,6 @@ int	key_press(int keycode, t_wind *win)
 		move_up(win);
 	if (keycode == 65364)
 		move_down(win);
-	print_matrix(win->map_matrix);
 	return (0);
 }
 

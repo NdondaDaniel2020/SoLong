@@ -204,3 +204,24 @@ void	draw_tatami(t_wind *win, int x, int y, int *i)
 	mlx_put_image_to_window(win->mlx, win->win, win->imgs[*i].img_ptr, x, y);
 	(*i)++;
 }
+
+
+static void	print_matrix(char **matrix)
+{
+	int		l;
+	int		c;
+
+	l = 0;
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			ft_printf("%c", matrix[l][c]);
+			c++;
+		}
+		ft_printf("\n");
+		l++;
+	}
+}
+
