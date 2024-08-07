@@ -39,12 +39,10 @@ typedef struct s_image
 
 typedef struct s_wind
 {
-	int		bg_w;
-	int		bg_h;
+	t_image	bg_img;
 	t_size	size;
 	void	*mlx;
 	void	*win;
-	void	*bg;
 	char	*map;
 	t_image	*imgs;
 	t_image	ptl[2][9];
@@ -79,6 +77,7 @@ void	clean_player(t_wind *win);
 int		update_portal_image(t_wind *win);
 int		update_player_image(t_wind *win);
 int		update_image(t_wind *win);
+void	add_background(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -131,5 +130,6 @@ char	*side_player(int i);
 char	*jump(void);
 char	*idle(void);
 char	*run(void);
+char	*background(void);
 
 #endif

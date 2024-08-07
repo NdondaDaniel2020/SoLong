@@ -12,10 +12,23 @@
 
 #include "so_long.h"
 
+void	add_background(t_wind *win)
+{
+	int		w;
+	int		h;
+	void	*bg;
+
+	w = win->bg_img.w;
+	h = win->bg_img.h;
+	bg = background();
+	win->bg_img.img_ptr = mlx_xpm_file_to_image(win->mlx, bg, &w, &h);
+}
+
 void	master(t_wind *win)
 {
 	ft_printf("%s\n", win->map);
 	win->map_matrix = str_to_matrix(win->map);
+	add_background(win);
 	draw_map(win);
 	connection(win);
 	mlx_loop(win->mlx);
@@ -23,11 +36,8 @@ void	master(t_wind *win)
 
 void	init(t_wind *win)
 {
-	win->bg_w = 0;
-	win->bg_h = 0;
 	win->mlx = NULL;
 	win->win = NULL;
-	win->bg = NULL;
 	win->map = NULL;
 	win->imgs = NULL;
 	win->map_matrix = NULL;

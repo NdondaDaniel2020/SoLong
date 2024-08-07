@@ -33,3 +33,8 @@ char	*run(void)
 {
 	return ("Run_");
 }
+
+char	*background(void)
+{
+	return ("img/block/vazio.xpm");
+}

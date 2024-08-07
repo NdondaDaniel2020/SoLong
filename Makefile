@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # so_long.h
-CC = gcc
+CC = cc
 NAME = ./so_long
 FILES = so_long.c \
 		so_long_check_way.c \

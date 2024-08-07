@@ -19,6 +19,31 @@ int	key_press(int keycode, t_wind *win)
 	(void)win;
 	if (keycode == 65307)
 		clean_and_exit(win);
+	if (keycode == 65363)
+	{
+		ft_printf("--> {%i %i}\n", win->play_x, win->play_y);
+		mlx_put_image_to_window(win->mlx, win->win, win->bg_img.img_ptr, win->play_x, win->play_y);
+		win->play_x += 50;
+	}
+	if (keycode == 65361)
+	{
+		ft_printf("<-- {%i %i}\n", win->play_x, win->play_y);
+		mlx_put_image_to_window(win->mlx, win->win, win->bg_img.img_ptr, win->play_x, win->play_y);
+		win->play_x -= 50;
+	}
+	if (keycode == 65362)
+	{
+		ft_printf("^ {%i %i}\n", win->play_x, win->play_y);
+		mlx_put_image_to_window(win->mlx, win->win, win->bg_img.img_ptr, win->play_x, win->play_y);
+		win->play_y -= 50;
+	}
+	if (keycode == 65364)
+	{
+		ft_printf("v {%i %i}\n", win->play_x, win->play_y);
+		mlx_put_image_to_window(win->mlx, win->win, win->bg_img.img_ptr, win->play_x, win->play_y);
+		win->play_y += 50;
+	}
+	mlx_put_image_to_window(win->mlx, win->win, win->player[0][0][0].img_ptr, win->play_x, win->play_y);
 	return (0);
 }
 
@@ -34,8 +59,8 @@ int	clean_and_exit(t_wind *win)
 		free_matrix(win->map_matrix);
 	if (win->map)
 		free(win->map);
-	if (win->bg)
-		mlx_destroy_image(win->mlx, win->bg);
+	if (win->bg_img.img_ptr)
+		mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
 	if (win->win)
 		mlx_destroy_window(win->mlx, win->win);
 	if (win->mlx)
@@ -63,5 +88,5 @@ void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
 	mlx_hook(win->win, 17, 0, clean_and_exit, win);
-	mlx_loop_hook(win->mlx, (int (*)())update_image, win);
+	// mlx_loop_hook(win->mlx, (int (*)())update_image, win);
 }
