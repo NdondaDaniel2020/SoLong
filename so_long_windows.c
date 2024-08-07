@@ -13,35 +13,43 @@
 #include "so_long.h"
 
 /*window*/
+
+static void	print_matrix(char **matrix)
+{
+	int		l;
+	int		c;
+
+	l = 0;
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			ft_printf("%c", matrix[l][c]);
+			c++;
+		}
+		ft_printf("\n");
+		l++;
+	}
+}
+
+
 int	key_press(int keycode, t_wind *win)
 {
 	ft_printf("Tecla: %d\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
-	{
-		draw_empty(win, win->play_x, win->play_y);
-		win->play_x += 50;
-	}
+		move_right(win);
 	if (keycode == 65361)
-	{
-		draw_empty(win, win->play_x, win->play_y);
-		win->play_x -= 50;
-	}
+		move_left(win);
 	if (keycode == 65362)
-	{
-		draw_empty(win, win->play_x, win->play_y);
-		win->play_y -= 50;
-	}
+		move_up(win);
 	if (keycode == 65364)
-	{
-		draw_empty(win, win->play_x, win->play_y);
-		win->play_y += 50;
-	}
-	move_player(win, win->play_x, win->play_y);
+		move_down(win);
+	print_matrix(win->map_matrix);
 	return (0);
 }
-
 
 int	clean_and_exit(t_wind *win)
 {

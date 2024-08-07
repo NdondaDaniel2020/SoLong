@@ -53,6 +53,7 @@ typedef struct s_wind
 	t_image	player[2];
 	int		play_x;
 	int		play_y;
+	int		cur_play;
 }			t_wind;
 
 /*window*/
@@ -65,12 +66,18 @@ void	draw_map(t_wind *win);
 void	connection(t_wind *win);
 void	upload_images(t_wind *win);
 int		clean(t_wind *win);
+
 void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
 int		pos_player(t_wind *win);
 void	draw_player(t_wind *win, int l, int y);
 void	draw_portal(t_wind *win, int l, int y);
+
 void	move_player(t_wind *win, int x, int y);
+void	move_left(t_wind *win);
+void	move_right(t_wind *win);
+void	move_up(t_wind *win);
+void	move_down(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
