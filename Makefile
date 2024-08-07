@@ -31,7 +31,7 @@ FILES = so_long.c \
 
 FLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
-MLX = ./minilibx_linux
+MLX = ./minilibx_linux/libmlx_Linux.a
 FMLX = -l mlx -lXext -lX11 -lm
 
 all:	$(NAME)
@@ -52,6 +52,7 @@ clean:
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
+	@make clean -C minilibx_linux
 
 re:	fclean all
 
