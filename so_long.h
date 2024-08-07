@@ -71,7 +71,6 @@ void	draw_star(t_wind *win, int x, int y, int *i);
 void	draw_line_map(t_wind *win, int l, int y, int *i);
 void	draw_tatami_1(t_wind *win, int x, int y, int *i);
 void	draw_tatami_2(t_wind *win, int x, int y, int *i);
-t_size	size_image_background(char *map);
 void	draw_portal(t_wind *win, int x, int y);
 void	clean_portal(t_wind *win);
 void	draw_player(t_wind *win, int x, int y);

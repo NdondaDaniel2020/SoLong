@@ -46,19 +46,6 @@ int	clean_and_exit(t_wind *win)
 	exit(0);
 }
 
-t_size	size_image_background(char *map)
-{
-	t_size	size;
-
-	size = size_map(map);
-	if (size.w > 30)
-		return ((t_size){2340, 1080});
-	else if (size.w > 13)
-		return ((t_size){1170, 540});
-	else
-		return ((t_size){650, 250});
-}
-
 void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
