@@ -86,7 +86,7 @@ $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@make clean
 
-bonus: $(OBJS) $(BOBJS)
+bonus: $(NAME) $(OBJS) $(BOBJS)
 	@ar rc $(NAME) $(OBJS) $(BOBJS)
 	@make clean
 
