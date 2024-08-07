@@ -239,34 +239,7 @@ int	key_press(int keycode, t_wind *win)
 	return (0);
 }
 
-void	draw_map(t_wind *win)
-{
-
-}
-
-void	draw_line_map(t_wind *win, int l, int y, int *i)
-{
-	int		c;
-	int		x;
-
-	c = 0;
-	x = 0;
-	while (win->map_matrix[l][c])
-	{
-		if (win->map_matrix[l][c] == '1')
-		{
-			if (is_border(win, l, c))
-				draw_tatami_2(win, x, y, i);
-			else
-				draw_tatami_1(win, x, y, i);
-		}
-		if (win->map_matrix[l][c] == 'C')
-			draw_star(win, x, y, i);
-		if (win->map_matrix[l][c] == 'E')
-			draw_portal(win, x, y);
-		if (win->map_matrix[l][c] == 'P')
-			draw_player(win, x, y);
-		x += 50;
-		c++;
-	}
-}
+	// if (win->star.img_ptr)
+	// 	mlx_destroy_image(win->mlx, win->star.img_ptr);
+	// if (win->bg_img.img_ptr)
+	// 	mlx_destroy_image(win->mlx, win->bg_img.img_ptr);

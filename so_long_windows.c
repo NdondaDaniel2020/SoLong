@@ -16,11 +16,32 @@
 int	key_press(int keycode, t_wind *win)
 {
 	ft_printf("Tecla: %d\n", keycode);
-	(void)win;
 	if (keycode == 65307)
 		clean_and_exit(win);
+	if (keycode == 65363)
+	{
+		draw_empty(win, win->play_x, win->play_y);
+		win->play_x += 50;
+	}
+	if (keycode == 65361)
+	{
+		draw_empty(win, win->play_x, win->play_y);
+		win->play_x -= 50;
+	}
+	if (keycode == 65362)
+	{
+		draw_empty(win, win->play_x, win->play_y);
+		win->play_y -= 50;
+	}
+	if (keycode == 65364)
+	{
+		draw_empty(win, win->play_x, win->play_y);
+		win->play_y += 50;
+	}
+	move_player(win, win->play_x, win->play_y);
 	return (0);
 }
+
 
 int	clean_and_exit(t_wind *win)
 {
@@ -53,10 +74,6 @@ int	clean(t_wind *win)
 		mlx_destroy_image(win->mlx, win->player[0].img_ptr);
 	if (win->player[1].img_ptr)
 		mlx_destroy_image(win->mlx, win->player[1].img_ptr);
-	// if (win->star.img_ptr)
-	// 	mlx_destroy_image(win->mlx, win->star.img_ptr);
-	// if (win->bg_img.img_ptr)
-	// 	mlx_destroy_image(win->mlx, win->bg_img.img_ptr);
 	if (win->ptl[0].img_ptr)
 		mlx_destroy_image(win->mlx, win->ptl[0].img_ptr);
 	if (win->ptl[1].img_ptr)

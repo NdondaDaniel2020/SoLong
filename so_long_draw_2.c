@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	pos_player(t_wind *win)
+int	pos_player(t_wind *win)
 {
 	int		r;
 	int		l;
@@ -44,6 +44,8 @@ void	draw_player(t_wind *win, int l, int y)
 	{
 		if (win->map_matrix[l][c] == 'P')
 		{
+			win->play_x = x;
+			win->play_y = y;
 			pos = pos_player(win);
 			img = win->player[pos].img_ptr;
 			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
@@ -92,4 +94,14 @@ void	draw_portal(t_wind *win, int l, int y)
 		x += 50;
 		c++;
 	}
+}
+
+void	move_player(t_wind *win, int x, int y)
+{
+	int		pos;
+	void	*img;
+
+	pos = pos_player(win);
+	img = win->player[pos].img_ptr;
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 }

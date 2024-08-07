@@ -50,7 +50,7 @@ static void	draw_star(t_wind *win, int l, int y)
 		if (win->map_matrix[l][c] == 'C')
 		{
 			img = win->star.img_ptr;
-			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+			mlx_put_image_to_window(win->mlx, win->win, img, x + 10, y + 10);
 		}
 		x += 50;
 		c++;
