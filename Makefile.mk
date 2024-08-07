@@ -11,8 +11,11 @@
 # **************************************************************************** #
 
 # so_long.h
-CC = gcc
-NAME = ./so_long
+CC = cc
+RUN = ./so_long
+NAME = $(RUN).a
+H = ./so_long.h
+
 FILES = so_long.c \
 		so_long_check_way.c \
 		so_long_size.c \
@@ -29,30 +32,45 @@ FILES = so_long.c \
 		so_long_draw_2.c \
 		so_long_draw_3.c
 
+OBJ = $(FILES:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-LIBFT = ./libft/libft.a
-MLX = ./minilibx_linux/libmlx_Linux.a
+
+PLIBF = ./libft
+LIBFT = $(PLIBF)/libft.a
+
+PMLX = ./minilibx_linux
+MLX= $(PMLX)/libmlx_Linux.a
+
 FMLX = -l mlx -lXext -lX11 -lm
 
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
+	$(CC) $(FLAGS) -c $(FILES)
+	ar rc $(NAME) $(OBJ)
 
 $(LIBFT):
-	make bonus -C ./libft
+	make bonus -C $(PLIBF)
 
 $(MLX):
-	make -C ./minilibx_linux
+	make -C $(PMLX)
+
+run:	$(RUN) $(NAME)
+
+$(RUN):
+	make clean
+	$(CC) $(FLAGS) $(H) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 n:
 	python3 -m norminette ./*.c ./*.h
+
 clean:
-	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(OBJ)
 
 fclean:	clean
-	@/bin/rm -f $(NAME)
-	@make clean -C minilibx_linux
+	/bin/rm -f $(NAME)
+	@ make fclean -C libft
+	@ make clean -C minilibx_linux
 
 re:	fclean all
 
