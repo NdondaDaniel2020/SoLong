@@ -107,10 +107,10 @@ void	draw_map(t_wind *win, int l, int y)
 	y = 0;
 	while (win->map_matrix[l])
 	{
-		draw_portal(win, l, y);
-		draw_player(win, l, y);
 		draw_block(win, l, y);
 		draw_star(win, l, y);
+		draw_portal(win, l, y);
+		draw_player(win, l, y);
 		y += 50;
 		l++;
 	}
