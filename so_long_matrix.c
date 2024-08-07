@@ -12,29 +12,6 @@
 
 #include "so_long.h"
 
-char	**cpy_matrix(char **zone, t_point size)
-{
-	int		l;
-	int		c;
-	char	**new;
-
-	l = 0;
-	new = malloc(sizeof(char *) * size.y);
-	while (l < size.y)
-	{
-		c = 0;
-		new[l] = malloc(size.x + 1);
-		while (c < size.x)
-		{
-			new[l][c] = zone[l][c];
-			c++;
-		}
-		new[l][size.x] = '\0';
-		l++;
-	}
-	return (new);
-}
-
 char	*create_line_map(char *map, int size)
 {
 	int		i;
