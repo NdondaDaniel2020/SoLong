@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # so_long.h
-CC = cc
+CC = gcc
 NAME = ./so_long
 FILES = so_long.c \
 		so_long_check_way.c \
@@ -30,37 +30,29 @@ FILES = so_long.c \
 		so_long_move.c
 
 FLAGS = -Wall -Wextra -Werror
-
-PLIBFT = ./libft
-LIBFT = $(PLIBFT)/libft.a
-
-PMLX = ./minilibx_linux
-MLX = $(PMLX)/libmlx.a
-
+LIBFT = ./libft/libft.a
+MLX = ./minilibx_linux
 FMLX = -l mlx -lXext -lX11 -lm
 
 
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(NAME)
+	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
 
 $(LIBFT):
-	make bonus -C $(PLIBFT)
+	make bonus -C ./libft
 
 $(MLX):
-	make -C $(PMLX)
+	make -C ./minilibx_linux
 
 n:
 	python3 -m norminette ./*.c ./*.h
-
 clean:
 	@/bin/rm -f $(NAME)
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
-	@make fclean -C $(PLIBFT)
-	@make clean -C $(PMLX)
 
 re:	fclean all
 
