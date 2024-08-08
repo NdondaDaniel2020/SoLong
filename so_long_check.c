@@ -14,7 +14,7 @@
 #include "so_long.h"
 
 /*check map*/
-int	check_line(char *map_line, int *column)
+static int	check_line(char *map_line, int *column)
 {
 	static int	i = 0;
 	int			len;
@@ -36,7 +36,7 @@ int	check_line(char *map_line, int *column)
 	return (0);
 }
 
-int	check_struct_map(char *map)
+static int	check_struct_map(char *map)
 {
 	char	*str;
 	int		colu;

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	master(t_wind *win)
+static void	master(t_wind *win)
 {
 	win->map_matrix = str_to_matrix(win->map);
 	upload_images(win);
@@ -21,7 +21,7 @@ void	master(t_wind *win)
 	mlx_loop(win->mlx);
 }
 
-void	init(t_wind *win)
+static void	init(t_wind *win)
 {
 	win->mlx = NULL;
 	win->win = NULL;

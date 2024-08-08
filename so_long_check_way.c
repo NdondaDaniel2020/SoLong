@@ -13,7 +13,7 @@
 
 #include "so_long.h"
 
-void	fill(char **tab, t_size size, t_point cur)
+static void	fill(char **tab, t_size size, t_point cur)
 {
 	if (cur.y < 0 || cur.y >= size.h || cur.x < 0 || cur.x >= size.w)
 		return ;
@@ -26,7 +26,7 @@ void	fill(char **tab, t_size size, t_point cur)
 	fill(tab, size, (t_point){cur.x, cur.y + 1});
 }
 
-void	flood_fill(char **tab, t_size size, t_point begin)
+static void	flood_fill(char **tab, t_size size, t_point begin)
 {
 	fill(tab, size, (t_point){begin.x - 1, begin.y});
 	fill(tab, size, (t_point){begin.x + 1, begin.y});

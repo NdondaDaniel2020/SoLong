@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-char	*read_file(int fd, char *str, char *buffer)
+static char	*read_file(int fd, char *str, char *buffer)
 {
 	int		bytes_read;
 

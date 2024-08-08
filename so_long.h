@@ -13,8 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx_linux/mlx.h"
-# include "minilibx_mms/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 
@@ -61,8 +60,6 @@ typedef struct s_wind
 int		clean_and_exit(t_wind *win);
 int		key_press(int keycode, t_wind *win);
 int		is_border(t_wind *win, int l, int c);
-void	init(t_wind *win);
-void	master(t_wind *win);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
 void	upload_images(t_wind *win);
@@ -82,13 +79,10 @@ void	move_down(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
-char	*read_file(int fd, char *str, char *buffer);
 
 /*check map*/
 int		check_map(char *map);
 int		check_duplicate(char *map);
-int		check_struct_map(char *map);
-int		check_line(char *map_line, int *column);
 t_point	find_in_matrix(char **matrix, char ch);
 t_point	*find_in_all_matrix(char **matrix, char ch);
 
@@ -104,8 +98,6 @@ int		height(char *map);
 t_size	size_map(char *map);
 
 /*grafos*/
-void	fill(char **tab, t_size size, t_point cur);
-void	flood_fill(char **tab, t_size size, t_point begin);
 int		check_way(char *map);
 int		count_occurrence(char **matrix, char ch);
 int		check_matrix_reference_points(char **matrix, t_size size);

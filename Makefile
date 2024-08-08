@@ -36,7 +36,7 @@ FLAGS = -Wall -Wextra -Werror
 PLIBFT = ./libft
 LIBFT = $(PLIBFT)/libft.a
 
-PMLX = ./minilibx_linux
+PMLX = ./minilibx-linux
 MLX = $(PMLX)/libmlx.a
 
 FMLX = -l mlx -lXext -lX11 -lm
@@ -48,7 +48,9 @@ $(NAME):	$(LIBFT) $(MLX)
 	$(CC) $(FLAGS) -c $(FILES)
 	ar rc $(NAME) $(OBJ)
 
-run: $(NAME)
+run: $(RUN)
+
+$(RUN):	$(NAME)
 	make clean
 	$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
