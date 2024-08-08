@@ -69,13 +69,15 @@ void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
 int		pos_player(t_wind *win);
 // void	draw_player(t_wind *win, int l, int y);
-void	draw_portal(t_wind *win, int l, int y);
+// void	draw_portal(t_wind *win, int l, int y);
 
 int		clean(t_wind *win);
 int		clean_and_exit(t_wind *win);
 void	clean_portal(t_wind *win);
 void	clean_player(t_wind *win);
 
+void	init_portal(t_wind *win);
+void	init_player(t_wind *win);
 // void	move_player(t_wind *win, int x, int y);
 // void	move_left(t_wind *win);
 // void	move_right(t_wind *win);

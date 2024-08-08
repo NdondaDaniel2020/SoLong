@@ -49,8 +49,53 @@ void	clean_player(t_wind *win)
 			{
 				win->player[m][l][c].w = 0;
 				win->player[m][l][c].h = 0;
-				if (!win->player[m][l][c].img_ptr)
-					mlx_destroy_image(win->mlx, win->player[m][l][c].img_ptr);
+				mlx_destroy_image(win->mlx, win->player[m][l][c].img_ptr);
+				c++;
+			}
+			l++;
+		}
+		m++;
+	}
+}
+
+void	init_portal(t_wind *win)
+{
+	int	l;
+	int	c;
+
+	l = 0;
+	while (l < 2)
+	{
+		c = 0;
+		while (c < 9)
+		{
+			win->ptl[l][c].h = 0;
+			win->ptl[l][c].w = 0;
+			win->ptl[l][c].img_ptr = NULL;
+			c++;
+		}
+		l++;
+	}
+}
+
+void	init_player(t_wind *win)
+{
+	int	m;
+	int	l;
+	int	c;
+
+	m = 0;
+	while (m < 2)
+	{
+		l = 0;
+		while (l < 3)
+		{
+			c = 0;
+			while (c < 9)
+			{
+				win->player[m][l][c].w = 0;
+				win->player[m][l][c].h = 0;
+				win->player[m][l][c].img_ptr = NULL;
 				c++;
 			}
 			l++;

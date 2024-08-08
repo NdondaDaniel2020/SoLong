@@ -23,10 +23,12 @@ static void	master(t_wind *win)
 
 static void	init(t_wind *win)
 {
+	win->move = 0;
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
-	win->move = 0;
+	init_portal(win);
+	init_player(win);
 	win->map_matrix = NULL;
 	win->star.img_ptr = NULL;
 	win->bg_img.img_ptr = NULL;

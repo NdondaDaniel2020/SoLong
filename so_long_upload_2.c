@@ -14,11 +14,9 @@
 
 static void	add_image_to_player(t_wind *win, int m, int l, int c)
 {
-	int		w;
-	int		h;
 	char	*value;
 	char	*file;
-	void	*img;
+	t_image	img;
 
 	value = (char *)ft_calloc(2, sizeof(char));
 	value[1] = '\0';
@@ -31,11 +29,10 @@ static void	add_image_to_player(t_wind *win, int m, int l, int c)
 		file = ft_strjoin(side_player(m), jump());
 	file = ft_strjoin_free(file, value);
 	file = ft_strjoin_free(file, format());
-	w = win->player[m][l][c].w;
-	h = win->player[m][l][c].h;
-	img = mlx_xpm_file_to_image(win->mlx, file, &w, &h);
-	win->player[m][l][c].img_ptr = img;
-	if (!win->player[m][l][c].img_ptr)
+	img.img_ptr = mlx_xpm_file_to_image(win->mlx, file, &img.w, &img.h);
+	if (img.img_ptr)
+		win->player[m][l][c] = img;
+	else
 		clean_and_exit(win);
 	free(value);
 	free(file);
