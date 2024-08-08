@@ -31,7 +31,7 @@ FILES = so_long.c \
 
 FLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
-MLX = ./minilibx_linux
+MLX = ./minilibx-linux
 FMLX = -l mlx -lXext -lX11 -lm
 
 all:	$(NAME)
