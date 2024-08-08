@@ -48,6 +48,7 @@ $(MLX):
 
 n:
 	python3 -m norminette ./*.c ./*.h
+
 clean:
 	@/bin/rm -f $(NAME)
 
