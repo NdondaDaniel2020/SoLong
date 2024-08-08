@@ -57,13 +57,13 @@ typedef struct s_wind
 }			t_wind;
 
 /*window*/
-int		clean_and_exit(t_wind *win);
 int		key_press(int keycode, t_wind *win);
 int		is_border(t_wind *win, int l, int c);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
+
 void	upload_images(t_wind *win);
-int		clean(t_wind *win);
+void	upload_images3(t_wind *win);
 
 void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
@@ -71,6 +71,8 @@ int		pos_player(t_wind *win);
 // void	draw_player(t_wind *win, int l, int y);
 void	draw_portal(t_wind *win, int l, int y);
 
+int		clean(t_wind *win);
+int		clean_and_exit(t_wind *win);
 void	clean_portal(t_wind *win);
 void	clean_player(t_wind *win);
 

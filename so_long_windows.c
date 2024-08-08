@@ -58,8 +58,8 @@ int	clean(t_wind *win)
 		mlx_destroy_image(win->mlx, win->block[1].img_ptr);
 	if (win->ptl[0][0].img_ptr)
 		clean_portal(win);
-	if (win->player[0][0][0].img_ptr)
-		clean_player(win);
+	// if (win->player[0][0][0].img_ptr)
+	// 	clean_player(win);
 	return (0);
 }
 
