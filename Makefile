@@ -23,6 +23,7 @@ FILES = so_long.c \
 		so_long_validator.c \
 		so_long_name_file_1.c \
 		so_long_name_file_2.c \
+		so_long_name_file_3.c \
 		so_long_check_reference.c \
 		so_long_draw_1.c \
 		so_long_draw_2.c \

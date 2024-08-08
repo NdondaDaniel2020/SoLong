@@ -37,7 +37,7 @@ static void	upload_images2(t_wind *win)
 {
 	int		l;
 	int		c;
-	
+
 	l = 0;
 	while (l < 2)
 	{

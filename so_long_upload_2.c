@@ -35,7 +35,10 @@ static void	add_image_to_player(t_wind *win, int m, int l, int c)
 	h = win->player[m][l][c].h;
 	img = mlx_xpm_file_to_image(win->mlx, file, &w, &h);
 	win->player[m][l][c].img_ptr = img;
+	if (!win->player[m][l][c].img_ptr)
+		clean_and_exit(win);
 	free(value);
+	free(file);
 }
 
 void	upload_images3(t_wind *win)

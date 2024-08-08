@@ -40,8 +40,3 @@ char	*side_portal(int index)
 		return (portal_back());
 	return (portal_front());
 }
-
-char	*format(void)
-{
-	return (".xpm");
-}
