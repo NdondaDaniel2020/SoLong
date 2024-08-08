@@ -41,7 +41,6 @@ MLX = $(PMLX)/libmlx.a
 
 FMLX = -l mlx -lXext -lX11 -lm
 
-
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)

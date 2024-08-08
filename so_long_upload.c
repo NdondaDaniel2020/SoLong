@@ -31,8 +31,8 @@ static void	upload_images1(t_wind *win)
 	h = win->player[0].h;
 	win->player[0].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
 	path = player_front();
-	w = win->player[0].w;
-	h = win->player[0].h;
+	w = win->player[1].w;
+	h = win->player[1].h;
 	win->player[1].img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
 }
 
