@@ -1,18 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    header.txt                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 01:32:20 by nmatondo          #+#    #+#              #
-#    Updated: 2024/07/31 11:03:16 by kali             ###   ########.fr        #
+#    Updated: 2024/08/07 16:44:49 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# so_long.h
 CC = cc
-NAME = ./so_long
+RUN = ./so_long
+NAME = $(RUN).a
 FILES = so_long.c \
 		so_long_check_way.c \
 		so_long_size.c \
@@ -23,35 +23,55 @@ FILES = so_long.c \
 		so_long_validator.c \
 		so_long_name_file_1.c \
 		so_long_name_file_2.c \
-		so_long_name_file_3.c \
 		so_long_check_reference.c \
 		so_long_draw_1.c \
 		so_long_draw_2.c \
-		so_long_draw_3.c
+		so_long_upload.c \
+		so_long_move.c
+
+OBJ = $(FILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
-LIBFT = ./libft/libft.a
-MLX = ./minilibx-linux
+
+PLIBFT = ./libft
+LIBFT = $(PLIBFT)/libft.a
+
+PMLX = ./minilibx-linux
+MLX = $(PMLX)/libmlx.a
+
 FMLX = -l mlx -lXext -lX11 -lm
+
 
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(MLX) $(FMLX) -o $(NAME)
+	@$(CC) $(FLAGS) -c $(FILES)
+	@ar rc $(NAME) $(OBJ)
+
+run: $(NAME)
+	@make clean
+	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
+
+r:
+	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 $(LIBFT):
-	make bonus -C ./libft
+	make bonus -C $(PLIBFT)
 
 $(MLX):
-	make -C ./minilibx_linux
+	make -C $(PMLX)
 
 n:
 	python3 -m norminette ./*.c ./*.h
+
 clean:
-	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(OBJ)
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(RUN)
+	@make fclean -C $(PLIBFT)
+	@make clean -C $(PMLX)
 
 re:	fclean all
 

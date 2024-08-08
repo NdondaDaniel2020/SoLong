@@ -3,105 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_draw_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:19:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 10:32:07 by kali             ###   ########.fr       */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_map(t_wind *win)
-{
-	int		l;
-	int		y;
-	int		i;
-	int		len;
-
-	l = 0;
-	y = 0;
-	i = 0;
-	len = count_occurrence(win->map_matrix, '1');
-	len += count_occurrence(win->map_matrix, 'C');
-	win->imgs = (t_image *)ft_calloc(len, sizeof(t_image));
-	if (!win->imgs)
-		clean_and_exit(win);
-	while (win->map_matrix[l])
-	{
-		draw_line_map(win, l, y, &i);
-		y += 50;
-		l++;
-	}
-}
-
-void	draw_line_map(t_wind *win, int l, int y, int *i)
+static void	draw_block(t_wind *win, int l, int y)
 {
 	int		c;
 	int		x;
+	void	*img;
 
 	c = 0;
 	x = 0;
 	while (win->map_matrix[l][c])
 	{
-		if (win->map_matrix[l][c] == '1')
+		if ((win->map_matrix[l][c] == '1') && is_border(win, l, c))
 		{
-			if (is_border(win, l, c))
-				draw_tatami_2(win, x, y, i);
-			else
-				draw_tatami_1(win, x, y, i);
+			img = win->block[1].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 		}
-		if (win->map_matrix[l][c] == 'C')
-			draw_star(win, x, y, i);
-		if (win->map_matrix[l][c] == 'E')
-			draw_portal(win, x, y);
-		if (win->map_matrix[l][c] == 'P')
-			draw_player(win, x, y);
+		if ((win->map_matrix[l][c] == '1') && !is_border(win, l, c))
+		{
+			img = win->block[0].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
 		x += 50;
 		c++;
 	}
 }
 
-void	draw_star(t_wind *win, int x, int y, int *i)
+static void	draw_star(t_wind *win, int l, int y)
 {
-	int	w;
-	int	h;
+	int		c;
+	int		x;
+	void	*img;
 
-	x += 10;
-	y += 10;
-	w = win->imgs[*i].w;
-	h = win->imgs[*i].h;
-	win->imgs[*i].img_ptr = mlx_xpm_file_to_image(win->mlx, star(), &w, &h);
-	if (!win->imgs)
-		clean_and_exit(win);
-	mlx_put_image_to_window(win->mlx, win->win, win->imgs[*i].img_ptr, x, y);
-	(*i)++;
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'C')
+		{
+			img = win->star.img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x + 10, y + 10);
+		}
+		x += 50;
+		c++;
+	}
 }
 
-void	draw_tatami_1(t_wind *win, int x, int y, int *i)
+void	draw_map(t_wind *win)
 {
-	int	w;
-	int	h;
+	int		l;
+	int		y;
 
-	w = win->imgs[*i].w;
-	h = win->imgs[*i].h;
-	win->imgs[*i].img_ptr = mlx_xpm_file_to_image(win->mlx, tatame1(), &w, &h);
-	if (!win->imgs)
-		clean_and_exit(win);
-	mlx_put_image_to_window(win->mlx, win->win, win->imgs[*i].img_ptr, x, y);
-	(*i)++;
+	l = 0;
+	y = 0;
+	while (win->map_matrix[l])
+	{
+		draw_block(win, l, y);
+		draw_star(win, l, y);
+		draw_portal(win, l, y);
+		draw_player(win, l, y);
+		y += 50;
+		l++;
+	}
 }
 
-void	draw_tatami_2(t_wind *win, int x, int y, int *i)
+void	draw_empty(t_wind *win, int x, int y)
 {
-	int	w;
-	int	h;
+	void	*img;
 
-	w = win->imgs[*i].w;
-	h = win->imgs[*i].h;
-	win->imgs[*i].img_ptr = mlx_xpm_file_to_image(win->mlx, tatame2(), &w, &h);
-	if (!win->imgs)
-		clean_and_exit(win);
-	mlx_put_image_to_window(win->mlx, win->win, win->imgs[*i].img_ptr, x, y);
-	(*i)++;
+	img = win->bg_img.img_ptr;
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 }

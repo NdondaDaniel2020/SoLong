@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 12:39:18 by kali             ###   ########.fr       */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,6 @@ int	is_border(t_wind *win, int l, int c)
 	if (c == 0 || (c == (win->size.w / 50) - 1))
 		return (1);
 	return (0);
-}
-
-void	clean_occurrence(t_wind *win)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = count_occurrence(win->map_matrix, '1');
-	len += count_occurrence(win->map_matrix, 'C');
-	while (i < len)
-	{
-		if (win->imgs[i].img_ptr)
-			mlx_destroy_image(win->mlx, win->imgs[i].img_ptr);
-		i++;
-	}
-	free(win->imgs);
 }
 
 int	width(char *map)

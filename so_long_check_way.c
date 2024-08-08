@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_check_way.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 12:40:10 by kali             ###   ########.fr       */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	fill(char **tab, t_size size, t_point cur)
+static void	fill(char **tab, t_size size, t_point cur)
 {
 	if (cur.y < 0 || cur.y >= size.h || cur.x < 0 || cur.x >= size.w)
 		return ;
@@ -25,7 +25,7 @@ void	fill(char **tab, t_size size, t_point cur)
 	fill(tab, size, (t_point){cur.x, cur.y + 1});
 }
 
-void	flood_fill(char **tab, t_size size, t_point begin)
+static void	flood_fill(char **tab, t_size size, t_point begin)
 {
 	fill(tab, size, (t_point){begin.x - 1, begin.y});
 	fill(tab, size, (t_point){begin.x + 1, begin.y});

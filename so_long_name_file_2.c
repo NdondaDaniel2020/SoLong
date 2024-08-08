@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_name_file_1.c                              :+:      :+:    :+:   */
+/*   so_long_name_file_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 14:23:41 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 12:14:30 by kali             ###   ########.fr       */
+/*   Created: 2024/08/08 08:13:31 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*star(void)
+char	*empty(void)
 {
-	return ("img/block/star.xpm");
+	return ("textures/block/vazio.xpm");
 }
 
-char	*porta_front(void)
+char	*player_back(void)
 {
-	return ("img/portal-front/portal_");
+	return ("textures/kunoichi-back/idle_1.xpm");
 }
 
-char	*porta_back(void)
+char	*player_front(void)
 {
-	return ("img/portal-back/portal_");
+	return ("textures/kunoichi-front/idle_1.xpm");
+}
+
+char	*side_player(int i)
+{
+	if (i == 0)
+		return ("textures/kunoichi-back/");
+	return ("textures/kunoichi-front/");
 }
 
 char	*side_portal(int index)
@@ -33,9 +40,4 @@ char	*side_portal(int index)
 		return (porta_back());
 	else
 		return (porta_front());
-}
-
-char	*format(void)
-{
-	return (".xpm");
 }

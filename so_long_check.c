@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 12:28:14 by kali             ###   ########.fr       */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*check map*/
-int	check_line(char *map_line, int *column)
+static int	check_line(char *map_line, int *column)
 {
 	static int	i = 0;
 	int			len;
@@ -35,7 +35,7 @@ int	check_line(char *map_line, int *column)
 	return (0);
 }
 
-int	check_struct_map(char *map)
+static int	check_struct_map(char *map)
 {
 	char	*str;
 	int		colu;
@@ -92,7 +92,7 @@ int	check_map(char *map)
 		return (0);
 	valid = check_struct_map(map);
 	size = size_map(map);
-	if (valid && size.w > 3 && size.h > 3)
+	if (valid && size.w >= 3 && size.h >= 3)
 		return (1);
 	return (0);
 }

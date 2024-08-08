@@ -3,44 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:23:41 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/31 12:14:30 by kali             ###   ########.fr       */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	add_background(t_wind *win)
+static void	master(t_wind *win)
 {
-	int		w;
-	int		h;
-	void	*bg;
-
-	w = win->bg_img.w;
-	h = win->bg_img.h;
-	bg = background();
-	win->bg_img.img_ptr = mlx_xpm_file_to_image(win->mlx, bg, &w, &h);
-}
-
-void	master(t_wind *win)
-{
-	ft_printf("%s\n", win->map);
 	win->map_matrix = str_to_matrix(win->map);
-	add_background(win);
+	upload_images(win);
 	draw_map(win);
 	connection(win);
 	mlx_loop(win->mlx);
 }
 
-void	init(t_wind *win)
+static void	init(t_wind *win)
 {
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
-	win->imgs = NULL;
+	win->move = 0;
 	win->map_matrix = NULL;
+	win->star.img_ptr = NULL;
+	win->bg_img.img_ptr = NULL;
+	win->ptl[0].img_ptr = NULL;
+	win->ptl[1].img_ptr = NULL;
+	win->block[0].img_ptr = NULL;
+	win->block[1].img_ptr = NULL;
+	win->player[0].img_ptr = NULL;
+	win->player[1].img_ptr = NULL;
 }
 
 int	main(int ac, char **av)

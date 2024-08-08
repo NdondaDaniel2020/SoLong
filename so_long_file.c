@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 14:19:56 by nmatondo          #+#    #+#             */
-/*   Updated: 2024/07/19 15:34:57 by nmatondo         ###   ########.fr       */
+/*   Created: 2024/07/16 08:13:31 by nmatondo          #+#    #+#             */
+/*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*read_file(int fd, char *str, char *buffer)
+static char	*read_file(int fd, char *str, char *buffer)
 {
 	int		bytes_read;
 
