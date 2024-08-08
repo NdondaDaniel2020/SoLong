@@ -50,6 +50,7 @@ static void	upload_images2(t_wind *win)
 	w = win->bg_img.w;
 	h = win->bg_img.h;
 	win->bg_img.img_ptr = mlx_xpm_file_to_image(win->mlx, path, &w, &h);
+	
 	path = porta_back();
 	w = win->ptl[0].w;
 	h = win->ptl[0].h;
