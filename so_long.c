@@ -30,12 +30,8 @@ static void	init(t_wind *win)
 	win->map_matrix = NULL;
 	win->star.img_ptr = NULL;
 	win->bg_img.img_ptr = NULL;
-	win->ptl[0].img_ptr = NULL;
-	win->ptl[1].img_ptr = NULL;
 	win->block[0].img_ptr = NULL;
 	win->block[1].img_ptr = NULL;
-	win->player[0].img_ptr = NULL;
-	win->player[1].img_ptr = NULL;
 }
 
 int	main(int ac, char **av)

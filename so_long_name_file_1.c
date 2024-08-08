@@ -27,12 +27,17 @@ char	*star(void)
 	return ("textures/block/star.xpm");
 }
 
-char	*porta_front(void)
+char	*jump(void)
 {
-	return ("textures/portal-front/portal_1.xpm");
+	return ("jump_");
 }
 
-char	*porta_back(void)
+char	*idle(void)
 {
-	return ("textures/portal-back/portal_1.xpm");
+	return ("idle_");
+}
+
+char	*run(void)
+{
+	return ("run_");
 }

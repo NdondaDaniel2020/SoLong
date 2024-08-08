@@ -18,14 +18,14 @@ int	key_press(int keycode, t_wind *win)
 {
 	if (keycode == 65307)
 		clean_and_exit(win);
-	if (keycode == 65363)
-		move_right(win);
-	if (keycode == 65361)
-		move_left(win);
-	if (keycode == 65362)
-		move_up(win);
-	if (keycode == 65364)
-		move_down(win);
+	// if (keycode == 65363)
+	// 	move_right(win);
+	// if (keycode == 65361)
+	// 	move_left(win);
+	// if (keycode == 65362)
+	// 	move_up(win);
+	// if (keycode == 65364)
+	// 	move_down(win);
 	return (0);
 }
 
@@ -56,14 +56,10 @@ int	clean(t_wind *win)
 		mlx_destroy_image(win->mlx, win->block[0].img_ptr);
 	if (win->block[1].img_ptr)
 		mlx_destroy_image(win->mlx, win->block[1].img_ptr);
-	if (win->player[0].img_ptr)
-		mlx_destroy_image(win->mlx, win->player[0].img_ptr);
-	if (win->player[1].img_ptr)
-		mlx_destroy_image(win->mlx, win->player[1].img_ptr);
-	if (win->ptl[0].img_ptr)
-		mlx_destroy_image(win->mlx, win->ptl[0].img_ptr);
-	if (win->ptl[1].img_ptr)
-		mlx_destroy_image(win->mlx, win->ptl[1].img_ptr);
+	if (win->ptl[0][0].img_ptr)
+		clean_portal(win);
+	if (win->player[0][0][0].img_ptr)
+		clean_player(win);
 	return (0);
 }
 

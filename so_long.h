@@ -46,10 +46,10 @@ typedef struct s_wind
 	t_image	star;
 	t_image	block[2];
 	t_size	size;
-	t_image	ptl[2];
+	t_image	ptl[2][9];
 	int		ptl_x;
 	int		ptl_y;
-	t_image	player[2];
+	t_image	player[2][3][8];
 	int		play_x;
 	int		play_y;
 	int		cur_play;
@@ -68,14 +68,17 @@ int		clean(t_wind *win);
 void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
 int		pos_player(t_wind *win);
-void	draw_player(t_wind *win, int l, int y);
+// void	draw_player(t_wind *win, int l, int y);
 void	draw_portal(t_wind *win, int l, int y);
 
-void	move_player(t_wind *win, int x, int y);
-void	move_left(t_wind *win);
-void	move_right(t_wind *win);
-void	move_up(t_wind *win);
-void	move_down(t_wind *win);
+void	clean_portal(t_wind *win);
+void	clean_player(t_wind *win);
+
+// void	move_player(t_wind *win, int x, int y);
+// void	move_left(t_wind *win);
+// void	move_right(t_wind *win);
+// void	move_up(t_wind *win);
+// void	move_down(t_wind *win);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -111,11 +114,16 @@ char	*star(void);
 char	*empty(void);
 char	*tatame1(void);
 char	*tatame2(void);
-char	*porta_back(void);
-char	*porta_front(void);
+char	*portal_back(void);
+char	*portal_front(void);
 char	*player_back(void);
 char	*player_front(void);
 char	*side_player(int i);
 char	*side_portal(int index);
+
+char	*format(void);
+char	*jump(void);
+char	*idle(void);
+char	*run(void);
 
 #endif

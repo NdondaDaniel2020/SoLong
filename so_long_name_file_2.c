@@ -17,16 +17,6 @@ char	*empty(void)
 	return ("textures/block/vazio.xpm");
 }
 
-char	*player_back(void)
-{
-	return ("textures/kunoichi-back/idle_1.xpm");
-}
-
-char	*player_front(void)
-{
-	return ("textures/kunoichi-front/idle_1.xpm");
-}
-
 char	*side_player(int i)
 {
 	if (i == 0)
@@ -34,10 +24,24 @@ char	*side_player(int i)
 	return ("textures/kunoichi-front/");
 }
 
+char	*portal_front(void)
+{
+	return ("textures/portal-front/portal_");
+}
+
+char	*portal_back(void)
+{
+	return ("textures/portal-back/portal_");
+}
+
 char	*side_portal(int index)
 {
 	if (index == 0)
-		return (porta_back());
-	else
-		return (porta_front());
+		return (portal_back());
+	return (portal_front());
+}
+
+char	*format(void)
+{
+	return (".xpm");
 }
