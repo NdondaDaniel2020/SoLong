@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	validator_format(char *name)
+static void	validator_format(char *name)
 {
 	if (ft_strnstr(name, ".ber", ft_strlen(name)) == NULL)
 	{
@@ -21,7 +21,7 @@ void	validator_format(char *name)
 	}
 }
 
-void	validator_map(char *map)
+static void	validator_map(char *map)
 {
 	if (!check_duplicate(map))
 	{

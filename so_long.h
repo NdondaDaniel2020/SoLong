@@ -112,8 +112,6 @@ int		check_matrix_reference_points(char **matrix, t_size size);
 int		check_matrix_way(char **matrix, t_point cur, t_size size);
 
 /*validator*/
-void	validator_map(char *map);
-void	validator_format(char *name);
 char	*get_map(char *name);
 
 /*name file*/
