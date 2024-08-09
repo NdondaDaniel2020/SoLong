@@ -30,7 +30,8 @@ FILES = so_long.c \
 		so_long_upload_1.c \
 		so_long_upload_2.c \
 		so_long_move.c \
-		so_long_clean.c
+		so_long_clean.c \
+		so_long_update.c
 
 OBJ = $(FILES:.c=.o)
 

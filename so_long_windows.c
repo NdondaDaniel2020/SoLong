@@ -57,8 +57,8 @@ int	clean(t_wind *win)
 		mlx_destroy_image(win->mlx, win->block[1].img_ptr);
 	if (win->ptl[0][0].img_ptr)
 		clean_portal(win);
-	// if (win->player[0][0][0].img_ptr)
-	// 	clean_player(win);
+	if (win->player[0][0][0].img_ptr)
+		clean_player(win);
 	return (0);
 }
 
@@ -66,5 +66,5 @@ void	connection(t_wind *win)
 {
 	mlx_key_hook(win->win, key_press, win);
 	mlx_hook(win->win, 17, 0, clean_and_exit, win);
-	// mlx_loop_hook(win->mlx, (int (*)())update_image, win);
+	mlx_loop_hook(win->mlx, (int (*)())update_image, win);
 }

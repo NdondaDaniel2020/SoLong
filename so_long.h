@@ -47,10 +47,10 @@ typedef struct s_wind
 	t_image	block[2];
 	t_size	size;
 	t_image	ptl[2][9];
-	int		cur_ptl;
+	int		cur_ptl[2];
 	int		ptl_x;
 	int		ptl_y;
-	t_image	player[2][3][8];
+	t_image	player[2][3][9];
 	int		cur_play[3];
 	int		play_x;
 	int		play_y;
@@ -79,6 +79,8 @@ void	clean_player(t_wind *win);
 
 void	init_portal(t_wind *win);
 void	init_player(t_wind *win);
+
+int		update_image(t_wind *win);
 
 // void	move_player(t_wind *win, int x, int y);
 // void	move_left(t_wind *win);

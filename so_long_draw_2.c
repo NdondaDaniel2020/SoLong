@@ -91,8 +91,9 @@ void	draw_portal(t_wind *win, int l, int y)
 		{
 			win->ptl_x = x;
 			win->ptl_y = y;
-			win->cur_ptl = pos_portal(win);
-			img = win->ptl[win->cur_ptl][0].img_ptr;
+			win->cur_ptl[0] = pos_portal(win);
+			win->cur_ptl[1] = 0;
+			img = win->ptl[win->cur_ptl[0]][0].img_ptr;
 			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
 		}
 		x += 50;
