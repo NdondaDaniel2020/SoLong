@@ -47,12 +47,13 @@ typedef struct s_wind
 	t_image	block[2];
 	t_size	size;
 	t_image	ptl[2][9];
+	int		cur_ptl;
 	int		ptl_x;
 	int		ptl_y;
 	t_image	player[2][3][8];
+	int		cur_play[3];
 	int		play_x;
 	int		play_y;
-	int		cur_play;
 	int		move;
 }			t_wind;
 
@@ -67,9 +68,9 @@ void	upload_images3(t_wind *win);
 
 void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
-int		pos_player(t_wind *win);
-// void	draw_player(t_wind *win, int l, int y);
-// void	draw_portal(t_wind *win, int l, int y);
+
+void	draw_player(t_wind *win, int l, int y);
+void	draw_portal(t_wind *win, int l, int y);
 
 int		clean(t_wind *win);
 int		clean_and_exit(t_wind *win);
@@ -78,6 +79,7 @@ void	clean_player(t_wind *win);
 
 void	init_portal(t_wind *win);
 void	init_player(t_wind *win);
+
 // void	move_player(t_wind *win, int x, int y);
 // void	move_left(t_wind *win);
 // void	move_right(t_wind *win);

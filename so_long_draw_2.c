@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	pos_player(t_wind *win)
+static int	pos_player(t_wind *win)
 {
 	int		r;
 	int		l;
@@ -29,4 +29,73 @@ int	pos_player(t_wind *win)
 		return (0);
 	else
 		return (1);
+}
+
+void	draw_player(t_wind *win, int l, int y)
+{
+	int		c;
+	int		x;
+	int		pos;
+	void	*img;
+
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'P')
+		{
+			win->play_x = x;
+			win->play_y = y;
+			pos = pos_player(win);
+			win->cur_play[0] = pos;
+			win->cur_play[1] = 0;
+			win->cur_play[2] = 0;
+			img = win->player[pos][0][0].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
+}
+
+static int	pos_portal(t_wind *win)
+{
+	int		r;
+	int		l;
+	t_point	pos;
+
+	r = 1;
+	l = 1;
+	pos = find_in_matrix(win->map_matrix, 'E');
+	while (win->map_matrix[pos.y][pos.x + r] == '0')
+		r++;
+	while (win->map_matrix[pos.y][pos.x - l] == '0')
+		l++;
+	if (l > r)
+		return (1);
+	else
+		return (0);
+}
+
+void	draw_portal(t_wind *win, int l, int y)
+{
+	int		c;
+	int		x;
+	void	*img;
+
+	c = 0;
+	x = 0;
+	while (win->map_matrix[l][c])
+	{
+		if (win->map_matrix[l][c] == 'E')
+		{
+			win->ptl_x = x;
+			win->ptl_y = y;
+			win->cur_ptl = pos_portal(win);
+			img = win->ptl[win->cur_ptl][0].img_ptr;
+			mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+		}
+		x += 50;
+		c++;
+	}
 }
