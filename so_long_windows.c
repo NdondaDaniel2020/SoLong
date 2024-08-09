@@ -13,7 +13,6 @@
 #include "so_long.h"
 
 /*window*/
-
 int	key_press(int keycode, t_wind *win)
 {
 	if (keycode == 65307)
