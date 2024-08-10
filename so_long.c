@@ -27,6 +27,7 @@ static void	init(t_wind *win)
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
+	win->move = NULL;
 	init_portal(win);
 	init_player(win);
 	win->map_matrix = NULL;

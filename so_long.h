@@ -50,11 +50,11 @@ typedef struct s_wind
 	int		cur_ptl[2];
 	int		ptl_x;
 	int		ptl_y;
+	t_list	*move;
 	t_image	player[2][3][9];
 	int		cur_play[3];
 	int		play_x;
 	int		play_y;
-	int		move;
 }			t_wind;
 
 /*window*/
@@ -82,6 +82,10 @@ void	init_player(t_wind *win);
 
 int		update_image(t_wind *win);
 
+/* list */
+void	lstdel_front(t_list **list);
+void	lstls(t_list *list);
+char	*char_lst(char ch);
 // void	move_player(t_wind *win, int x, int y);
 // void	move_left(t_wind *win);
 // void	move_right(t_wind *win);
