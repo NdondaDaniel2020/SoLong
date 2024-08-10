@@ -84,14 +84,12 @@ int		update_image(t_wind *win);
 
 /* list */
 void	lstdel_front(t_list **list);
-void	lstls(t_list *list);
 char	*char_lst(char ch);
 
 void	move_player(t_wind *win);
-// void	move_left(t_wind *win);
-// void	move_right(t_wind *win);
-// void	move_up(t_wind *win);
-// void	move_down(t_wind *win);
+int		movement_blocked_left(t_wind *win);
+int		movement_blocked_right(t_wind *win);
+int		condition_move(t_wind *win, int x, int y);
 
 /*file*/
 char	*open_file(const char *filename);
@@ -129,8 +127,6 @@ char	*tatame1(void);
 char	*tatame2(void);
 char	*portal_back(void);
 char	*portal_front(void);
-char	*player_back(void);
-char	*player_front(void);
 char	*side_player(int i);
 char	*side_portal(int index);
 

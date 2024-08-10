@@ -25,24 +25,6 @@ void	lstdel_front(t_list **list)
 	}
 }
 
-void	lstls(t_list *list)
-{
-	int	i;
-
-	i = 0;
-	if (list)
-	{
-		ft_printf("Lista\n");
-		while (list)
-		{
-			ft_printf("%i - %c\n", i, *(char *)list->content);
-			list = list->next;
-			i++;
-		}
-		ft_printf("\n");
-	}
-}
-
 char	*char_lst(char ch)
 {
 	char	*c;

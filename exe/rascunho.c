@@ -1,0 +1,52 @@
+static void	printf_matrix(t_wind *win)
+{
+	int	l;
+	int	c;
+	t_size size;
+
+	l = 0;
+	size = size_map(win->map);
+	while (l < size.h)
+	{
+		c = 0;
+		while (c < size.w)
+		{
+			ft_printf("%c", win->map_matrix[l][c]);
+			c++;
+		}
+		ft_printf("\n");
+		l++;
+	}
+}
+
+		
+		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
+		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
+		ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
+
+		ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
+		ft_printf("{%c}", win->map_matrix[point.y][point.x]);
+		ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
+
+		ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
+		ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
+		ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
+
+
+static void	lstls(t_list *list)
+{
+	int	i;
+
+	i = 0;
+	if (list)
+	{
+		ft_printf("Lista\n");
+		while (list)
+		{
+			ft_printf("%i - %c\n", i, *(char *)list->content);
+			list = list->next;
+			i++;
+		}
+		ft_printf("\n");
+	}
+}
