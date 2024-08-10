@@ -17,24 +17,20 @@ int	key_press(int keycode, t_wind *win)
 {
 	t_list	*list;
 
-	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
 	{
-		// ft_printf("d\n");
 		list = ft_lstnew((void *)char_lst('d'));
 		ft_lstadd_back(&win->move, list);
 	}
 	if (keycode == 65361)
 	{
-		// ft_printf("a\n");
 		list = ft_lstnew((void *)char_lst('a'));
 		ft_lstadd_back(&win->move, list);
 	}
 	if (keycode == 65362)
 	{
-		// ft_printf("w\n");
 		list = ft_lstnew((void *)char_lst('w'));
 		ft_lstadd_back(&win->move, list);
 	}

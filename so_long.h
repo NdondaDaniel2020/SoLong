@@ -86,7 +86,8 @@ int		update_image(t_wind *win);
 void	lstdel_front(t_list **list);
 void	lstls(t_list *list);
 char	*char_lst(char ch);
-// void	move_player(t_wind *win, int x, int y);
+
+void	move_player(t_wind *win);
 // void	move_left(t_wind *win);
 // void	move_right(t_wind *win);
 // void	move_up(t_wind *win);

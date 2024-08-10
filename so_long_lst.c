@@ -28,7 +28,7 @@ void	lstdel_front(t_list **list)
 void	lstls(t_list *list)
 {
 	int	i;
-	
+
 	i = 0;
 	if (list)
 	{
@@ -45,8 +45,9 @@ void	lstls(t_list *list)
 
 char	*char_lst(char ch)
 {
-	char	*c = malloc(2*sizeof(char));
+	char	*c;
 
+	c = ft_calloc(2, sizeof(char));
 	c[1] = '\0';
 	c[0] = ch;
 	return (c);

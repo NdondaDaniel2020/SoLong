@@ -32,7 +32,7 @@ FILES = so_long.c \
 		so_long_move.c \
 		so_long_clean.c \
 		so_long_update.c \
-		so_long_lst.c
+		so_long_lst.c \
 
 OBJ = $(FILES:.c=.o)
 
