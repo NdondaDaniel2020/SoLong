@@ -1,16 +1,19 @@
+#include "../minilibx-linux/mlx.h"
 
-void	move_player(t_wind *win, int x, int y);
+int main()
 {
-	void	*img;
+    void *mlx;
+    void *win;
 
-	img = win->player[win->cur_play].img_ptr;
-	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
-}
+    // Inicializando MiniLibX
+    mlx = mlx_init();
+    win = mlx_new_window(mlx, 800, 600, "Texto na Tela");
 
-void	move_player(t_wind *win, int x, int y);
-{
-	void	*img;
+    // Escrevendo texto na tela
+    mlx_string_put(mlx, win, 100, 100, 0xFFFFFF, "Olá, Mundo!");
 
-	img = win->player[win->cur_play].img_ptr;
-	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+    // Iniciando o loop de eventos
+    mlx_loop(mlx);
+
+    return 0;
 }
