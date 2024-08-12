@@ -16,26 +16,25 @@ int	condition_move(t_wind *win, int x, int y)
 {
 	int			c;
 	t_point		point;
-	static int	aux = 0;
 
 	c = count_occurrence(win->map_matrix, 'C');
 	point = find_in_matrix(win->map_matrix, 'P');
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')
-	{
-		if (aux > 6)
-		{
-			aux = 0;
-			update_star_count(win);
-		}
-		else
-			aux++;
 		return (1);
-	}
 	if (win->map_matrix[point.y + y][point.x + x] == 'E' && c == 0)
 		clean_and_exit(win);
 	return (0);
+}
+
+void	get_star(t_wind *win, int x, int y)
+{
+	t_point	point;
+
+	point = find_in_matrix(win->map_matrix, 'P');
+	if (win->map_matrix[point.y + y][point.x + x] == 'C')
+		update_star_count(win);
 }
 
 int	movement_blocked_right(t_wind *win)

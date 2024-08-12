@@ -95,6 +95,7 @@ void	move_player(t_wind *win);
 int		movement_blocked_left(t_wind *win);
 int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
+void	get_star(t_wind *win, int x, int y);
 
 /*file*/
 char	*open_file(const char *filename);

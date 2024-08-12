@@ -26,6 +26,7 @@ static void	move_up(t_wind *win)
 			{
 				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
+				get_star(win, 0, -1);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y - 1][point.x] = 'P';
 				win->cur_play[1] = 0;
@@ -51,6 +52,7 @@ static void	move_down(t_wind *win)
 			{
 				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
+				get_star(win, 0, 1);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y + 1][point.x] = 'P';
 				lstdel_front(&win->move);
@@ -78,6 +80,7 @@ static void	move_right(t_wind *win)
 			{
 				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
+				get_star(win, 1, 0);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y][point.x + 1] = 'P';
 				win->cur_play[1] = 0;
@@ -106,6 +109,7 @@ static void	move_left(t_wind *win)
 			{
 				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
+				get_star(win, -1, 0);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y][point.x - 1] = 'P';
 				win->cur_play[1] = 0;
