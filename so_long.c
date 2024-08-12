@@ -18,6 +18,7 @@ static void	master(t_wind *win)
 	upload_images(win);
 	draw_map(win);
 	mlx_string_put(win->mlx, win->win, 18, 20, 0xFFFFFF, "Moviment: 0");
+	mlx_string_put(win->mlx, win->win, 18, 25, 0xFFFFFF, "Star: 0");
 	connection(win);
 	mlx_loop(win->mlx);
 }
