@@ -24,6 +24,7 @@ static void	move_up(t_wind *win)
 			win->play_y -= 5;
 			if (win->play_y % 50 == 0)
 			{
+				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y - 1][point.x] = 'P';
@@ -48,6 +49,7 @@ static void	move_down(t_wind *win)
 			win->play_y += 10;
 			if (win->play_y % 50 == 0)
 			{
+				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y + 1][point.x] = 'P';
@@ -74,6 +76,7 @@ static void	move_right(t_wind *win)
 			win->play_x += 5;
 			if (win->play_x % 50 == 0)
 			{
+				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y][point.x + 1] = 'P';
@@ -101,6 +104,7 @@ static void	move_left(t_wind *win)
 			win->play_x -= 5;
 			if (win->play_x % 50 == 0)
 			{
+				update_move_count(win);
 				point = find_in_matrix(win->map_matrix, 'P');
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y][point.x - 1] = 'P';

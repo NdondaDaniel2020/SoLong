@@ -55,6 +55,7 @@ typedef struct s_wind
 	int		cur_play[3];
 	int		play_x;
 	int		play_y;
+	int		move_count;
 }			t_wind;
 
 /*window*/
@@ -76,11 +77,13 @@ int		clean(t_wind *win);
 int		clean_and_exit(t_wind *win);
 void	clean_portal(t_wind *win);
 void	clean_player(t_wind *win);
+void	clean_command(t_wind *win);
 
 void	init_portal(t_wind *win);
 void	init_player(t_wind *win);
 
 int		update_image(t_wind *win);
+void	update_move_count(t_wind *win);
 
 /* list */
 void	lstdel_front(t_list **list);

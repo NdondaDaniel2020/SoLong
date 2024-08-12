@@ -17,6 +17,7 @@ static void	master(t_wind *win)
 	win->map_matrix = str_to_matrix(win->map);
 	upload_images(win);
 	draw_map(win);
+	mlx_string_put(win->mlx, win->win, 18, 20, 0xFFFFFF, "Moviment: 0");
 	connection(win);
 	mlx_loop(win->mlx);
 }
@@ -24,6 +25,7 @@ static void	master(t_wind *win)
 static void	init(t_wind *win)
 {
 	win->move = 0;
+	win->move_count = 0;
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;

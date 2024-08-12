@@ -103,3 +103,9 @@ void	init_player(t_wind *win)
 		m++;
 	}
 }
+
+void	clean_command(t_wind *win)
+{
+	while (win->move != NULL)
+		lstdel_front(&win->move);
+}

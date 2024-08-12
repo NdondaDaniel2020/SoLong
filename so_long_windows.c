@@ -68,6 +68,8 @@ int	clean(t_wind *win)
 		clean_portal(win);
 	if (win->player[0][0][0].img_ptr)
 		clean_player(win);
+	if (win->move)
+		clean_command(win);
 	return (0);
 }
 
