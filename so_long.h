@@ -56,6 +56,7 @@ typedef struct s_wind
 	int		play_x;
 	int		play_y;
 	int		move_count;
+	int		star_count;
 }			t_wind;
 
 /*window*/
@@ -84,6 +85,7 @@ void	init_player(t_wind *win);
 
 int		update_image(t_wind *win);
 void	update_move_count(t_wind *win);
+void	update_star_count(t_wind *win);
 
 /* list */
 void	lstdel_front(t_list **list);

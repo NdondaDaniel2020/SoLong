@@ -14,15 +14,26 @@
 
 int	condition_move(t_wind *win, int x, int y)
 {
-	int		c;
-	t_point	point;
+	int			c;
+	t_point		point;
+	static int	aux = 0;
 
 	c = count_occurrence(win->map_matrix, 'C');
 	point = find_in_matrix(win->map_matrix, 'P');
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')
+	{
+		if (aux > 6)
+		{
+			ft_printf("%i\n", aux);
+			update_star_count(win);
+			aux = 0;
+		}
+		else
+			aux++;
 		return (1);
+	}
 	if (win->map_matrix[point.y + y][point.x + x] == 'E' && c == 0)
 		clean_and_exit(win);
 	return (0);
