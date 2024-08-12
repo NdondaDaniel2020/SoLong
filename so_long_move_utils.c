@@ -26,9 +26,8 @@ int	condition_move(t_wind *win, int x, int y)
 	{
 		if (aux > 6)
 		{
-			ft_printf("%i\n", aux);
-			update_star_count(win);
 			aux = 0;
+			update_star_count(win);
 		}
 		else
 			aux++;
