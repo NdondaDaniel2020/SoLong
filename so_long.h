@@ -57,6 +57,8 @@ typedef struct s_wind
 	int		play_y;
 	int		move_count;
 	int		star_count;
+	int		diagonal_r;
+	int		diagonal_l;
 }			t_wind;
 
 /*window*/
@@ -95,6 +97,7 @@ void	move_player(t_wind *win);
 int		movement_blocked_left(t_wind *win);
 int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
+int		condition_move_top_right(t_wind *win, t_point point);
 void	get_star(t_wind *win, int x, int y);
 
 /*file*/

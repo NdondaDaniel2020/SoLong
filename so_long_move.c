@@ -12,23 +12,53 @@
 
 #include "so_long.h"
 
+static void change_diagonal(t_wind *win, t_point point)
+{
+	if (win->move->next && *(char *)win->move->next->content == 'd')
+	{
+		win->play_x = ((win->play_x  + 25) / 50) * 50;
+		win->map_matrix[point.y - 1][point.x] = '0';
+		win->map_matrix[point.y - 1][point.x + 1] = 'P';
+		win->diagonal_r = 0;
+		clean_command(win);
+	}
+}
+
+// static void	change_x_in_top(t_wind *win)
+// {
+// 	if (win->move->next && *(char *)win->move->next->content == 'd')
+// 		win->play_x += 8;
+// }
+
+static void	get_star_in_top(t_wind *win)
+{
+	if (win->move->next && *(char *)win->move->next->content == 'd')
+		get_star(win, 1, -1);
+	get_star(win, 0, -1);
+}
+
 static void	move_up(t_wind *win)
 {
 	t_point	point;
 
 	if (win->move && *(char *)win->move->content == 'w')
 	{
+		point = find_in_matrix(win->map_matrix, 'P');
 		if (condition_move(win, 0, -1))
 		{
 			win->cur_play[1] = 2;
 			win->play_y -= 5;
+			ft_printf("{{{{{{%i}}}}}}\n", condition_move_top(win, point));
+			if (win->move->next && *(char *)win->move->next->content == 'd')
+				win->play_x += 8;
+			// change_x_in_top(win);
 			if (win->play_y % 50 == 0)
 			{
 				update_move_count(win);
-				point = find_in_matrix(win->map_matrix, 'P');
-				get_star(win, 0, -1);
+				get_star_in_top(win);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y - 1][point.x] = 'P';
+				change_diagonal(win, point);
 				win->cur_play[1] = 0;
 				lstdel_front(&win->move);
 			}

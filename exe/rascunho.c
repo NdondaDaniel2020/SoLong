@@ -50,3 +50,29 @@ static void	lstls(t_list *list)
 		ft_printf("\n");
 	}
 }
+
+static void	move_up(t_wind *win)
+{
+	t_point	point;
+
+	if (win->move && *(char *)win->move->content == 'w')
+	{
+		if (condition_move(win, 0, -1))
+		{
+			win->cur_play[1] = 2;
+			win->play_y -= 5;
+			if (win->play_y % 50 == 0)
+			{
+				update_move_count(win);
+				point = find_in_matrix(win->map_matrix, 'P');
+				get_star(win, 0, -1);
+				win->map_matrix[point.y][point.x] = '0';
+				win->map_matrix[point.y - 1][point.x] = 'P';
+				win->cur_play[1] = 0;
+				lstdel_front(&win->move);
+			}
+		}
+		else
+			lstdel_front(&win->move);
+	}
+}
