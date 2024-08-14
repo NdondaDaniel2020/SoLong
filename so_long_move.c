@@ -48,7 +48,7 @@ static void	move_up(t_wind *win)
 		{
 			win->cur_play[1] = 2;
 			win->play_y -= 5;
-			ft_printf("{{{{{{%i}}}}}}\n", condition_move_top(win, point));
+			ft_printf("{{{{{{%i}}}}}}\n", condition_move_top_right(win, point));
 			if (win->move->next && *(char *)win->move->next->content == 'd')
 				win->play_x += 8;
 			// change_x_in_top(win);
