@@ -37,3 +37,9 @@ void	clean_enemy(t_wind *win)
 	}
 	free(win->enemy);
 }
+
+void	clean_command_enemy(t_list **list)
+{
+	while (*list != NULL)
+		lstdel_front(list);
+}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 static int	update_player_image(t_wind *win)
 {
@@ -57,57 +56,40 @@ static int	update_portal_image(t_wind *win)
 	return (0);
 }
 
+// static 
+int	update_player_enemy(t_wind *win)
+{
+	int		cur[3];
+	void	*img;
+	// t_list	*list;
+	// t_point	point;
+
+	// point = find_in_matrix(win->map_matrix, 'A');
+	// if ((!win->enemy->move) || (win->enemy->move
+	// 	&& *(char *)win->enemy->move->content != 's'
+	// 	&& win->map_matrix[point.y + 1][point.x] == '0'))
+	// {
+	// 	list = ft_lstnew((void *)char_lst('s'));
+	// 	ft_lstadd_back(&win->enemy->move, list);
+	// }
+	cur[0] = win->enemy->cur_enmy[0];
+	cur[1] = win->enemy->cur_enmy[1];
+	cur[2] = win->enemy->cur_enmy[2];
+	img = win->enemy->enemy[cur[0]][cur[1]][cur[2]].img_ptr;
+	if (img == NULL)
+		clean_and_exit(win);
+	win->enemy->cur_enmy[2] = (win->enemy->cur_enmy[2] + 1) % 6;
+	draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
+	move_player(win);
+	mlx_put_image_to_window(win->mlx, win->win, img,
+	 win->enemy->enmy_x, win->enemy->enmy_y);
+	return (0);
+}
+
 int	update_image(t_wind *win)
 {
 	update_portal_image(win);
 	update_player_image(win);
+	// update_player_enemy(win);
 	return (0);
-}
-
-void	update_move_count(t_wind *win)
-{
-	void	*img;
-	char	*value;
-	char	*v_aux;
-	char	*star;
-	char	*movement;
-
-	img = win->block[1].img_ptr;
-	value = ft_itoa(win->move_count);
-	v_aux = ft_itoa(win->star_count);
-	star = ft_strjoin("Star: ", v_aux);
-	movement = ft_strjoin("Moviment: ", value);
-	mlx_put_image_to_window(win->mlx, win->win, img, 0, 0);
-	mlx_put_image_to_window(win->mlx, win->win, img, 50, 0);
-	mlx_string_put(win->mlx, win->win, 18, 37, 0xFFFFFF, star);
-	mlx_string_put(win->mlx, win->win, 18, 20, 0xFFFFFF, movement);
-	win->move_count++;
-	free(movement);
-	free(value);
-	free(v_aux);
-	free(star);
-}
-
-void	update_star_count(t_wind *win)
-{
-	void	*img;
-	char	*value;
-	char	*v_aux;
-	char	*star;
-	char	*movement;
-
-	img = win->block[1].img_ptr;
-	value = ft_itoa(win->star_count);
-	v_aux = ft_itoa(win->move_count);
-	star = ft_strjoin("Star: ", value);
-	movement = ft_strjoin("Moviment: ", v_aux);
-	mlx_put_image_to_window(win->mlx, win->win, img, 0, 0);
-	mlx_put_image_to_window(win->mlx, win->win, img, 50, 0);
-	mlx_string_put(win->mlx, win->win, 18, 37, 0xFFFFFF, star);
-	mlx_string_put(win->mlx, win->win, 18, 20, 0xFFFFFF, movement);
-	win->star_count++;
-	free(movement);
-	free(v_aux);
-	free(value);
-	free(star);
 }

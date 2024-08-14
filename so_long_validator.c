@@ -59,12 +59,12 @@ char	*get_map(char *name)
 		ft_printf("Arquivo %s inexistente\n", name);
 		exit(1);
 	}
+	validator_map(map);
 	if (!check_way(map))
 	{
 		ft_printf("Sem caminho de fuga\n");
 		free(map);
 		exit(1);
 	}
-	validator_map(map);
 	return (map);
 }

@@ -42,6 +42,7 @@ typedef struct s_enemy
 	int		cur_enmy[3];
 	int		enmy_x;
 	int		enmy_y;
+	t_list	*move;
 }	t_enemy;
 
 typedef struct s_wind
@@ -92,6 +93,7 @@ void	clean_portal(t_wind *win);
 void	clean_player(t_wind *win);
 void	clean_command(t_wind *win);
 void	clean_enemy(t_wind *win);
+void	clean_command_enemy(t_list **list);
 
 void	init_portal(t_wind *win);
 void	init_player(t_wind *win);

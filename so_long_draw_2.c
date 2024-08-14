@@ -100,3 +100,11 @@ void	draw_portal(t_wind *win, int l, int y)
 		c++;
 	}
 }
+
+void	draw_empty(t_wind *win, int x, int y)
+{
+	void	*img;
+
+	img = win->bg_img.img_ptr;
+	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
+}

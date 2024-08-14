@@ -79,7 +79,7 @@ static void	add_image_to_enemy(t_wind *win, int m, int l, int c)
 	file = ft_strjoin_free(file, value);
 	file = ft_strjoin_free(file, format());
 	win->enemy->enemy[m][l][c].img_ptr = mlx_xpm_file_to_image(win->mlx,
-		file, &win->enemy->enemy[m][l][c].w, &win->enemy->enemy[m][l][c].h);
+			file, &win->enemy->enemy[m][l][c].w, &win->enemy->enemy[m][l][c].h);
 	if (!win->enemy->enemy[m][l][c].img_ptr)
 		clean_and_exit(win);
 	free(value);
