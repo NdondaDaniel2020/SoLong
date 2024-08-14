@@ -19,6 +19,30 @@ static void	printf_matrix(t_wind *win)
 	}
 }
 
+
+char	**cpy_matrix(char **zone, t_point size)
+{
+	int		l;
+	int		c;
+	char	**new;
+
+	l = 0;
+	new = malloc(sizeof(char *) * size.y);
+	while (l < size.y)
+	{
+		c = 0;
+		new[l] = malloc(size.x + 1);
+		while (c < size.x)
+		{
+			new[l][c] = zone[l][c];
+			c++;
+		}
+		new[l][size.x] = '\0';
+		l++;
+	}
+	return (new);
+}
+
 		
 		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
 		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
