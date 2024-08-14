@@ -19,7 +19,8 @@ static void	change_diagonal(t_wind *win, t_point point)
 	{
 		draw_empty(win, point.x * 50, (point.y - 1) * 50);
 		draw_empty(win, (point.x + 1) * 50, (point.y - 1) * 50);
-		win->play_x = ((win->play_x + 25) / 50) * 50;
+		if (win->play_x != ((win->play_x + 25) / 50) * 50)
+			win->play_x = ((win->play_x + 25) / 50) * 50;
 		win->map_matrix[point.y - 1][point.x] = '0';
 		win->map_matrix[point.y - 1][point.x + 1] = 'P';
 		win->diagonal_r = 0;
@@ -30,7 +31,8 @@ static void	change_diagonal(t_wind *win, t_point point)
 	{
 		draw_empty(win, point.x * 50, (point.y - 1) * 50);
 		draw_empty(win, (point.x - 1) * 50, (point.y - 1) * 50);
-		win->play_x = ((win->play_x + 25) / 50) * 50;
+		if (win->play_x != ((win->play_x + 25) / 50) * 50)
+			win->play_x = ((win->play_x + 25) / 50) * 50;
 		win->map_matrix[point.y - 1][point.x] = '0';
 		win->map_matrix[point.y - 1][point.x - 1] = 'P';
 		win->diagonal_l = 0;
