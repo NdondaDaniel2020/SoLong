@@ -29,8 +29,9 @@ FILES = so_long.c \
 		so_long_draw_2.c \
 		so_long_upload_1.c \
 		so_long_upload_2.c \
-		so_long_move.c \
-		so_long_move_up.c \
+		so_long_move_enemy.c \
+		so_long_move_player.c \
+		so_long_move_up_player.c \
 		so_long_move_utils_1.c \
 		so_long_move_utils_2.c \
 		so_long_clean_1.c \

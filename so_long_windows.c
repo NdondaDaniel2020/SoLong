@@ -17,6 +17,7 @@ int	key_press(int keycode, t_wind *win)
 {
 	t_list	*list;
 
+	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
@@ -35,6 +36,37 @@ int	key_press(int keycode, t_wind *win)
 		ft_lstadd_back(&win->move, list);
 	}
 	return (0);
+}
+
+void	key_pess_enemy(int	keycode, t_wind *win)
+{
+	t_list	*list;
+
+	if (keycode == 65437)
+	{
+		list = ft_lstnew((void *)char_lst('5'));
+		ft_lstadd_back(&win->enemy->move, list);
+	}
+	if (keycode == 65432)
+	{
+		list = ft_lstnew((void *)char_lst('6'));
+		ft_lstadd_back(&win->enemy->move, list);
+	}
+	if (keycode == 65430)
+	{
+		list = ft_lstnew((void *)char_lst('4'));
+		ft_lstadd_back(&win->enemy->move, list);
+	}
+	if (keycode == 65435)
+	{
+		list = ft_lstnew((void *)char_lst('3'));
+		ft_lstadd_back(&win->enemy->move, list);
+	}
+	if (keycode == 65436)
+	{
+		list = ft_lstnew((void *)char_lst('1'));
+		ft_lstadd_back(&win->enemy->move, list);
+	}
 }
 
 int	clean_and_exit(t_wind *win)

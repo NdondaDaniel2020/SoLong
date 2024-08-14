@@ -73,6 +73,7 @@ typedef struct s_wind
 
 /*window*/
 int		key_press(int keycode, t_wind *win);
+void		key_pess_enemy(int	key, t_wind *win);
 int		is_border(t_wind *win, int l, int c);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
@@ -113,6 +114,8 @@ int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
 int		condition_move_top_right(t_wind *win, t_point point);
 int		condition_move_top_left(t_wind *win, t_point point);
+
+void	move_enemy(t_wind *win);
 
 void	get_star(t_wind *win, int x, int y);
 
