@@ -94,10 +94,13 @@ void	lstdel_front(t_list **list);
 char	*char_lst(char ch);
 
 void	move_player(t_wind *win);
+void	move_up(t_wind *win);
 int		movement_blocked_left(t_wind *win);
 int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
 int		condition_move_top_right(t_wind *win, t_point point);
+int		condition_move_top_left(t_wind *win, t_point point);
+
 void	get_star(t_wind *win, int x, int y);
 
 /*file*/
