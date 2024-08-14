@@ -73,8 +73,8 @@ typedef struct s_wind
 
 /*window*/
 int		key_press(int keycode, t_wind *win);
-void		key_pess_enemy(int	key, t_wind *win);
 int		is_border(t_wind *win, int l, int c);
+void	key_pess_enemy(int key, t_wind *win);
 void	draw_map(t_wind *win);
 void	connection(t_wind *win);
 
