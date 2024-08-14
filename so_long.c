@@ -44,6 +44,35 @@ static void	init(t_wind *win)
 	win->block[1].img_ptr = NULL;
 }
 
+static t_enemy	*add_enimy(void)
+{
+	int		m;
+	int		l;
+	int		c;
+	t_enemy	*enemy;
+
+	enemy = (t_enemy *)ft_calloc(1, sizeof(t_enemy));
+	enemy->enmy_x = 0;
+	enemy->enmy_y = 0;
+	m = 0;
+	while (m < 2)
+	{
+		l = 0;
+		while (l < 4)
+		{
+			c = 0;
+			while (c < 6)
+			{
+				enemy->enemy[m][l][c].img_ptr = NULL;
+				c++;
+			}
+			l++;
+		}
+		m++;
+	}
+	return (enemy);
+}
+
 int	main(int ac, char **av)
 {
 	t_wind	win;
@@ -52,6 +81,10 @@ int	main(int ac, char **av)
 	init(&win);
 	win.map = get_map(av[1]);
 	win.size = size_map(win.map);
+	win.enemy = add_enimy();
+	win.enemy->cur_enmy[0] = 0;
+	win.enemy->cur_enmy[1] = 0;
+	win.enemy->cur_enmy[2] = 0;
 	win.size.w *= 50;
 	win.size.h *= 50;
 	win.mlx = mlx_init();

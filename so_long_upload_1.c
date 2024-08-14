@@ -80,4 +80,5 @@ void	upload_images(t_wind *win)
 	upload_images1(win);
 	upload_images2(win);
 	upload_images3(win);
+	upload_images4(win);
 }

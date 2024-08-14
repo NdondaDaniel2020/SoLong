@@ -33,7 +33,8 @@ FILES = so_long.c \
 		so_long_move_up.c \
 		so_long_move_utils_1.c \
 		so_long_move_utils_2.c \
-		so_long_clean.c \
+		so_long_clean_1.c \
+		so_long_clean_2.c \
 		so_long_update.c \
 		so_long_lst.c \
 

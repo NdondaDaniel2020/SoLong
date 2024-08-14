@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_name_file_3.c                              :+:      :+:    :+:   */
+/*   so_long_clean_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 08:13:31 by nmatondo          #+#    #+#             */
+/*   Created: 2024/07/16 14:19:56 by nmatondo          #+#    #+#             */
 /*   Updated: 2024/08/08 08:13:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*format(void)
+void	clean_enemy(t_wind *win)
 {
-	return (".xpm");
-}
+	int	m;
+	int	l;
+	int	c;
 
-char	*run(void)
-{
-	return ("run_");
-}
-
-char	*death(void)
-{
-	return ("death_");
-}
-
-char	*attack(void)
-{
-	return ("attack_");
+	m = 0;
+	while (m < 2)
+	{
+		l = 0;
+		while (l < 4)
+		{
+			c = 0;
+			while (c < 6)
+			{
+				mlx_destroy_image(win->mlx,
+					win->enemy->enemy[m][l][c].img_ptr);
+				c++;
+			}
+			l++;
+		}
+		m++;
+	}
+	free(win->enemy);
 }

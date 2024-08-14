@@ -24,19 +24,16 @@ char	*side_player(int i)
 	return ("textures/kunoichi-front/");
 }
 
-char	*portal_front(void)
-{
-	return ("textures/portal-front/portal_");
-}
-
-char	*portal_back(void)
-{
-	return ("textures/portal-back/portal_");
-}
-
 char	*side_portal(int index)
 {
 	if (index == 0)
-		return (portal_back());
-	return (portal_front());
+		return ("textures/portal-back/portal_");
+	return ("textures/portal-front/portal_");
+}
+
+char	*side_enemy(int index)
+{
+	if (index == 0)
+		return ("textures/enemy-back/");
+	return ("textures/enemy-front/");
 }

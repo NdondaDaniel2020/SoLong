@@ -36,12 +36,21 @@ typedef struct s_image
 	int		h;
 }			t_image;
 
+typedef struct s_enemy
+{
+	t_image	enemy[2][4][6];
+	int		cur_enmy[3];
+	int		enmy_x;
+	int		enmy_y;
+}	t_enemy;
+
 typedef struct s_wind
 {
 	void	*mlx;
 	void	*win;
 	char	*map;
 	char	**map_matrix;
+	t_enemy	*enemy;	
 	t_image	bg_img;
 	t_image	star;
 	t_image	block[2];
@@ -69,6 +78,7 @@ void	connection(t_wind *win);
 
 void	upload_images(t_wind *win);
 void	upload_images3(t_wind *win);
+void	upload_images4(t_wind *win);
 
 void	draw_map(t_wind *win);
 void	draw_empty(t_wind *win, int x, int y);
@@ -81,6 +91,7 @@ int		clean_and_exit(t_wind *win);
 void	clean_portal(t_wind *win);
 void	clean_player(t_wind *win);
 void	clean_command(t_wind *win);
+void	clean_enemy(t_wind *win);
 
 void	init_portal(t_wind *win);
 void	init_player(t_wind *win);
@@ -137,8 +148,6 @@ char	*star(void);
 char	*empty(void);
 char	*tatame1(void);
 char	*tatame2(void);
-char	*portal_back(void);
-char	*portal_front(void);
 char	*side_player(int i);
 char	*side_portal(int index);
 
@@ -146,5 +155,8 @@ char	*format(void);
 char	*jump(void);
 char	*idle(void);
 char	*run(void);
+char	*attack(void);
+char	*death(void);
+char	*side_enemy(int index);
 
 #endif

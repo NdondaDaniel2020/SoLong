@@ -61,3 +61,51 @@ void	upload_images3(t_wind *win)
 		m++;
 	}
 }
+
+static void	add_image_to_enemy(t_wind *win, int m, int l, int c)
+{
+	char	*value;
+	char	*file;
+
+	value = ft_itoa(1 + c);
+	if (l == 0)
+		file = ft_strjoin(side_enemy(m), idle());
+	else if (l == 1)
+		file = ft_strjoin(side_enemy(m), run());
+	else if (l == 2)
+		file = ft_strjoin(side_enemy(m), attack());
+	else
+		file = ft_strjoin(side_enemy(m), death());
+	file = ft_strjoin_free(file, value);
+	file = ft_strjoin_free(file, format());
+	win->enemy->enemy[m][l][c].img_ptr = mlx_xpm_file_to_image(win->mlx,
+		file, &win->enemy->enemy[m][l][c].w, &win->enemy->enemy[m][l][c].h);
+	if (!win->enemy->enemy[m][l][c].img_ptr)
+		clean_and_exit(win);
+	free(value);
+	free(file);
+}
+
+void	upload_images4(t_wind *win)
+{
+	int	m;
+	int	l;
+	int	c;
+
+	m = 0;
+	while (m < 2)
+	{
+		l = 0;
+		while (l < 4)
+		{
+			c = 0;
+			while (c < 6)
+			{
+				add_image_to_enemy(win, m, l, c);
+				c++;
+			}
+			l++;
+		}
+		m++;
+	}
+}
