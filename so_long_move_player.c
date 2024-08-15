@@ -114,6 +114,25 @@ static void	move_left(t_wind *win)
 	}
 }
 
+void	death_player(t_wind *win)
+{
+	t_point	point;
+
+	if (win->move && *(char *)win->move->content == 'q')
+	{
+		win->cur_play[1] = 3;
+		win->frame += 5;
+		if (win->frame % 30 == 0)
+		{
+			lstdel_front(&win->move);
+			point = find_in_matrix(win->map_matrix, 'P');
+			win->map_matrix[point.y][point.x] = '0';
+			win->is_dead = 1;
+			clean_command_enemy(&win->move);
+		}
+	}
+}
+
 void	move_player(t_wind *win)
 {
 	move_up(win);

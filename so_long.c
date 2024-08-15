@@ -32,6 +32,7 @@ static void	init(t_wind *win)
 	win->diagonal_x = 0;
 	win->diagonal_r = 0;
 	win->diagonal_l = 0;
+	win->frame = 0;
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
