@@ -42,7 +42,7 @@ void	clean_player(t_wind *win)
 	while (m < 2)
 	{
 		l = 0;
-		while (l < 3)
+		while (l < 4)
 		{
 			c = 0;
 			while (c < 9)
@@ -88,7 +88,7 @@ void	init_player(t_wind *win)
 	while (m < 2)
 	{
 		l = 0;
-		while (l < 3)
+		while (l < 4)
 		{
 			c = 0;
 			while (c < 9)

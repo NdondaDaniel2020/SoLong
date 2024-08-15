@@ -31,3 +31,8 @@ char	*attack(void)
 {
 	return ("attack_");
 }
+
+char	*dead(void)
+{
+	return ("dead_");
+}

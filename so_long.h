@@ -64,7 +64,7 @@ typedef struct s_wind
 	int		ptl_x;
 	int		ptl_y;
 	t_list	*move;
-	t_image	player[2][3][9];
+	t_image	player[2][4][9];
 	int		cur_play[3];
 	int		play_x;
 	int		play_y;
@@ -169,6 +169,7 @@ char	*idle(void);
 char	*run(void);
 char	*attack(void);
 char	*death(void);
+char	*dead(void);
 char	*side_enemy(int index);
 
 #endif

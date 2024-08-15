@@ -25,8 +25,10 @@ static void	add_image_to_player(t_wind *win, int m, int l, int c)
 		file = ft_strjoin(side_player(m), idle());
 	else if (l == 1)
 		file = ft_strjoin(side_player(m), run());
-	else
+	else if (l == 2)
 		file = ft_strjoin(side_player(m), jump());
+	else
+		file = ft_strjoin(side_player(m), dead());
 	file = ft_strjoin_free(file, value);
 	file = ft_strjoin_free(file, format());
 	img.img_ptr = mlx_xpm_file_to_image(win->mlx, file, &img.w, &img.h);
@@ -48,7 +50,7 @@ void	upload_images3(t_wind *win)
 	while (m < 2)
 	{
 		l = 0;
-		while (l < 3)
+		while (l < 4)
 		{
 			c = 0;
 			while (c < 9)
