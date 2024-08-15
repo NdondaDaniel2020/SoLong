@@ -57,7 +57,7 @@ static void	draw_star(t_wind *win, int l, int y)
 	}
 }
 
-static int	pos_enemy(t_wind *win)
+int	pos_enemy(t_wind *win)
 {
 	int		r;
 	int		l;

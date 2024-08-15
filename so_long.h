@@ -120,8 +120,8 @@ int		condition_move_top_left(t_wind *win, t_point point);
 void	change_diagonal(t_wind *win, t_point point);
 void	atack_enemy(t_wind *win);
 void	death_enemy(t_wind *win);
-
 void	move_enemy(t_wind *win);
+int		pos_enemy(t_wind *win);
 
 void	get_star(t_wind *win, int x, int y);
 

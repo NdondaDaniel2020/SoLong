@@ -22,7 +22,7 @@ static int	condition_move_enemy(t_wind *win, int x, int y)
 	return (0);
 }
 
-static void	move_down(t_wind *win)
+static void	move_down_enemy(t_wind *win)
 {
 	t_point	point;
 
@@ -45,7 +45,7 @@ static void	move_down(t_wind *win)
 	}
 }
 
-static void	move_right(t_wind *win)
+static void	move_right_enemy(t_wind *win)
 {
 	t_point	point;
 
@@ -70,7 +70,7 @@ static void	move_right(t_wind *win)
 	}
 }
 
-static void	move_left(t_wind *win)
+static void	move_left_enemy(t_wind *win)
 {
 	t_point	point;
 
@@ -99,7 +99,7 @@ void	move_enemy(t_wind *win)
 {
 	atack_enemy(win);
 	death_enemy(win);
-	move_down(win);
-	move_right(win);
-	move_left(win);
+	move_down_enemy(win);
+	move_right_enemy(win);
+	move_left_enemy(win);
 }

@@ -91,6 +91,7 @@ static int	update_enemy_image(t_wind *win)
 		win->enemy->time_dead++;
 		if (win->enemy->time_dead < 5)
 			draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
+		lstdel_front(&win->enemy->move);
 	}
 	else
 		update_enemy(win);

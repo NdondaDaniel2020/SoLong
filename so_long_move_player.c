@@ -18,6 +18,22 @@ static void	move_down(t_wind *win)
 
 	if (win->move && *(char *)win->move->content == 's')
 	{
+		point = find_in_matrix(win->map_matrix, 'P');
+		if (win->map_matrix[point.y + 1][point.x] == 'A')
+		{
+			int	pos;
+
+			pos = 1;
+			if (!pos_enemy(win))
+				pos = -1;
+			ft_printf("{{{{{{%i}}}}}}\n", pos);
+
+			win->enemy->enmy_x += 50;
+			win->map_matrix[point.y + 1][point.x] = '0';
+			win->map_matrix[point.y + 1][point.x + 1] = 'A';
+			ft_lstadd_back(&win->enemy->move, 
+				ft_lstnew((void *)char_lst('0')));
+		}
 		if (condition_move(win, 0, 1))
 		{
 			win->cur_play[1] = 0;
@@ -25,7 +41,6 @@ static void	move_down(t_wind *win)
 			if (win->play_y % 50 == 0)
 			{
 				update_move_count(win);
-				point = find_in_matrix(win->map_matrix, 'P');
 				get_star(win, 0, 1);
 				win->map_matrix[point.y][point.x] = '0';
 				win->map_matrix[point.y + 1][point.x] = 'P';

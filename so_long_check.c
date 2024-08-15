@@ -69,10 +69,12 @@ int	check_duplicate(char *map)
 {
 	int	p;
 	int	e;
+	int	a;
 	int	ex;
 
 	p = 0;
 	e = 0;
+	a = 0;
 	ex = 0;
 	while (*map)
 	{
@@ -80,12 +82,14 @@ int	check_duplicate(char *map)
 			e++;
 		if (*map == 'P')
 			p++;
+		if (*map == 'A')
+			a++;
 		if (*map != 'P' && *map != 'E' && *map != '0'
 			&& *map != '1' && *map != 'C' && *map != 'A' && *map != '\n')
 			ex++;
 		++map;
 	}
-	if (p == 1 && e == 1 && ex == 0)
+	if (p == 1 && e == 1 && a == 1 && ex == 0)
 		return (1);
 	return (0);
 }
