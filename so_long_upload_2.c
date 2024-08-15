@@ -28,7 +28,7 @@ static void	add_image_to_player(t_wind *win, int m, int l, int c)
 	else if (l == 2)
 		file = ft_strjoin(side_player(m), jump());
 	else
-		file = ft_strjoin(side_player(m), dead());
+		file = ft_strjoin(side_player(m), death());
 	file = ft_strjoin_free(file, value);
 	file = ft_strjoin_free(file, format());
 	img.img_ptr = mlx_xpm_file_to_image(win->mlx, file, &img.w, &img.h);

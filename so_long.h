@@ -169,7 +169,6 @@ char	*idle(void);
 char	*run(void);
 char	*attack(void);
 char	*death(void);
-char	*dead(void);
 char	*side_enemy(int index);
 
 #endif
