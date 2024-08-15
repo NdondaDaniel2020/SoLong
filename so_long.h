@@ -117,6 +117,9 @@ int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
 int		condition_move_top_right(t_wind *win, t_point point);
 int		condition_move_top_left(t_wind *win, t_point point);
+void	change_diagonal(t_wind *win, t_point point);
+void	atack_enemy(t_wind *win);
+void	death_enemy(t_wind *win);
 
 void	move_enemy(t_wind *win);
 

@@ -64,10 +64,10 @@ static	void	update_enemy(t_wind *win)
 
 	point = find_in_matrix(win->map_matrix, 'A');
 	if ((!win->enemy->move) || (win->enemy->move
-		&& *(char *)win->enemy->move->content != '2'
-		&& win->map_matrix[point.y + 1][point.x] == '0'))
+			&& *(char *)win->enemy->move->content != '2'
+			&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
-		ft_lstadd_back(&win->enemy->move, 
+		ft_lstadd_back(&win->enemy->move,
 			ft_lstnew((void *)char_lst('2')));
 	}
 	cur[0] = win->enemy->cur_enmy[0];
@@ -80,18 +80,17 @@ static	void	update_enemy(t_wind *win)
 	draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
 	move_enemy(win);
 	mlx_put_image_to_window(win->mlx, win->win, img,
-	win->enemy->enmy_x, win->enemy->enmy_y);
+		win->enemy->enmy_x, win->enemy->enmy_y);
 	usleep(10000);
 }
 
 static int	update_enemy_image(t_wind *win)
 {
-
-	if	(win->enemy->is_dead)
+	if (win->enemy->is_dead)
 	{
 		win->enemy->time_dead++;
-		if	(win->enemy->time_dead < 5)
-			draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);		
+		if (win->enemy->time_dead < 5)
+			draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
 	}
 	else
 		update_enemy(win);

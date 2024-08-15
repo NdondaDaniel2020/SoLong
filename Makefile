@@ -34,6 +34,7 @@ FILES = so_long.c \
 		so_long_move_up_player.c \
 		so_long_move_utils_1.c \
 		so_long_move_utils_2.c \
+		so_long_move_utils_3.c \
 		so_long_clean_1.c \
 		so_long_clean_2.c \
 		so_long_update.c \
