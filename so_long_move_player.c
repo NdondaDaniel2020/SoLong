@@ -12,6 +12,22 @@
 
 #include "so_long.h"
 
+static	void	kill_enemy(t_wind *win, t_point point)
+{
+	int	pos;
+
+	pos = 1;
+	if (!pos_enemy(win))
+		pos = -1;
+	draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
+	win->enemy->enmy_x += (28 * pos);
+	win->enemy->cur_enmy[0] = !pos_enemy(win);
+	win->map_matrix[point.y + 1][point.x] = '0';
+	win->map_matrix[point.y + 1][point.x + pos] = 'A';
+	ft_lstadd_back(&win->enemy->move, 
+		ft_lstnew((void *)char_lst('0')));
+}
+
 static void	move_down(t_wind *win)
 {
 	t_point	point;
@@ -20,20 +36,7 @@ static void	move_down(t_wind *win)
 	{
 		point = find_in_matrix(win->map_matrix, 'P');
 		if (win->map_matrix[point.y + 1][point.x] == 'A')
-		{
-			int	pos;
-
-			pos = 1;
-			if (!pos_enemy(win))
-				pos = -1;
-			ft_printf("{{{{{{%i}}}}}}\n", pos);
-
-			win->enemy->enmy_x += 50;
-			win->map_matrix[point.y + 1][point.x] = '0';
-			win->map_matrix[point.y + 1][point.x + 1] = 'A';
-			ft_lstadd_back(&win->enemy->move, 
-				ft_lstnew((void *)char_lst('0')));
-		}
+			kill_enemy(win, point);
 		if (condition_move(win, 0, 1))
 		{
 			win->cur_play[1] = 0;

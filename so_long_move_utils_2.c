@@ -20,7 +20,8 @@ int	condition_move_top_right(t_wind *win, t_point point)
 		&& (win->map_matrix[point.y - 1][point.x + 1] == '0'
 		|| win->map_matrix[point.y - 1][point.x + 1] == 'C')
 		&& (win->map_matrix[point.y][point.x + 1] == '0'
-		|| win->map_matrix[point.y][point.x + 1] == 'C')
+		|| win->map_matrix[point.y][point.x + 1] == 'C'
+		|| win->map_matrix[point.y][point.x + 1] == 'A')
 		&& (win->map_matrix[point.y + 1][point.x] == '1')
 	)
 	{
@@ -38,7 +39,8 @@ int	condition_move_top_left(t_wind *win, t_point point)
 		&& (win->map_matrix[point.y - 1][point.x - 1] == '0'
 		|| win->map_matrix[point.y - 1][point.x - 1] == 'C')
 		&& (win->map_matrix[point.y][point.x - 1] == '0'
-		|| win->map_matrix[point.y][point.x - 1] == 'C')
+		|| win->map_matrix[point.y][point.x - 1] == 'C'
+		|| win->map_matrix[point.y][point.x - 1] == 'A')
 		&& (win->map_matrix[point.y + 1][point.x] == '1')
 	)
 	{

@@ -17,7 +17,6 @@ int	key_press(int keycode, t_wind *win)
 {
 	t_list	*list;
 
-	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
