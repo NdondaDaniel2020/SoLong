@@ -33,24 +33,28 @@ static void	flood_fill(char **tab, t_size size, t_point begin)
 	fill(tab, size, (t_point){begin.x, begin.y + 1});
 }
 
-int	check_matrix_way(char **matrix, t_point cur, t_size size)
+int	check_matrix_way(char **m, t_point cur, t_size size)
 {
 	int	x;
 	int	y;
-	int	width;
-	int	height;
+	int	w;
+	int	h;
 
 	x = cur.x;
 	y = cur.y;
-	width = size.w;
-	height = size.h;
-	if ((x + 1 >= 0 && x + 1 < width) && (matrix[y][x + 1] == 'F'))
+	w = size.w;
+	h = size.h;
+	if ((x + 1 >= 0 && x + 1 < w) && (m[y][x + 1] == 'F'
+		|| m[y][x + 1] == 'P' || m[y][x + 1] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((x - 1 >= 0 && x - 1 < width) && (matrix[y][x - 1] == 'F'))
+	if ((x - 1 >= 0 && x - 1 < w) && (m[y][x - 1] == 'F'
+		|| m[y][x - 1] == 'P' || m[y][x - 1] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((y + 1 >= 0 && y + 1 < height) && (matrix[y + 1][x] == 'F'))
+	if ((y + 1 >= 0 && y + 1 < h) && (m[y + 1][x] == 'F'
+		|| m[y + 1][x] == 'P' || m[y + 1][x] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((y - 1 >= 0 && y - 1 < height) && (matrix[y - 1][x] == 'F'))
+	if ((y - 1 >= 0 && y - 1 < h) && (m[y - 1][x] == 'F'
+		|| m[y - 1][x] == 'P' || m[y - 1][x] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
 	return (0);
 }
