@@ -21,17 +21,17 @@ int	condition_move(t_wind *win, int x, int y)
 	c = count_occurrence(win->map_matrix, 'C');
 	point = find_in_matrix(win->map_matrix, 'P');
 
-	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
-	ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
+	// ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
 
-	ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y][point.x]);
-	ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y][point.x]);
+	// ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
 
-	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
-	ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
+	// ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
+	// ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
 
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);

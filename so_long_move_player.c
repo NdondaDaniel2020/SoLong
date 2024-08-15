@@ -114,7 +114,7 @@ static void	move_left(t_wind *win)
 	}
 }
 
-void	death_player(t_wind *win)
+static void	death_player(t_wind *win)
 {
 	t_point	point;
 
@@ -128,13 +128,14 @@ void	death_player(t_wind *win)
 			point = find_in_matrix(win->map_matrix, 'P');
 			win->map_matrix[point.y][point.x] = '0';
 			win->is_dead = 1;
-			clean_command_enemy(&win->move);
+			clean_command(win);
 		}
 	}
 }
 
 void	move_player(t_wind *win)
 {
+	death_player(win);
 	move_up(win);
 	move_down(win);
 	move_right(win);

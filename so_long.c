@@ -27,6 +27,7 @@ static void	master(t_wind *win)
 static void	init(t_wind *win)
 {
 	win->move = 0;
+	win->time_dead = 0;
 	win->move_count = 0;
 	win->star_count = 0;
 	win->diagonal_x = 0;

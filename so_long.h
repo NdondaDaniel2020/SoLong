@@ -71,6 +71,7 @@ typedef struct s_wind
 	int		move_count;
 	int		frame;
 	int		is_dead;
+	int		time_dead;
 	int		star_count;
 	int		diagonal_r;
 	int		diagonal_l;

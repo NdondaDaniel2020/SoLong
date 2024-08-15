@@ -12,34 +12,6 @@
 
 #include "so_long.h"
 
-static int	update_player_image(t_wind *win)
-{
-	int		cur[3];
-	void	*img;
-	t_list	*list;
-	t_point	point;
-
-	point = find_in_matrix(win->map_matrix, 'P');
-	if ((!win->move) || (win->move && *(char *)win->move->content != 's'
-			&& win->map_matrix[point.y + 1][point.x] == '0'))
-	{
-		list = ft_lstnew((void *)char_lst('s'));
-		ft_lstadd_back(&win->move, list);
-	}
-	cur[0] = win->cur_play[0];
-	cur[1] = win->cur_play[1];
-	cur[2] = win->cur_play[2];
-	img = win->player[cur[0]][cur[1]][cur[2]].img_ptr;
-	if (img == NULL)
-		clean_and_exit(win);
-	win->cur_play[2] = (win->cur_play[2] + 1) % 9;
-	draw_empty(win, win->play_x, win->play_y);
-	move_player(win);
-	mlx_put_image_to_window(win->mlx, win->win, img, win->play_x, win->play_y);
-	usleep(40000);
-	return (0);
-}
-
 static int	update_portal_image(t_wind *win)
 {
 	int		x;
@@ -95,6 +67,50 @@ static int	update_enemy_image(t_wind *win)
 	}
 	else
 		update_enemy(win);
+	return (0);
+}
+
+static int	update_player(t_wind *win)
+{
+	int		cur[3];
+	void	*img;
+	t_list	*list;
+	t_point	point;
+
+	point = find_in_matrix(win->map_matrix, 'P');
+	if ((!win->move) || (win->move && *(char *)win->move->content != 's'
+			&& win->map_matrix[point.y + 1][point.x] == '0'))
+	{
+		list = ft_lstnew((void *)char_lst('s'));
+		ft_lstadd_back(&win->move, list);
+	}
+	cur[0] = win->cur_play[0];
+	cur[1] = win->cur_play[1];
+	cur[2] = win->cur_play[2];
+	img = win->player[cur[0]][cur[1]][cur[2]].img_ptr;
+	if (img == NULL)
+		clean_and_exit(win);
+	win->cur_play[2] = (win->cur_play[2] + 1) % 9;
+	draw_empty(win, win->play_x, win->play_y);
+	move_player(win);
+	mlx_put_image_to_window(win->mlx, win->win, img, win->play_x, win->play_y);
+	usleep(40000);
+	return (0);
+}
+
+static int	update_player_image(t_wind *win)
+{
+	if (win->is_dead)
+	{
+		win->time_dead++;
+		if (win->time_dead < 5)
+			draw_empty(win, win->play_x, win->play_y);
+		if (win->time_dead == 100)
+			clean_and_exit(win);
+		lstdel_front(&win->move);
+	}
+	else
+		update_player(win);
 	return (0);
 }
 
