@@ -72,6 +72,7 @@ typedef struct s_wind
 	int		star_count;
 	int		diagonal_r;
 	int		diagonal_l;
+	int		diagonal_x;
 }			t_wind;
 
 /*window*/

@@ -29,6 +29,7 @@ static void	init(t_wind *win)
 	win->move = 0;
 	win->move_count = 0;
 	win->star_count = 0;
+	win->diagonal_x = 0;
 	win->diagonal_r = 0;
 	win->diagonal_l = 0;
 	win->mlx = NULL;

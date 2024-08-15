@@ -63,6 +63,7 @@ static void	change_diagonal_right(t_wind *win, t_point point)
 		win->map_matrix[point.y - 1][point.x] = '0';
 		win->map_matrix[point.y - 1][point.x + 1] = 'P';
 		win->diagonal_r = 0;
+		win->diagonal_x = 0;
 		clean_command(win);
 	}
 }
@@ -80,6 +81,7 @@ static void	change_diagonal_left(t_wind *win, t_point point)
 		win->map_matrix[point.y - 1][point.x] = '0';
 		win->map_matrix[point.y - 1][point.x - 1] = 'P';
 		win->diagonal_l = 0;
+		win->diagonal_x = 0;
 		clean_command(win);
 	}
 }

@@ -14,11 +14,17 @@
 
 static void	change_x_in_top(t_wind *win)
 {
+	if  (win->diagonal_r && win->diagonal_x == 0)
+		win->diagonal_x = (win->play_x + 50);
+	else if (win->diagonal_r && win->diagonal_x == 0)
+		win->diagonal_x = (win->play_x - 50);
 	if (win->diagonal_r && win->move->next
-		&& *(char *)win->move->next->content == 'd')
+		&& *(char *)win->move->next->content == 'd' 
+		&& win->play_x < win->diagonal_x)
 		win->play_x += 8;
 	if (win->diagonal_l && win->move->next
-		&& *(char *)win->move->next->content == 'a')
+		&& *(char *)win->move->next->content == 'a'
+		&& win->play_x > win->diagonal_x)
 		win->play_x -= 8;
 }
 
