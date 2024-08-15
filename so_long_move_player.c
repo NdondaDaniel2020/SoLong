@@ -25,7 +25,7 @@ static	void	kill_enemy(t_wind *win, t_point point)
 	win->map_matrix[point.y + 1][point.x] = '0';
 	win->map_matrix[point.y + 1][point.x + pos] = 'A';
 	clean_command_enemy(&win->enemy->move);
-	ft_lstadd_back(&win->enemy->move, 
+	ft_lstadd_back(&win->enemy->move,
 		ft_lstnew((void *)char_lst('0')));
 }
 

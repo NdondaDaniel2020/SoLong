@@ -43,7 +43,7 @@ char	**cpy_matrix(char **zone, t_point size)
 	return (new);
 }
 
-		
+
 		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
 		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
 		ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);

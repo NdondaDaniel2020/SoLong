@@ -33,7 +33,6 @@ int	condition_move(t_wind *win, int x, int y)
 	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
 	ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
 
-
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')
