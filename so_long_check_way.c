@@ -44,16 +44,16 @@ int	check_matrix_way(char **m, t_point cur, t_size size)
 	y = cur.y;
 	w = size.w;
 	h = size.h;
-	if ((x + 1 >= 0 && x + 1 < w) && (m[y][x + 1] == 'F'
+	if ((x + 1 >= 0 && x + 1 < w) && (m[y][x + 1] == 'F' || m[y][x + 1] == 'A'
 		|| m[y][x + 1] == 'P' || m[y][x + 1] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((x - 1 >= 0 && x - 1 < w) && (m[y][x - 1] == 'F'
+	if ((x - 1 >= 0 && x - 1 < w) && (m[y][x - 1] == 'F' || m[y][x + 1] == 'A'
 		|| m[y][x - 1] == 'P' || m[y][x - 1] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((y + 1 >= 0 && y + 1 < h) && (m[y + 1][x] == 'F'
+	if ((y + 1 >= 0 && y + 1 < h) && (m[y + 1][x] == 'F' || m[y][x + 1] == 'A'
 		|| m[y + 1][x] == 'P' || m[y + 1][x] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
-	if ((y - 1 >= 0 && y - 1 < h) && (m[y - 1][x] == 'F'
+	if ((y - 1 >= 0 && y - 1 < h) && (m[y - 1][x] == 'F' || m[y][x + 1] == 'A'
 		|| m[y - 1][x] == 'P' || m[y - 1][x] == 'C' || m[y][x + 1] == 'E'))
 		return (1);
 	return (0);
