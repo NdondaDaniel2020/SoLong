@@ -43,6 +43,9 @@ typedef struct s_enemy
 	int		enmy_x;
 	int		enmy_y;
 	t_list	*move;
+	int		frame;
+	int		is_dead;
+	int		time_dead;
 }	t_enemy;
 
 typedef struct s_wind

@@ -95,6 +95,7 @@ static void	draw_enemy(t_wind *win, int l, int y)
 			win->enemy->cur_enmy[0] = pos;
 			win->enemy->cur_enmy[1] = 0;
 			win->enemy->cur_enmy[2] = 0;
+			win->enemy->frame = 0;
 			img = win->enemy->enemy[pos][0][0].img_ptr;
 			mlx_put_image_to_window(win->mlx, win->win, img, x, y + 19);
 		}

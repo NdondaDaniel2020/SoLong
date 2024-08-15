@@ -17,6 +17,7 @@ static void	change_diagonal(t_wind *win, t_point point)
 	if (win->diagonal_r && win->move->next
 		&& *(char *)win->move->next->content == 'd')
 	{
+		update_move_count(win);
 		draw_empty(win, point.x * 50, (point.y - 1) * 50);
 		draw_empty(win, (point.x + 1) * 50, (point.y - 1) * 50);
 		if (win->play_x != ((win->play_x + 25) / 50) * 50)
@@ -29,6 +30,7 @@ static void	change_diagonal(t_wind *win, t_point point)
 	if (win->diagonal_l && win->move->next
 		&& *(char *)win->move->next->content == 'a')
 	{
+		update_move_count(win);
 		draw_empty(win, point.x * 50, (point.y - 1) * 50);
 		draw_empty(win, (point.x - 1) * 50, (point.y - 1) * 50);
 		if (win->play_x != ((win->play_x + 25) / 50) * 50)

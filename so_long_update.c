@@ -56,21 +56,20 @@ static int	update_portal_image(t_wind *win)
 	return (0);
 }
 
-static int	update_player_enemy(t_wind *win)
+static	void	update_enemy(t_wind *win)
 {
 	int		cur[3];
 	void	*img;
-	// t_list	*list;
-	// t_point	point;
+	t_point	point;
 
-	// point = find_in_matrix(win->map_matrix, 'A');
-	// if ((!win->enemy->move) || (win->enemy->move
-	// 	&& *(char *)win->enemy->move->content != 's'
-	// 	&& win->map_matrix[point.y + 1][point.x] == '0'))
-	// {
-	// 	list = ft_lstnew((void *)char_lst('s'));
-	// 	ft_lstadd_back(&win->enemy->move, list);
-	// }
+	point = find_in_matrix(win->map_matrix, 'A');
+	if ((!win->enemy->move) || (win->enemy->move
+		&& *(char *)win->enemy->move->content != '2'
+		&& win->map_matrix[point.y + 1][point.x] == '0'))
+	{
+		ft_lstadd_back(&win->enemy->move, 
+			ft_lstnew((void *)char_lst('2')));
+	}
 	cur[0] = win->enemy->cur_enmy[0];
 	cur[1] = win->enemy->cur_enmy[1];
 	cur[2] = win->enemy->cur_enmy[2];
@@ -81,8 +80,21 @@ static int	update_player_enemy(t_wind *win)
 	draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);
 	move_enemy(win);
 	mlx_put_image_to_window(win->mlx, win->win, img,
-	 win->enemy->enmy_x, win->enemy->enmy_y);
+	win->enemy->enmy_x, win->enemy->enmy_y);
 	usleep(10000);
+}
+
+static int	update_enemy_image(t_wind *win)
+{
+
+	if	(win->enemy->is_dead)
+	{
+		win->enemy->time_dead++;
+		if	(win->enemy->time_dead < 5)
+			draw_empty(win, win->enemy->enmy_x, win->enemy->enmy_y - 19);		
+	}
+	else
+		update_enemy(win);
 	return (0);
 }
 
@@ -90,6 +102,6 @@ int	update_image(t_wind *win)
 {
 	update_portal_image(win);
 	update_player_image(win);
-	update_player_enemy(win);
+	update_enemy_image(win);
 	return (0);
 }

@@ -82,6 +82,8 @@ int	main(int ac, char **av)
 	win.map = get_map(av[1]);
 	win.size = size_map(win.map);
 	win.enemy = add_enimy();
+	win.enemy->is_dead = 0;
+	win.enemy->time_dead = 0;
 	win.size.w *= 50;
 	win.size.h *= 50;
 	win.mlx = mlx_init();
