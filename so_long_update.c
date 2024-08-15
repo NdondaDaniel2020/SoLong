@@ -53,7 +53,6 @@ static	void	update_enemy(t_wind *win)
 	move_enemy(win);
 	mlx_put_image_to_window(win->mlx, win->win, img,
 		win->enemy->enmy_x, win->enemy->enmy_y);
-	usleep(10000);
 }
 
 static int	update_enemy_image(t_wind *win)
@@ -67,6 +66,7 @@ static int	update_enemy_image(t_wind *win)
 	}
 	else
 		update_enemy(win);
+	usleep(10000);
 	return (0);
 }
 
@@ -94,7 +94,6 @@ static int	update_player(t_wind *win)
 	draw_empty(win, win->play_x, win->play_y);
 	move_player(win);
 	mlx_put_image_to_window(win->mlx, win->win, img, win->play_x, win->play_y);
-	usleep(40000);
 	return (0);
 }
 
@@ -111,6 +110,7 @@ static int	update_player_image(t_wind *win)
 	}
 	else
 		update_player(win);
+	usleep(40000);
 	return (0);
 }
 
