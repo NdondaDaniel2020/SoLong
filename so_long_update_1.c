@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_update.c                                   :+:      :+:    :+:   */
+/*   so_long_update_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,22 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	update_portal_image(t_wind *win)
-{
-	int		x;
-	int		y;
-	void	*img;
-
-	x = win->ptl_x;
-	y = win->ptl_y;
-	img = win->ptl[win->cur_ptl[0]][win->cur_ptl[1]].img_ptr;
-	win->cur_ptl[1] = (win->cur_ptl[1] + 1) % 9;
-	draw_empty(win, x, y);
-	mlx_put_image_to_window(win->mlx, win->win, img, x, y);
-	usleep(20000);
-	return (0);
-}
 
 static	void	update_enemy(t_wind *win)
 {

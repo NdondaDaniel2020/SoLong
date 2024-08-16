@@ -12,44 +12,11 @@
 
 #include "so_long.h"
 
-static	void	kill_player(t_wind *win, t_point point, int x)
-{
-	int	pos;
-
-	draw_empty(win, win->play_x, win->play_y);
-	pos = 1;
-	if (!pos_player(win))
-		pos = -1;
-	if (win->map_matrix[point.y][point.x + x + x] == '0')
-		win->play_x += (30 * pos);
-	win->cur_play[0] = !pos_player(win);
-	win->map_matrix[point.y][point.x] = '0';
-	win->map_matrix[point.y][point.x + x] = 'A';
-	clean_command(win);
-	ft_lstadd_back(&win->move,
-		ft_lstnew((void *)char_lst('q')));
-}
-
 static int	condition_move_enemy(t_wind *win, int x, int y)
 {
 	t_point		point;
 
 	point = find_in_matrix(win->map_matrix, 'A');
-
-	
-	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
-	ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
-
-	ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y][point.x]);
-	ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
-
-	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
-	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
-	ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
-
-
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	return (0);

@@ -37,9 +37,11 @@ FILES = so_long.c \
 		so_long_move_utils_3.c \
 		so_long_clean_1.c \
 		so_long_clean_2.c \
-		so_long_update.c \
+		so_long_update_1.c \
+		so_long_update_2.c \
 		so_long_update_score.c \
-		so_long_lst.c \
+		so_long_kill.c \
+		so_long_lst.c 
 
 OBJ = $(FILES:.c=.o)
 
