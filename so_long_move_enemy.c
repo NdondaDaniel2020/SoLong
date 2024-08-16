@@ -51,7 +51,6 @@ static void	move_right_enemy(t_wind *win)
 
 	if (win->enemy->move && *(char *)win->enemy->move->content == '6')
 	{
-
 		point = find_in_matrix(win->map_matrix, 'A');
 		if (win->map_matrix[point.y][point.x + 1] == 'P')
 			kill_player(win, point, 1);
