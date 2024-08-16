@@ -34,12 +34,6 @@ int	key_press(int keycode, t_wind *win)
 		list = ft_lstnew((void *)char_lst('w'));
 		ft_lstadd_back(&win->move, list);
 	}
-	if (keycode == 113)
-	{
-		list = ft_lstnew((void *)char_lst('q'));
-		ft_lstadd_back(&win->move, list);
-	}
-	ft_printf("%i\n", keycode);
 	key_pess_enemy(keycode, win);
 	return (0);
 }
