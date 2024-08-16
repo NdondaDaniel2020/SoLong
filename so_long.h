@@ -126,7 +126,7 @@ void	atack_enemy(t_wind *win);
 void	death_enemy(t_wind *win);
 void	move_enemy(t_wind *win);
 int		pos_enemy(t_wind *win);
-
+int		pos_player(t_wind *win);
 void	get_star(t_wind *win, int x, int y);
 
 /*file*/

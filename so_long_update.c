@@ -104,7 +104,7 @@ static int	update_player_image(t_wind *win)
 		win->time_dead++;
 		if (win->time_dead < 5)
 			draw_empty(win, win->play_x, win->play_y);
-		if (win->time_dead == 100)
+		if (win->time_dead == 60)
 			clean_and_exit(win);
 		lstdel_front(&win->move);
 	}

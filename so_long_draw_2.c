@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	pos_player(t_wind *win)
+int	pos_player(t_wind *win)
 {
 	int		r;
 	int		l;
