@@ -12,9 +12,19 @@
 
 #include "so_long.h"
 
-static void	validator_format(char *name)
+static void	validator_format(char *name, char *format)
 {
-	if (ft_strnstr(name, ".ber", ft_strlen(name)) == NULL)
+	int	len_n;
+	int	len_f;
+
+	len_n = ft_strlen(name);
+	len_f = ft_strlen(format);
+	while (format[len_f - 1] && name[len_n - 1] == format[len_f - 1])
+	{
+		len_f--;
+		len_n--;
+	}
+	if (len_f != 0)
 	{
 		ft_printf("Formato do mapa errado\nFormato recomendado *.ber\n");
 		exit(1);
@@ -52,7 +62,7 @@ char	*get_map(char *name)
 		ft_printf("Mapa não encontrado\n");
 		exit (1);
 	}
-	validator_format(name);
+	validator_format(name, ".ber");
 	map = open_file(name);
 	if (map == NULL)
 	{
