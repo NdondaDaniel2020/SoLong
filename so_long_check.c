@@ -18,7 +18,7 @@ static int	check_line(char *map_line, int *column)
 	static int	i = 0;
 	int			len;
 
-	if (i == 0 || *column == 1)
+	if (i == 0 || column == 0)
 	{
 		i++;
 		*column = *column - 1;
@@ -28,7 +28,7 @@ static int	check_line(char *map_line, int *column)
 	else
 	{
 		i++;
-		*column = (*column) - 1;
+		*column = *column - 1;
 		len = ft_strlen(map_line);
 		if (map_line[0] == '1' && map_line[len - 1] == '1')
 			return (1);
