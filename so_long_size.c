@@ -47,18 +47,21 @@ int	width(char *map)
 int	height(char *map)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (!map)
+	len = 0;
+	if (!map || map[i] == '\n')
 		return (0);
-	while (*map)
+	while (map[i] != '\0')
 	{
-		if (*map == '\n')
-			i++;
-		++map;
+		if (map[i] == '\n' && map[i - 1] == '1')
+			len++;
+		i++;
 	}
-	i++;
-	return (i);
+	if (map[i] == '\0' && map[i - 1] == '1')
+		len++;
+	return (len);
 }
 
 static int	count_occurrence_str(char *str, char ch)
@@ -78,12 +81,15 @@ static int	count_occurrence_str(char *str, char ch)
 t_size	size_map(char *map)
 {
 	t_size	size;
+	int		i;
 
+	i = 0;
 	if (!map)
 		return ((t_size){0, 0});
 	size.w = width(map);
 	size.h = height(map);
-	if (count_occurrence_str(map, '\n') != size.h)
+	i = count_occurrence_str(map, '\n');
+	if (i >= size.h)
 		size.h = 0;
 	return (size);
 }
