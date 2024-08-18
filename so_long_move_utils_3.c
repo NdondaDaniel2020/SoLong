@@ -28,8 +28,6 @@ void	atack_enemy(t_wind *win)
 
 void	death_enemy(t_wind *win)
 {
-	t_point	point;
-
 	if (win->enemy->move && *(char *)win->enemy->move->content == '0')
 	{
 		win->enemy->cur_enmy[1] = 3;
@@ -37,8 +35,6 @@ void	death_enemy(t_wind *win)
 		if (win->enemy->frame % 30 == 0)
 		{
 			lstdel_front(&win->enemy->move);
-			point = find_in_matrix(win->map_matrix, 'A');
-			win->map_matrix[point.y][point.x] = '0';
 			win->enemy->is_dead = 1;
 			clean_command_enemy(&win->enemy->move);
 		}
