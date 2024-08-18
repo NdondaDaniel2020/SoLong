@@ -11,12 +11,20 @@ static void	printf_matrix(t_wind *win)
 		c = 0;
 		while (c < size.w)
 		{
-			ft_printf("%c", win->map_matrix[l][c]);
+			if (win->map_matrix[l][c] == 'P')
+				ft_printf("\033[92m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'A')
+				ft_printf("\033[91m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'C')
+				ft_printf("\033[93m%c\033[0m", win->map_matrix[l][c]);
+			else
+				ft_printf("%c", win->map_matrix[l][c]);
 			c++;
 		}
 		ft_printf("\n");
 		l++;
 	}
+	ft_printf("\n");
 }
 
 
@@ -43,18 +51,17 @@ char	**cpy_matrix(char **zone, t_point size)
 	return (new);
 }
 
-		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
-		ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
-		ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
+	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x - 1]);
+	ft_printf("{%c}", win->map_matrix[point.y - 1][point.x]);
+	ft_printf("{%c}\n", win->map_matrix[point.y - 1][point.x + 1]);
 
-		ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
-		ft_printf("{%c}", win->map_matrix[point.y][point.x]);
-		ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
+	ft_printf("{%c}", win->map_matrix[point.y][point.x - 1]);
+	ft_printf("{%c}", win->map_matrix[point.y][point.x]);
+	ft_printf("{%c}\n", win->map_matrix[point.y][point.x + 1]);
 
-		ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
-		ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
-		ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
-
+	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x - 1]);
+	ft_printf("{%c}", win->map_matrix[point.y + 1][point.x]);
+	ft_printf("{%c}\n\n", win->map_matrix[point.y + 1][point.x + 1]);
 
 static void	lstls(t_list *list)
 {
