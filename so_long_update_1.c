@@ -98,8 +98,61 @@ static int	update_player_image(t_wind *win)
 	return (0);
 }
 
+
+static void	printf_matrix(t_wind *win)
+{
+	int	l;
+	int	c;
+	t_size size;
+
+	l = 0;
+	size = size_map(win->map);
+	while (l < size.h)
+	{
+		c = 0;
+		while (c < size.w)
+		{
+			if (win->map_matrix[l][c] == 'P')
+				ft_printf("\033[92m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'A')
+				ft_printf("\033[91m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'C')
+				ft_printf("\033[93m%c\033[0m", win->map_matrix[l][c]);
+			else
+				ft_printf("%c", win->map_matrix[l][c]);
+			c++;
+		}
+		ft_printf("\n");
+		l++;
+	}
+	ft_printf("\n");
+}
+
+static void	lstls(t_list *list)
+{
+	int	i;
+
+	i = 0;
+	if (list)
+	{
+		ft_printf("Lista\n");
+		while (list)
+		{
+			ft_printf("%i - %c\n", i, *(char *)list->content);
+			list = list->next;
+			i++;
+		}
+		ft_printf("\n");
+	}
+}
+
 int	update_image(t_wind *win)
 {
+	lstls(win->enemy->move);
+	printf_matrix(win);
+
+	// enemy_mind(win);
+
 	update_portal_image(win);
 	update_player_image(win);
 	update_enemy_image(win);

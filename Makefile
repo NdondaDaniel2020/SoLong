@@ -41,7 +41,8 @@ FILES = so_long.c \
 		so_long_update_2.c \
 		so_long_update_score.c \
 		so_long_kill.c \
-		so_long_lst.c 
+		so_long_lst.c \
+		so_long_enemy_mind.c
 
 OBJ = $(FILES:.c=.o)
 
