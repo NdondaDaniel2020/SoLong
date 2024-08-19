@@ -20,6 +20,8 @@ static	void	update_enemy(t_wind *win)
 	t_point	point;
 
 	point = find_in_matrix(win->map_matrix, 'A');
+	if (point.x == -1)
+		return ;
 	if ((!win->enemy->move) || (win->enemy->move
 			&& *(char *)win->enemy->move->content != '2'
 			&& win->map_matrix[point.y + 1][point.x] == '0'))
@@ -55,7 +57,7 @@ static int	update_enemy_image(t_wind *win)
 	return (0);
 }
 
-static int	update_player(t_wind *win)
+static void	update_player(t_wind *win)
 {
 	int		cur[3];
 	void	*img;
@@ -63,6 +65,8 @@ static int	update_player(t_wind *win)
 	t_point	point;
 
 	point = find_in_matrix(win->map_matrix, 'P');
+	if (point.x == -1)
+		return ;
 	if ((!win->move) || (win->move && *(char *)win->move->content != 's'
 			&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
@@ -79,7 +83,6 @@ static int	update_player(t_wind *win)
 	draw_empty(win, win->play_x, win->play_y);
 	move_player(win);
 	mlx_put_image_to_window(win->mlx, win->win, img, win->play_x, win->play_y);
-	return (0);
 }
 
 static int	update_player_image(t_wind *win)

@@ -52,7 +52,6 @@ static void	init(t_wind *win)
 	win->block[1].img_ptr = NULL;
 }
 
-
 static t_enemy	*add_enimy(void)
 {
 	int		m;
@@ -60,10 +59,10 @@ static t_enemy	*add_enimy(void)
 	int		c;
 	t_enemy	*enemy;
 
-	enemy = (t_enemy *)ft_calloc(1, sizeof(t_enemy));
-	enemy->enmy_x = 0;
-	enemy->enmy_y = 0;
 	m = 0;
+	enemy = (t_enemy *)ft_calloc(1, sizeof(t_enemy));
+	if (!enemy)
+		return (NULL);
 	while (m < 2)
 	{
 		l = 0;
@@ -82,6 +81,22 @@ static t_enemy	*add_enimy(void)
 	return (enemy);
 }
 
+static void ini_enemy(t_enemy **enemy_ptr)
+{
+	t_enemy	*enemy;
+
+	enemy = *enemy_ptr;
+	enemy->move = NULL;
+	enemy->frame = 0;
+	enemy->enmy_x = 0;
+	enemy->enmy_y = 0;
+	enemy->is_dead = 0;
+	enemy->time_dead = 0;
+	enemy->cur_enmy[0] = 0;
+	enemy->cur_enmy[1] = 0;
+	enemy->cur_enmy[2] = 0;
+}
+
 int	main(int ac, char **av)
 {
 	t_wind	win;
@@ -91,9 +106,7 @@ int	main(int ac, char **av)
 	win.map = get_map(av[1]);
 	win.size = size_map(win.map);
 	win.enemy = add_enimy();
-	win.enemy->frame = 0;
-	win.enemy->is_dead = 0;
-	win.enemy->time_dead = 0;
+	ini_enemy(&win.enemy);
 	win.size.w *= 50;
 	win.size.h *= 50;
 	win.mlx = mlx_init();

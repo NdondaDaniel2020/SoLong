@@ -16,6 +16,9 @@ void	kill_player(t_wind *win, t_point point, int x)
 {
 	int	pos;
 
+
+	if (point.x == -1)
+		return ;
 	draw_empty(win, win->play_x, win->play_y);
 	pos = 1;
 	if (!pos_player(win))
@@ -34,6 +37,8 @@ void	kill_enemy(t_wind *win, t_point point)
 {
 	int	pos;
 
+	if (point.x == -1)
+		return ;
 	pos = 1;
 	if (!pos_enemy(win))
 		pos = -1;

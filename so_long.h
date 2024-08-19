@@ -46,7 +46,7 @@ typedef struct s_enemy
 	int		frame;
 	int		is_dead;
 	int		time_dead;
-}	t_enemy;
+}			t_enemy;
 
 typedef struct s_wind
 {

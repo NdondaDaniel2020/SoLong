@@ -28,10 +28,12 @@ void	lstdel_front(t_list **list)
 
 char	*char_lst(char ch)
 {
-	char	*c;
+	char	*cha;
 
-	c = ft_calloc(2, sizeof(char));
-	c[1] = '\0';
-	c[0] = ch;
-	return (c);
+	cha = (char *)ft_calloc(2, sizeof(char));
+	if (!cha)
+		return (NULL);
+	cha[0] = ch;
+	cha[1] = '\0';
+	return (cha);
 }
