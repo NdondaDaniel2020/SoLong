@@ -16,7 +16,7 @@ static void	fill(char **tab, t_size size, t_point cur)
 {
 	if (cur.y < 0 || cur.y >= size.h || cur.x < 0 || cur.x >= size.w)
 		return ;
-	if (tab[cur.y][cur.x] != '0' && tab[cur.y][cur.x] != 'C')
+	if (tab[cur.y][cur.x] != '0' && tab[cur.y][cur.x] != 'C' && tab[cur.y][cur.x] != 'A')
 		return ;
 	tab[cur.y][cur.x] = 'F';
 	fill(tab, size, (t_point){cur.x - 1, cur.y});

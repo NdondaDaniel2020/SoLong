@@ -36,7 +36,6 @@ void	kill_player(t_wind *win, t_point point, int x)
 		ft_lstnew((void *)char_lst('5')));
 	ft_lstadd_back(&win->enemy->move,
 		ft_lstnew((void *)char_lst('5')));
-	// win->map_matrix[point.y][point.x] = 'A';
 }
 
 void	kill_enemy(t_wind *win, t_point point)
