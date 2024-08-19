@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
-
 NAME = ./libft.a
 FILES = ft_isalpha.c \
 		ft_isdigit.c \
@@ -71,23 +69,18 @@ BFILES = ft_lstnew.c \
 	
 OBJS = $(FILES:.c=.o)
 BOBJS = $(BFILES:.c=.o)
-
 FLAGS = -Wall -Wextra -Werror
 
-all:
+all:	$(NAME)
 
-$(OBJS): %.o: %.c
-	@gcc $(FLAGS) -c $< -o $@
-
-$(BOBJS): %.o: %.c
-	@gcc $(FLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	@ar rc $(NAME) $(OBJS)
+$(NAME):
+	@gcc $(FLAGS) -c $(FILES)
+	@ar rcs $(NAME) $(OBJS)
 	@make clean
 
 bonus: $(OBJS) $(BOBJS)
-	@ar rc $(NAME) $(OBJS) $(BOBJS)
+	@gcc $(FLAGS) -c $(FILES) $(BOBJS)
+	@ar rcs $(NAME) $(OBJS) $(BOBJS)
 	@make clean
 
 clean:

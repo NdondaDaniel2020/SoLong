@@ -61,6 +61,7 @@ all:	$(NAME)
 $(NAME):	$(LIBFT) $(MLX)
 	@$(CC) $(FLAGS) -c $(FILES)
 	@ar rc $(NAME) $(OBJ)
+	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 run: $(NAME)
 	@make clean
