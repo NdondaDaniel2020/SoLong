@@ -18,13 +18,12 @@ static int	check_char_in_map(char *map_line)
 	int	p;
 	int	e;
 	int	c;
-	int	a;
 
 	o = ft_findchar(map_line, '0');
 	p = ft_findchar(map_line, 'P');
 	e = ft_findchar(map_line, 'E');
 	c = ft_findchar(map_line, 'C');
-	if (!o && !p && !e && !c && !a)
+	if (!o && !p && !e && !c)
 		return (1);
 	return (0);
 }
