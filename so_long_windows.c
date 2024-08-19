@@ -34,39 +34,7 @@ int	key_press(int keycode, t_wind *win)
 		list = ft_lstnew((void *)char_lst('w'));
 		ft_lstadd_back(&win->move, list);
 	}
-	key_pess_enemy(keycode, win);
 	return (0);
-}
-
-void	key_pess_enemy(int	keycode, t_wind *win)
-{
-	t_list	*list;
-
-	if (keycode == 65433)
-	{
-		list = ft_lstnew((void *)char_lst('2'));
-		ft_lstadd_back(&win->enemy->move, list);
-	}
-	if (keycode == 65430)
-	{
-		list = ft_lstnew((void *)char_lst('4'));
-		ft_lstadd_back(&win->enemy->move, list);
-	}
-	if (keycode == 65432)
-	{
-		list = ft_lstnew((void *)char_lst('6'));
-		ft_lstadd_back(&win->enemy->move, list);
-	}
-	if (keycode == 65437)
-	{
-		list = ft_lstnew((void *)char_lst('5'));
-		ft_lstadd_back(&win->enemy->move, list);
-	}
-	if (keycode == 65438)
-	{
-		list = ft_lstnew((void *)char_lst('0'));
-		ft_lstadd_back(&win->enemy->move, list);
-	}
 }
 
 int	clean_and_exit(t_wind *win)
