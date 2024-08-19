@@ -14,8 +14,11 @@
 
 static void	make_rounds(t_wind *win, t_point point)
 {
-	int	l;
-	int	r;
+	int		l;
+	int		r;
+	int		size;
+	char	direct;
+	t_list	*list;
 
 	l = 1;
 	r = 1;
@@ -24,20 +27,17 @@ static void	make_rounds(t_wind *win, t_point point)
 	while ((win->map_matrix[point.y][point.x - l] == '0'))
 		l++;
 	if (r > l)
-	{
-		while (r--)
-		{
-			ft_lstadd_back(&win->enemy->move,
-				ft_lstnew((void *)char_lst('6')));
-		}
-	}
+		size = r;
 	else
+		size = l;
+	if (r > l)
+		direct = '6';
+	else
+		direct = '4';
+	while (size--)
 	{
-		while (l--)
-		{
-			ft_lstadd_back(&win->enemy->move,
-				ft_lstnew((void *)char_lst('4')));
-		}
+		list = ft_lstnew((void *)char_lst(direct));
+		ft_lstadd_back(&win->enemy->move, list);
 	}
 }
 
@@ -71,18 +71,21 @@ static t_point	enemy_find_to_player(t_wind *win)
 
 static void	follow_player(t_wind *win, t_point point)
 {
+	t_list	*list;
+
 	if (point.x == -1)
 		return ;
 	clean_command_enemy(&win->enemy->move);
 	while (point.x--)
 	{
-		ft_lstadd_back(&win->enemy->move,
-			ft_lstnew((void *)ft_itoa(point.y)));
+		list = ft_lstnew((void *)ft_itoa(point.y));
+		ft_lstadd_back(&win->enemy->move, list);
 	}
 }
 
 static void	enemy_in_alenta(t_wind *win)
 {
+	t_list	*list;
 	t_point	point;
 
 	point = find_in_matrix(win->map_matrix, 'A');
@@ -91,14 +94,14 @@ static void	enemy_in_alenta(t_wind *win)
 	if (win->map_matrix[point.y - 1][point.x - 1] == 'P')
 	{
 		clean_command_enemy(&win->enemy->move);
-		ft_lstadd_back(&win->enemy->move,
-			ft_lstnew((void *)char_lst('5')));
+		list = ft_lstnew((void *)char_lst('5'));
+		ft_lstadd_back(&win->enemy->move, list);
 	}
 	if (win->map_matrix[point.y - 1][point.x + 1] == 'P')
 	{
 		clean_command_enemy(&win->enemy->move);
-		ft_lstadd_back(&win->enemy->move,
-			ft_lstnew((void *)char_lst('5')));
+		list = ft_lstnew((void *)char_lst('5'));
+		ft_lstadd_back(&win->enemy->move, list);
 	}
 }
 
@@ -108,7 +111,7 @@ void	enemy_mind(t_wind *win)
 
 	follow_player(win, enemy_find_to_player(win));
 	enemy_in_alenta(win);
-	if (!win->enemy->move)
+	if (win->enemy && !win->enemy->move)
 	{
 		point = find_in_matrix(win->map_matrix, 'A');
 		if (point.x == -1 && point.y == -1)

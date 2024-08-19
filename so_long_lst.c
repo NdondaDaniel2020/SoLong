@@ -22,6 +22,7 @@ void	lstdel_front(t_list **list)
 		*list = removed->next;
 		free(removed->content);
 		free(removed);
+		removed = NULL;
 	}
 }
 

@@ -29,6 +29,7 @@ void	clean_enemy(t_wind *win)
 			{
 				mlx_destroy_image(win->mlx,
 					win->enemy->enemy[m][l][c].img_ptr);
+				win->enemy->enemy[m][l][c].img_ptr = NULL;
 				c++;
 			}
 			l++;
@@ -36,6 +37,7 @@ void	clean_enemy(t_wind *win)
 		m++;
 	}
 	free(win->enemy);
+	win->enemy = NULL;
 }
 
 void	clean_command_enemy(t_list **list)
