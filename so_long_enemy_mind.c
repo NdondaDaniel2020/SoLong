@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void make_rounds(t_wind *win, t_point point)
+static void	make_rounds(t_wind *win, t_point point)
 {
 	int	l;
 	int	r;
@@ -27,7 +27,7 @@ static void make_rounds(t_wind *win, t_point point)
 	{
 		while (r--)
 		{
-			ft_lstadd_back(&win->enemy->move, 
+			ft_lstadd_back(&win->enemy->move,
 				ft_lstnew((void *)char_lst('6')));
 		}
 	}
@@ -35,25 +35,25 @@ static void make_rounds(t_wind *win, t_point point)
 	{
 		while (l--)
 		{
-			ft_lstadd_back(&win->enemy->move, 
+			ft_lstadd_back(&win->enemy->move,
 				ft_lstnew((void *)char_lst('4')));
 		}
 	}
 }
 
-static t_point enemy_find_to_player(t_wind *win)
+static t_point	enemy_find_to_player(t_wind *win)
 {
 	int		l;
 	int		r;
-	t_point point;
+	t_point	point;
 
 	l = 1;
 	r = 1;
 	point = find_in_matrix(win->map_matrix, 'A');
 	if (point.x == -1 && point.y == -1)
 		return ((t_point){-1, -1});
-	while ((win->map_matrix[point.y][point.x + r] == '0') || 
-		(win->map_matrix[point.y][point.x + r] == 'P'))
+	while ((win->map_matrix[point.y][point.x + r] == '0')
+		|| (win->map_matrix[point.y][point.x + r] == 'P'))
 	{
 		if (win->map_matrix[point.y][point.x + r] == 'P')
 			return ((t_point){r, 6});
@@ -69,14 +69,14 @@ static t_point enemy_find_to_player(t_wind *win)
 	return ((t_point){-1, -1});
 }
 
-static void follow_player(t_wind *win, t_point point)
+static void	follow_player(t_wind *win, t_point point)
 {
 	if (point.x == -1)
 		return ;
 	clean_command_enemy(&win->enemy->move);
 	while (point.x--)
 	{
-		ft_lstadd_back(&win->enemy->move, 
+		ft_lstadd_back(&win->enemy->move,
 			ft_lstnew((void *)ft_itoa(point.y)));
 	}
 }
@@ -90,13 +90,13 @@ static void	enemy_in_alenta(t_wind *win)
 		return ;
 	if (win->map_matrix[point.y - 1][point.x - 1] == 'P')
 	{
-        clean_command_enemy(&win->enemy->move);
+		clean_command_enemy(&win->enemy->move);
 		ft_lstadd_back(&win->enemy->move,
 			ft_lstnew((void *)char_lst('5')));
 	}
 	if (win->map_matrix[point.y - 1][point.x + 1] == 'P')
 	{
-        clean_command_enemy(&win->enemy->move);
+		clean_command_enemy(&win->enemy->move);
 		ft_lstadd_back(&win->enemy->move,
 			ft_lstnew((void *)char_lst('5')));
 	}
@@ -104,7 +104,7 @@ static void	enemy_in_alenta(t_wind *win)
 
 void	enemy_mind(t_wind *win)
 {
-	t_point point;
+	t_point	point;
 
 	follow_player(win, enemy_find_to_player(win));
 	enemy_in_alenta(win);
