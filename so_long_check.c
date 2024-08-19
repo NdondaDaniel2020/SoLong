@@ -12,6 +12,23 @@
 
 #include "so_long.h"
 
+static int	check_char_in_map(char *map_line)
+{
+	int	o;
+	int	p;
+	int	e;
+	int	c;
+	int	a;
+
+	o = ft_findchar(map_line, '0');
+	p = ft_findchar(map_line, 'P');
+	e = ft_findchar(map_line, 'E');
+	c = ft_findchar(map_line, 'C');
+	if (!o && !p && !e && !c && !a)
+		return (1);
+	return (0);
+}
+
 /*check map*/
 static int	check_line(char *map_line, int *column)
 {
@@ -22,7 +39,7 @@ static int	check_line(char *map_line, int *column)
 	{
 		i++;
 		*column = *column - 1;
-		if (!ft_findchar(map_line, '0'))
+		if (check_char_in_map(map_line))
 			return (1);
 	}
 	else
