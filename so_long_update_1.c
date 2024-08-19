@@ -20,11 +20,10 @@ static	void	update_enemy(t_wind *win)
 	t_point	point;
 
 	point = find_in_matrix(win->map_matrix, 'A');
-	if (point.x == -1)
-		return ;
 	if ((!win->enemy->move) || (win->enemy->move
-			&& *(char *)win->enemy->move->content != '2'
-			&& win->map_matrix[point.y + 1][point.x] == '0'))
+		&& *(char *)win->enemy->move->content != '2'
+		&& *(char *)win->enemy->move->content != '0'
+		&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
 		list = ft_lstnew((void *)char_lst('2'));
 		ft_lstadd_back(&win->enemy->move, list);
@@ -57,7 +56,7 @@ static int	update_enemy_image(t_wind *win)
 	return (0);
 }
 
-static void	update_player(t_wind *win)
+static int	update_player(t_wind *win)
 {
 	int		cur[3];
 	void	*img;
@@ -65,10 +64,10 @@ static void	update_player(t_wind *win)
 	t_point	point;
 
 	point = find_in_matrix(win->map_matrix, 'P');
-	if (point.x == -1)
-		return ;
-	if ((!win->move) || (win->move && *(char *)win->move->content != 's'
-			&& win->map_matrix[point.y + 1][point.x] == '0'))
+	if ((!win->move) || (win->move
+		&& *(char *)win->move->content != 's'
+		&& *(char *)win->move->content != 'q'
+		&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
 		list = ft_lstnew((void *)char_lst('s'));
 		ft_lstadd_back(&win->move, list);
@@ -83,6 +82,7 @@ static void	update_player(t_wind *win)
 	draw_empty(win, win->play_x, win->play_y);
 	move_player(win);
 	mlx_put_image_to_window(win->mlx, win->win, img, win->play_x, win->play_y);
+	return (0);
 }
 
 static int	update_player_image(t_wind *win)
@@ -105,9 +105,39 @@ static int	update_player_image(t_wind *win)
 	return (0);
 }
 
+static void	printf_matrix(t_wind *win)
+{
+	int	l;
+	int	c;
+	t_size size;
+
+	l = 0;
+	size = size_map(win->map);
+	while (l < size.h)
+	{
+		c = 0;
+		while (c < size.w)
+		{
+			if (win->map_matrix[l][c] == 'P')
+				ft_printf("\033[92m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'A')
+				ft_printf("\033[91m%c\033[0m", win->map_matrix[l][c]);
+			else if (win->map_matrix[l][c] == 'C')
+				ft_printf("\033[93m%c\033[0m", win->map_matrix[l][c]);
+			else
+				ft_printf("%c", win->map_matrix[l][c]);
+			c++;
+		}
+		ft_printf("\n");
+		l++;
+	}
+	ft_printf("\n");
+}
+
 int	update_image(t_wind *win)
 {
-	// enemy_mind(win);
+	printf_matrix(win);
+	enemy_mind(win);
 	update_portal_image(win);
 	update_player_image(win);
 	update_enemy_image(win);

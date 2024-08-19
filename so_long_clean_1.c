@@ -115,4 +115,5 @@ void	clean_command(t_wind *win)
 {
 	while (win->move != NULL)
 		lstdel_front(&win->move);
+	win->move = NULL;
 }
