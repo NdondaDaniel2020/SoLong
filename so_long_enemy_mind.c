@@ -91,13 +91,15 @@ static void	enemy_in_alenta(t_wind *win)
 	point = find_in_matrix(win->map_matrix, 'A');
 	if (point.x == -1)
 		return ;
-	if (win->map_matrix[point.y - 1][point.x - 1] == 'P')
+	if (win->map_matrix[point.y - 1][point.x - 1] == 'P'
+		&& win->map_matrix[point.y][point.x - 1] == '1')
 	{
 		clean_command_enemy(&win->enemy->move);
 		list = ft_lstnew((void *)char_lst('5'));
 		ft_lstadd_back(&win->enemy->move, list);
 	}
-	if (win->map_matrix[point.y - 1][point.x + 1] == 'P')
+	if (win->map_matrix[point.y - 1][point.x + 1] == 'P'
+		&& win->map_matrix[point.y][point.x + 1] == '1')
 	{
 		clean_command_enemy(&win->enemy->move);
 		list = ft_lstnew((void *)char_lst('5'));

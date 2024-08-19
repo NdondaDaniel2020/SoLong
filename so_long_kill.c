@@ -22,7 +22,8 @@ void	kill_player(t_wind *win, t_point point, int x)
 	pos = 1;
 	if (!pos_player(win))
 		pos = -1;
-	if (win->map_matrix[point.y][point.x + x + x] == '0')
+	if (win->map_matrix[point.y][point.x + x + x] == '0'
+		&& win->play_y % 50 == 0)
 		win->play_x += (30 * pos);
 	win->cur_play[0] = !pos_player(win);
 	win->map_matrix[point.y][point.x] = 'A';
@@ -30,8 +31,6 @@ void	kill_player(t_wind *win, t_point point, int x)
 	clean_command(win);
 	ft_lstadd_back(&win->move,
 		ft_lstnew((void *)char_lst('q')));
-	ft_lstadd_back(&win->enemy->move,
-		ft_lstnew((void *)char_lst('5')));
 	ft_lstadd_back(&win->enemy->move,
 		ft_lstnew((void *)char_lst('5')));
 	ft_lstadd_back(&win->enemy->move,
