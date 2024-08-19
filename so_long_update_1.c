@@ -104,7 +104,7 @@ static int	update_player_image(t_wind *win)
 
 int	update_image(t_wind *win)
 {
-	enemy_mind(win);
+	// enemy_mind(win);
 	update_portal_image(win);
 	update_player_image(win);
 	update_enemy_image(win);

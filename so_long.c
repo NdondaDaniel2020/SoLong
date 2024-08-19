@@ -26,26 +26,32 @@ static void	master(t_wind *win)
 
 static void	init(t_wind *win)
 {
-	win->move = 0;
+	init_portal(win);
+	init_player(win);
+	win->frame = 0;
+	win->size.w = 0;
+	win->size.h = 0;
+	win->play_x = 0;
+	win->play_y = 0;
+	win->is_dead = 0;
 	win->time_dead = 0;
 	win->move_count = 0;
 	win->star_count = 0;
 	win->diagonal_x = 0;
 	win->diagonal_r = 0;
 	win->diagonal_l = 0;
-	win->frame = 0;
 	win->mlx = NULL;
 	win->win = NULL;
 	win->map = NULL;
 	win->move = NULL;
-	init_portal(win);
-	init_player(win);
+	win->enemy = NULL;
 	win->map_matrix = NULL;
 	win->star.img_ptr = NULL;
 	win->bg_img.img_ptr = NULL;
 	win->block[0].img_ptr = NULL;
 	win->block[1].img_ptr = NULL;
 }
+
 
 static t_enemy	*add_enimy(void)
 {

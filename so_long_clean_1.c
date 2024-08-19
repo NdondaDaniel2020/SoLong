@@ -64,6 +64,10 @@ void	init_portal(t_wind *win)
 	int	c;
 
 	l = 0;
+	win->ptl_x = 0;
+	win->ptl_y = 0;
+	win->cur_ptl[0] = 0;
+	win->cur_ptl[1] = 0;
 	while (l < 2)
 	{
 		c = 0;
@@ -85,6 +89,9 @@ void	init_player(t_wind *win)
 	int	c;
 
 	m = 0;
+	win->cur_play[0] = 0;
+	win->cur_play[1] = 0;
+	win->cur_play[2] = 0;
 	while (m < 2)
 	{
 		l = 0;
