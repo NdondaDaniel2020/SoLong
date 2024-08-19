@@ -20,6 +20,8 @@ int	condition_move(t_wind *win, int x, int y)
 
 	c = count_occurrence(win->map_matrix, 'C');
 	point = find_in_matrix(win->map_matrix, 'P');
+	if (point.x == -1)
+		return (0);
 	if (win->map_matrix[point.y + y][point.x + x] == '0')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')

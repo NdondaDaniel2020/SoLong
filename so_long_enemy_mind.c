@@ -116,6 +116,7 @@ void	enemy_mind(t_wind *win)
 		point = find_in_matrix(win->map_matrix, 'A');
 		if (point.x == -1 && point.y == -1)
 			return ;
-		make_rounds(win, point);
+		if (find_in_matrix(win->map_matrix, 'P').x != -1)
+			make_rounds(win, point);
 	}
 }

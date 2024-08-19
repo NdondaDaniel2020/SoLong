@@ -21,9 +21,9 @@ static	void	update_enemy(t_wind *win)
 
 	point = find_in_matrix(win->map_matrix, 'A');
 	if ((!win->enemy->move) || (win->enemy->move
-		&& *(char *)win->enemy->move->content != '2'
-		&& *(char *)win->enemy->move->content != '0'
-		&& win->map_matrix[point.y + 1][point.x] == '0'))
+			&& *(char *)win->enemy->move->content != '2'
+			&& *(char *)win->enemy->move->content != '0'
+			&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
 		list = ft_lstnew((void *)char_lst('2'));
 		ft_lstadd_back(&win->enemy->move, list);
@@ -65,9 +65,9 @@ static int	update_player(t_wind *win)
 
 	point = find_in_matrix(win->map_matrix, 'P');
 	if ((!win->move) || (win->move
-		&& *(char *)win->move->content != 's'
-		&& *(char *)win->move->content != 'q'
-		&& win->map_matrix[point.y + 1][point.x] == '0'))
+			&& *(char *)win->move->content != 's'
+			&& *(char *)win->move->content != 'q'
+			&& win->map_matrix[point.y + 1][point.x] == '0'))
 	{
 		list = ft_lstnew((void *)char_lst('s'));
 		ft_lstadd_back(&win->move, list);
@@ -107,9 +107,9 @@ static int	update_player_image(t_wind *win)
 
 static void	printf_matrix(t_wind *win)
 {
-	int	l;
-	int	c;
-	t_size size;
+	int		l;
+	int		c;
+	t_size	size;
 
 	l = 0;
 	size = size_map(win->map);

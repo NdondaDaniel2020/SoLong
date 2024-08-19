@@ -16,7 +16,6 @@ void	kill_player(t_wind *win, t_point point, int x)
 {
 	int	pos;
 
-
 	if (point.x == -1)
 		return ;
 	draw_empty(win, win->play_x, win->play_y);
@@ -32,6 +31,12 @@ void	kill_player(t_wind *win, t_point point, int x)
 	clean_command(win);
 	ft_lstadd_back(&win->move,
 		ft_lstnew((void *)char_lst('q')));
+	ft_lstadd_back(&win->enemy->move,
+		ft_lstnew((void *)char_lst('5')));
+	ft_lstadd_back(&win->enemy->move,
+		ft_lstnew((void *)char_lst('5')));
+	ft_lstadd_back(&win->enemy->move,
+		ft_lstnew((void *)char_lst('5')));
 }
 
 void	kill_enemy(t_wind *win, t_point point)

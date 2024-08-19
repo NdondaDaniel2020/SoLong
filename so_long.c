@@ -81,7 +81,7 @@ static t_enemy	*add_enimy(void)
 	return (enemy);
 }
 
-static void ini_enemy(t_enemy **enemy_ptr)
+static void	ini_enemy(t_enemy **enemy_ptr)
 {
 	t_enemy	*enemy;
 
