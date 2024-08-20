@@ -13,7 +13,7 @@
 CC = cc
 RUN = ./so_long
 NAME = $(RUN).a
-FILES = so_long_bonus.c \
+BFILES = so_long_bonus.c \
 		so_long_check_bonus.c \
 		so_long_check_reference_bonus.c \
 		so_long_check_way_bonus.c \
@@ -44,7 +44,7 @@ FILES = so_long_bonus.c \
 		so_long_validator_bonus.c \
 		so_long_windows_bonus.c 
 
-OBJ = $(FILES:.c=.o)
+BOBJ = $(BFILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -59,8 +59,8 @@ FMLX = -l mlx -lXext -lX11 -lm
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	@$(CC) $(FLAGS) -c $(FILES)
-	@ar rc $(NAME) $(OBJ)
+	@$(CC) $(FLAGS) -c $(BFILES)
+	@ar rc $(NAME) $(BOBJ)
 	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 run: $(NAME)
@@ -68,7 +68,7 @@ run: $(NAME)
 	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 r:
-	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
+	$(CC) $(FLAGS) $(BFILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 $(LIBFT):
 	make bonus -C $(PLIBFT)
@@ -80,7 +80,7 @@ n:
 	python3 -m norminette ./*.c ./*.h
 
 clean:
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -f $(BOBJ)
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
