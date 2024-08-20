@@ -35,7 +35,8 @@ static void	validator_map(char *map)
 {
 	if (!check_duplicate(map))
 	{
-		ft_printf("Duplicados encotrados\n");
+		ft_printf("Erro. verifique a quantidade de \n");
+		ft_printf("caracteres valido para iniciar o Jogo\n");
 		free(map);
 		exit(1);
 	}
