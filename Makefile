@@ -41,18 +41,16 @@ MLX = $(PMLX)/libmlx.a
 
 FMLX = -l mlx -lXext -lX11 -lm
 
-
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX)
-	$(CC) $(FLAGS) -c $(FILES)
-	ar rc $(NAME) $(OBJ)
+	@$(CC) $(FLAGS) -c $(FILES)
+	@ar rc $(NAME) $(OBJ)
+	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
-run: $(RUN)
-
-$(RUN):	$(NAME)
-	make clean
-	$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
+run: $(NAME)
+	@make clean
+	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
 r:
 	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
