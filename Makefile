@@ -48,10 +48,6 @@ $(NAME):	$(LIBFT) $(MLX)
 	@ar rc $(NAME) $(OBJ)
 	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
-run: $(NAME)
-	@make clean
-	@$(CC) $(FLAGS) $(NAME) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
-
 r:
 	$(CC) $(FLAGS) $(FILES) $(LIBFT) -L$(PMLX) $(FMLX) -o $(RUN)
 
