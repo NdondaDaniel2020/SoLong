@@ -13,36 +13,36 @@
 CC = cc
 RUN = ./so_long
 NAME = $(RUN).a
-FILES = so_long.c \
-		so_long_check_way.c \
-		so_long_size.c \
-		so_long_check.c \
-		so_long_file.c \
-		so_long_matrix.c \
-		so_long_windows.c \
-		so_long_validator.c \
-		so_long_name_file_1.c \
-		so_long_name_file_2.c \
-		so_long_name_file_3.c \
-		so_long_check_reference.c \
-		so_long_draw_1.c \
-		so_long_draw_2.c \
-		so_long_upload_1.c \
-		so_long_upload_2.c \
-		so_long_move_enemy.c \
-		so_long_move_player.c \
-		so_long_move_up_player.c \
-		so_long_move_utils_1.c \
-		so_long_move_utils_2.c \
-		so_long_move_utils_3.c \
-		so_long_clean_1.c \
-		so_long_clean_2.c \
-		so_long_update_1.c \
-		so_long_update_2.c \
-		so_long_update_score.c \
-		so_long_kill.c \
-		so_long_lst.c \
-		so_long_enemy_mind.c
+FILES = so_long_bonus.c \
+		so_long_check_bonus.c \
+		so_long_check_reference_bonus.c \
+		so_long_check_way_bonus.c \
+		so_long_clean_1_bonus.c \
+		so_long_clean_2_bonus.c \
+		so_long_draw_1_bonus.c \
+		so_long_draw_2_bonus.c \
+		so_long_enemy_mind_bonus.c \
+		so_long_file_bonus.c \
+		so_long_kill_bonus.c \
+		so_long_lst_bonus.c \
+		so_long_matrix_bonus.c \
+		so_long_move_enemy_bonus.c \
+		so_long_move_player_bonus.c \
+		so_long_move_up_player_bonus.c \
+		so_long_move_utils_1_bonus.c \
+		so_long_move_utils_2_bonus.c \
+		so_long_move_utils_3_bonus.c \
+		so_long_name_file_1_bonus.c \
+		so_long_name_file_2_bonus.c \
+		so_long_name_file_3_bonus.c \
+		so_long_size_bonus.c \
+		so_long_update_1_bonus.c \
+		so_long_update_2_bonus.c \
+		so_long_update_score_bonus.c \
+		so_long_upload_1_bonus.c \
+		so_long_upload_2_bonus.c \
+		so_long_validator_bonus.c \
+		so_long_windows_bonus.c 
 
 OBJ = $(FILES:.c=.o)
 
