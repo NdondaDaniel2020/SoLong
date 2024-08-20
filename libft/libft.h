@@ -108,8 +108,7 @@ char	*get_next_line(int fd);
 size_t	ft_strlen_gnl(char *str);
 
 /*extra*/
-int	ft_findchar(char *str, char c);
-
-int	ft_initstr(char **str);
+int		ft_findchar(char *str, char c);
+int		ft_initstr(char **str);
 
 #endif
