@@ -114,10 +114,10 @@ int	check_map(char *map)
 	if (!map)
 		return (0);
 	size = size_map(map);
-	if (size.w <= 3 || size.h <= 3)
+	if (size.w <= 2 || size.h <= 2)
 		return (0);
 	valid = check_struct_map(map);
-	if (valid && size.w >= 3 && size.h >= 3)
+	if (valid && size.w >= 2 && size.h >= 2)
 		return (1);
 	return (0);
 }
