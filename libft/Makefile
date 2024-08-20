@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+B = 0;
 NAME = libft.a
-BNAME = libft_bonus.a
 FILES = ft_itoa.c \
 		ft_atoi.c \
 		ft_split.c \
@@ -67,33 +67,31 @@ BFILES = ft_lstmap.c \
 		 get_next_line_utils.c \
 		 ft_findchar.c \
 		 ft_initstr.c
-	
+
 OBJS = $(FILES:.c=.o)
 BOBJS = $(BFILES:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all:	$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME):
+ifeq ($(B), 0)
+	@gcc $(FLAGS) -c $(FILES)
 	@ar rcs $(NAME) $(OBJS)
+else
+	@gcc $(FLAGS) -c $(FILES) $(BFILES)
+	@ar rcs $(NAME) $(OBJS) $(BOBJS)
+endif
 
-bonus: $(NAME) $(BNAME)
-
-$(BNAME): $(BOBJS)
-	@ar rcs $(BNAME) $(BOBJS)
-
-$(OBJS): $(FILES)
-	@cc $(FLAGS) -c $(FILES)
-
-$(BOBJS): $(BFILES)
-	@cc $(FLAGS) -c $(BFILES)
+bonus: 
+	@$(MAKE) B=1
 
 clean:
 	@/bin/rm -f $(OBJS) $(BOBJS)
 
-fclean: clean
-	@/bin/rm -f $(NAME) $(BNAME)
+fclean:	clean
+	@/bin/rm -f $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
