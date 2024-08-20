@@ -59,6 +59,7 @@ $(MLX):
 
 n:
 	python3 -m norminette ./*.c ./*.h
+	python3 -m norminette ./libft/*.c ./libft/*.h
 
 clean:
 	@/bin/rm -f $(OBJ)
