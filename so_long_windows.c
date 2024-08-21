@@ -69,6 +69,6 @@ int	clean(t_wind *win)
 
 void	connection(t_wind *win)
 {
-	mlx_key_hook(win->win, key_press, win);
+	mlx_hook(win->win, 2, 1L, key_press, win);
 	mlx_hook(win->win, 17, 0, clean_and_exit, win);
 }
