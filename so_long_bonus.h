@@ -115,6 +115,7 @@ void	kill_enemy(t_wind *win, t_point point);
 int		update_portal_image(t_wind *win);
 
 void	enemy_mind(t_wind *win);
+void	reset_matrix(char **matrix);
 
 /* list */
 void	lstdel_front(t_list **list);

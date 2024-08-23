@@ -92,9 +92,12 @@ int	check_way(char *map)
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
+	reset_matrix(matrix);
 	flood_fill(matrix, size, begin);
 	reference = check_matrix_reference_points(matrix, size);
-	if (check_matrix_way(matrix, end, size) && reference)
+	if (check_matrix_way(matrix, end, size)
+		&& check_matrix_way(matrix, begin, size)
+		&& reference)
 	{
 		free_matrix(matrix);
 		return (1);
