@@ -89,7 +89,7 @@ t_size	size_map(char *map)
 	size.w = width(map);
 	size.h = height(map);
 	oco = count_occurrence_str(map, '\n');
-	if (oco >= size.h)
+	if (oco != size.h)
 		size.h = 0;
 	return (size);
 }
