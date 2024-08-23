@@ -77,6 +77,7 @@ void	move_right(t_wind *win);
 void	move_up(t_wind *win);
 void	move_down(t_wind *win);
 
+void	reset_matrix(char **matrix);
 /*file*/
 char	*open_file(const char *filename);
 

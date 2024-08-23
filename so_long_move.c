@@ -24,7 +24,11 @@ static int	condition_move(t_wind *win, int x, int y)
 	if (win->map_matrix[point.y + y][point.x + x] == 'C')
 		return (1);
 	if (win->map_matrix[point.y + y][point.x + x] == 'E' && c == 0)
+	{
+		win->move += 1;
+		ft_printf("move: %i\n", win->move);
 		clean_and_exit(win);
+	}
 	return (0);
 }
 

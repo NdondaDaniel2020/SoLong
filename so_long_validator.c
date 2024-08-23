@@ -26,7 +26,7 @@ static void	validator_format(char *name, char *format)
 	}
 	if (len_f != 0)
 	{
-		ft_printf("Wrong map format\nRecommended format *.ber\n");
+		ft_printf("Error\nWrong map format\nRecommended format *.ber\n");
 		exit(1);
 	}
 }
@@ -35,20 +35,20 @@ static void	validator_map(char *map)
 {
 	if (!check_duplicate(map))
 	{
-		ft_printf("Error. check the number of characters");
+		ft_printf("Error\ncheck the number of characters");
 		ft_printf(" valid to start the Game");
 		free(map);
 		exit(1);
 	}
 	if (!check_map(map))
 	{
-		ft_printf("Map size error\n");
+		ft_printf("Error\nMap size error\n");
 		free(map);
 		exit(1);
 	}
 	if (!ft_findchar(map, 'C'))
 	{
-		ft_printf("No collectibles\n");
+		ft_printf("Error\nNo collectibles\n");
 		free(map);
 		exit(1);
 	}
@@ -60,20 +60,20 @@ char	*get_map(char *name)
 
 	if (!name)
 	{
-		ft_printf("Map not found\n");
+		ft_printf("Error\nMap not found\n");
 		exit (1);
 	}
 	validator_format(name, ".ber");
 	map = open_file(name);
 	if (map == NULL)
 	{
-		ft_printf("File %s does not exist\n", name);
+		ft_printf("Error\nFile %s does not exist\n", name);
 		exit(1);
 	}
 	validator_map(map);
 	if (!check_way(map))
 	{
-		ft_printf("No escape path\n");
+		ft_printf("Error\nNo escape path\n");
 		free(map);
 		exit(1);
 	}

@@ -16,7 +16,7 @@ static void	fill(char **tab, t_size size, t_point cur)
 {
 	if (cur.y < 0 || cur.y >= size.h || cur.x < 0 || cur.x >= size.w)
 		return ;
-	if (tab[cur.y][cur.x] != '0' && tab[cur.y][cur.x] != 'C')
+	if (tab[cur.y][cur.x] != '0')
 		return ;
 	tab[cur.y][cur.x] = 'F';
 	fill(tab, size, (t_point){cur.x - 1, cur.y});
@@ -91,9 +91,12 @@ int	check_way(char *map)
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
+	reset_matrix(matrix);
 	flood_fill(matrix, size, begin);
 	reference = check_matrix_reference_points(matrix, size);
-	if (check_matrix_way(matrix, end, size) && reference)
+	if (check_matrix_way(matrix, end, size)
+		&& check_matrix_way(matrix, begin, size)
+		&& reference)
 	{
 		free_matrix(matrix);
 		return (1);
