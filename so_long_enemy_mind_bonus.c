@@ -22,7 +22,7 @@ static void	make_rounds(t_wind *win, t_point point)
 
 	l = 1;
 	r = 1;
-	while ((win->map_matrix[point.y][point.x + r] == '0'))
+	while ((win->map_matrix[point.y][point.x + r] == '0') && (r < win->size.x))
 		r++;
 	while ((win->map_matrix[point.y][point.x - l] == '0'))
 		l++;
@@ -34,10 +34,15 @@ static void	make_rounds(t_wind *win, t_point point)
 		direct = '6';
 	else
 		direct = '4';
-	while (size--)
+	if ((!win->enemy->move)
+	|| (win->enemy->move && 
+	direct != *(char *)win->enemy->move->content))
 	{
-		list = ft_lstnew((void *)char_lst(direct));
-		ft_lstadd_back(&win->enemy->move, list);
+		while (size--)
+		{
+			list = ft_lstnew((void *)char_lst(direct));
+			ft_lstadd_back(&win->enemy->move, list);
+		}
 	}
 }
 
@@ -71,15 +76,18 @@ static t_point	enemy_find_to_player(t_wind *win)
 
 static void	follow_player(t_wind *win, t_point point)
 {
-	t_list	*list;
-
-	if (point.x == -1)
+	if (point.x <= 0 || !win->enemy || !win->enemy->move)
 		return ;
-	clean_command_enemy(&win->enemy->move);
-	while (point.x--)
+	if (*(char *)win->enemy->move->content != point.y + '0')
 	{
-		list = ft_lstnew((void *)ft_itoa(point.y));
-		ft_lstadd_back(&win->enemy->move, list);
+		clean_command_enemy(&win->enemy->move);
+		while (point.x--)
+		{
+			t_list *list = ft_lstnew((void *)char_lst(point.y + '0'));
+			if (!list)
+				return ;
+			ft_lstadd_back(&win->enemy->move, list);
+		}
 	}
 }
 
@@ -111,8 +119,8 @@ void	enemy_mind(t_wind *win)
 {
 	t_point	point;
 
-	follow_player(win, enemy_find_to_player(win));
 	enemy_in_alenta(win);
+	follow_player(win, enemy_find_to_player(win));
 	if (win->enemy && !win->enemy->move)
 	{
 		point = find_in_matrix(win->map_matrix, 'A');
