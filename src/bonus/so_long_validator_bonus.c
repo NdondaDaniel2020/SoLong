@@ -68,7 +68,6 @@ int	check_duplicate(char *map)
 	return (0);
 }
 
-
 static void	validator_format(char *name, char *format)
 {
 	int	len_n;

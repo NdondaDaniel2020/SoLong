@@ -12,19 +12,15 @@
 
 #include "so_long_bonus.h"
 
-static void	make_rounds(t_wind *win, t_point point)
+static void	make_rounds(t_wind *win, t_point point, int l, int r)
 {
-	int		l;
-	int		r;
 	int		size;
 	char	direct;
 	t_list	*list;
 
-	l = 1;
-	r = 1;
-	while ((win->map_matrix[point.y][point.x + r] == '0') && (r < (win->size.w / 50)))
+	while ((win->map_matrix[point.y][point.x + r] == '0'))
 		r++;
-	while ((win->map_matrix[point.y][point.x - l] == '0') && (l < (win->size.h / 50)))
+	while ((win->map_matrix[point.y][point.x - l] == '0'))
 		l++;
 	if (r > l)
 		size = r;
@@ -34,15 +30,12 @@ static void	make_rounds(t_wind *win, t_point point)
 		direct = '6';
 	else
 		direct = '4';
-	if ((!win->enemy->move) || (win->enemy->move && 
-	direct != *(char *)win->enemy->move->content))
+	if ((!win->enemy->move) || (win->enemy->move
+			&& direct != *(char *)win->enemy->move->content))
 	{
 		while (size--)
-		{
-			list = ft_lstnew((void *)char_lst(direct));
-			if (list != NULL)
-				ft_lstadd_back(&win->enemy->move, list);
-		}
+			ft_lstadd_back(&win->enemy->move,
+				ft_lstnew((void *)char_lst(direct)));
 	}
 }
 
@@ -76,8 +69,8 @@ static t_point	enemy_find_to_player(t_wind *win)
 
 static void	follow_player(t_wind *win)
 {
-	t_list *list;
-	t_point point;
+	t_list	*list;
+	t_point	point;
 
 	point = enemy_find_to_player(win);
 	if (point.x <= 0 || !win->enemy)
@@ -132,6 +125,6 @@ void	enemy_mind(t_wind *win)
 		if (point.x == -1 && point.y == -1)
 			return ;
 		if (find_in_matrix(win->map_matrix, 'P').x != -1)
-			make_rounds(win, point);
+			make_rounds(win, point, 1, 1);
 	}
 }
