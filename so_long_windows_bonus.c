@@ -17,6 +17,7 @@ int	key_press(int keycode, t_wind *win)
 {
 	t_list	*list;
 
+	ft_printf("%i\n", keycode);
 	if (keycode == 65307)
 		clean_and_exit(win);
 	if (keycode == 65363)
@@ -70,10 +71,10 @@ int	clean(t_wind *win)
 		clean_player(win);
 	if (win->move)
 		clean_command(win);
-	if (win->enemy && win->enemy->enemy[0][0][0].img_ptr)
-		clean_enemy(win);
 	if (win->enemy && win->enemy->move)
 		clean_command_enemy(&win->enemy->move);
+	if (win->enemy && win->enemy->enemy[0][0][0].img_ptr)
+		clean_enemy(win);
 	return (0);
 }
 
