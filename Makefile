@@ -13,7 +13,6 @@
 CC = cc
 BONUS = ./so_long_bonus
 NAME = ./so_long
-OBJ_DIR = ./obj/
 LIBFT_DIR = ./libft
 MLX_DIR = ./minilibx-linux
 INCLUDE = ./include/
@@ -80,18 +79,15 @@ BOBJ = $(BSRC:%.c=%.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ_DIR) $(LIBFT) $(MLX)
+$(NAME):	$(LIBFT) $(MLX)
 	@$(CC) $(FLAGS) -c $(FILES) -I$(INCLUDE)
 	@$(CC) $(FLAGS) $(OBJ) -I$(INCLUDE) $(LIBFT) -L$(MLX_DIR) $(FMLX) -o $(NAME)
 
 bonus:	$(BONUS)
 
-$(BONUS):	$(OBJ_DIR) $(LIBFT) $(MLX)
+$(BONUS):	$(LIBFT) $(MLX)
 	@$(CC) $(FLAGS) -c $(BFILES) -I$(INCLUDE)
 	$(CC) $(FLAGS) $(BOBJ) $(LIBFT) -I$(INCLUDE) -L$(MLX_DIR) $(FMLX) -o $(BONUS)
-
-r:
-	$(CC) $(FLAGS) $(BFILES) $(LIBFT) -L$(MLX_DIR) $(FMLX) -o $(NAME)
 
 $(LIBFT):
 	@make bonus -C $(LIBFT_DIR)
