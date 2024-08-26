@@ -13,8 +13,8 @@
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 
 typedef struct s_size
@@ -46,6 +46,7 @@ typedef struct s_enemy
 	int		frame;
 	int		is_dead;
 	int		time_dead;
+	t_list	*aux_list;
 }			t_enemy;
 
 typedef struct s_wind
@@ -115,6 +116,7 @@ void	kill_enemy(t_wind *win, t_point point);
 int		update_portal_image(t_wind *win);
 
 void	enemy_mind(t_wind *win);
+void	reset_matrix(char **matrix);
 
 /* list */
 void	lstdel_front(t_list **list);

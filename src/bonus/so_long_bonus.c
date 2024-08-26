@@ -86,6 +86,7 @@ static void	ini_enemy(t_enemy **enemy_ptr)
 	t_enemy	*enemy;
 
 	enemy = *enemy_ptr;
+	enemy->aux_list = NULL;
 	enemy->move = NULL;
 	enemy->frame = 0;
 	enemy->enmy_x = 0;

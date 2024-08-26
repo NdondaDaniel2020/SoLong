@@ -13,8 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 
 typedef struct s_size
@@ -77,6 +77,7 @@ void	move_right(t_wind *win);
 void	move_up(t_wind *win);
 void	move_down(t_wind *win);
 
+void	reset_matrix(char **matrix);
 /*file*/
 char	*open_file(const char *filename);
 

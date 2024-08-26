@@ -59,6 +59,25 @@ char	**str_to_matrix(char *map)
 	return (map_matrix);
 }
 
+void	reset_matrix(char **matrix)
+{
+	int		l;
+	int		c;
+
+	l = 0;
+	while (matrix[l])
+	{
+		c = 0;
+		while (matrix[l][c])
+		{
+			if (matrix[l][c] == 'C')
+				matrix[l][c] = '0';
+			c++;
+		}
+		l++;
+	}
+}
+
 void	free_matrix(char **map_matrix)
 {
 	int	i;

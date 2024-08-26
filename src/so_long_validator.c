@@ -12,6 +12,54 @@
 
 #include "so_long.h"
 
+static int	inf_error(int p, int e, int ex)
+{
+	int	i;
+
+	i = 1;
+	if (p != 1 || e != 1 || ex != 0)
+	{
+		i = 0;
+		ft_printf("Error\n");
+	}
+	if (p == 0)
+		ft_printf("No player.\n");
+	if (p > 1)
+		ft_printf("Many player.\n");
+	if (e == 0)
+		ft_printf("No door.\n");
+	if (e > 1)
+		ft_printf("Many door.\n");
+	if (ex != 0)
+		ft_printf("Unknown character.\n");
+	return (i);
+}
+
+int	check_duplicate(char *map)
+{
+	int	p;
+	int	e;
+	int	ex;
+
+	p = 0;
+	e = 0;
+	ex = 0;
+	while (*map)
+	{
+		if (*map == 'E')
+			e++;
+		if (*map == 'P')
+			p++;
+		if (*map != 'P' && *map != 'E' && *map != '0'
+			&& *map != '1' && *map != 'C' && *map != '\n')
+			ex++;
+		++map;
+	}
+	if (inf_error(p, e, ex))
+		return (1);
+	return (0);
+}
+
 static void	validator_format(char *name, char *format)
 {
 	int	len_n;
@@ -26,7 +74,7 @@ static void	validator_format(char *name, char *format)
 	}
 	if (len_f != 0)
 	{
-		ft_printf("Wrong map format\nRecommended format *.ber\n");
+		ft_printf("Error\nMap format recommended format *.ber\n");
 		exit(1);
 	}
 }
@@ -35,20 +83,18 @@ static void	validator_map(char *map)
 {
 	if (!check_duplicate(map))
 	{
-		ft_printf("Error. check the number of characters");
-		ft_printf(" valid to start the Game");
 		free(map);
 		exit(1);
 	}
 	if (!check_map(map))
 	{
-		ft_printf("Map size error\n");
+		ft_printf("Error\nMap size error\n");
 		free(map);
 		exit(1);
 	}
 	if (!ft_findchar(map, 'C'))
 	{
-		ft_printf("No collectibles\n");
+		ft_printf("Error\nNo collectibles\n");
 		free(map);
 		exit(1);
 	}
@@ -60,20 +106,20 @@ char	*get_map(char *name)
 
 	if (!name)
 	{
-		ft_printf("Map not found\n");
+		ft_printf("Error\nMap not found\n");
 		exit (1);
 	}
 	validator_format(name, ".ber");
 	map = open_file(name);
 	if (map == NULL)
 	{
-		ft_printf("File %s does not exist\n", name);
+		ft_printf("Error\nFile %s does not exist\n", name);
 		exit(1);
 	}
 	validator_map(map);
 	if (!check_way(map))
 	{
-		ft_printf("No escape path\n");
+		ft_printf("Error\nNo escape path\n");
 		free(map);
 		exit(1);
 	}

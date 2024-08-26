@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_check.c                                    :+:      :+:    :+:   */
+/*   so_long_check_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	check_char_in_map(char *map_line)
 {
@@ -18,12 +18,14 @@ static int	check_char_in_map(char *map_line)
 	int	p;
 	int	e;
 	int	c;
+	int	a;
 
 	o = ft_findchar(map_line, '0');
 	p = ft_findchar(map_line, 'P');
 	e = ft_findchar(map_line, 'E');
 	c = ft_findchar(map_line, 'C');
-	if (!o && !p && !e && !c)
+	a = ft_findchar(map_line, 'A');
+	if (!o && !p && !e && !c && !a)
 		return (1);
 	return (0);
 }
@@ -79,31 +81,6 @@ static int	check_struct_map(char *map)
 	}
 	free(str);
 	return (1);
-}
-
-int	check_duplicate(char *map)
-{
-	int	p;
-	int	e;
-	int	ex;
-
-	p = 0;
-	e = 0;
-	ex = 0;
-	while (*map)
-	{
-		if (*map == 'E')
-			e++;
-		if (*map == 'P')
-			p++;
-		if (*map != 'P' && *map != 'E' && *map != '0'
-			&& *map != '1' && *map != 'C' && *map != '\n')
-			ex++;
-		++map;
-	}
-	if (p == 1 && e == 1 && ex == 0)
-		return (1);
-	return (0);
 }
 
 int	check_map(char *map)

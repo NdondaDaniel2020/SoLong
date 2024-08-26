@@ -70,10 +70,10 @@ int	clean(t_wind *win)
 		clean_player(win);
 	if (win->move)
 		clean_command(win);
-	if (win->enemy && win->enemy->enemy[0][0][0].img_ptr)
-		clean_enemy(win);
 	if (win->enemy && win->enemy->move)
 		clean_command_enemy(&win->enemy->move);
+	if (win->enemy && win->enemy->enemy[0][0][0].img_ptr)
+		clean_enemy(win);
 	return (0);
 }
 
