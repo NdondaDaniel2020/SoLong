@@ -81,31 +81,6 @@ static int	check_struct_map(char *map)
 	return (1);
 }
 
-int	check_duplicate(char *map)
-{
-	int	p;
-	int	e;
-	int	ex;
-
-	p = 0;
-	e = 0;
-	ex = 0;
-	while (*map)
-	{
-		if (*map == 'E')
-			e++;
-		if (*map == 'P')
-			p++;
-		if (*map != 'P' && *map != 'E' && *map != '0'
-			&& *map != '1' && *map != 'C' && *map != '\n')
-			ex++;
-		++map;
-	}
-	if (p == 1 && e == 1 && ex == 0)
-		return (1);
-	return (0);
-}
-
 int	check_map(char *map)
 {
 	int		valid;
