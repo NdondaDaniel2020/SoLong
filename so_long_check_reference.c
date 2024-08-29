@@ -63,7 +63,7 @@ t_point	*find_in_all_matrix(char **matrix, char ch)
 	return (list_point);
 }
 
-int	check_matrix_reference_points(char **matrix, t_size size)
+int	check_matrix_reference_points(char **matrix, char **m_cpy, t_size size)
 {
 	int		i;
 	int		len;
@@ -71,8 +71,8 @@ int	check_matrix_reference_points(char **matrix, t_size size)
 
 	i = 0;
 	(void)size;
-	len = count_occurrence(matrix, 'C');
-	list_occurrence = find_in_all_matrix(matrix, 'C');
+	len = count_occurrence(m_cpy, 'C');
+	list_occurrence = find_in_all_matrix(m_cpy, 'C');
 	while (i < len)
 	{
 		if (!check_matrix_way(matrix, list_occurrence[i], size))

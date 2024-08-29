@@ -90,7 +90,7 @@ t_point	*find_in_all_matrix(char **matrix, char ch);
 /*matrix*/
 char	**str_to_matrix(char *map);
 char	*create_line_map(char *map, int size);
-char	**cpy_matrix(char **zone, t_point size);
+char	**cpy_matrix(char **zone, t_size size);
 void	free_matrix(char **map_matrix);
 
 /*size*/
@@ -101,7 +101,7 @@ t_size	size_map(char *map);
 /*grafos*/
 int		check_way(char *map);
 int		count_occurrence(char **matrix, char ch);
-int		check_matrix_reference_points(char **matrix, t_size size);
+int		check_matrix_reference_points(char **matrix, char **m_cpy, t_size size);
 int		check_matrix_way(char **matrix, t_point cur, t_size size);
 
 /*validator*/

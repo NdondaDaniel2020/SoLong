@@ -85,22 +85,25 @@ int	check_way(char *map)
 	t_size	size;
 	t_point	begin;
 	char	**matrix;
+	char	**m_cpy;
 	int		reference;
 
 	size = size_map(map);
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
+	m_cpy = cpy_matrix(matrix, size);
 	reset_matrix(matrix);
 	flood_fill(matrix, size, begin);
-	reference = check_matrix_reference_points(matrix, size);
-	if (check_matrix_way(matrix, end, size)
-		&& check_matrix_way(matrix, begin, size)
-		&& reference)
+	reference = check_matrix_reference_points(matrix, m_cpy, size);
+	if (check_matrix_way(matrix, end, size) && reference
+		&& check_matrix_way(matrix, begin, size))
 	{
+		free_matrix(m_cpy);
 		free_matrix(matrix);
 		return (1);
 	}
+	free_matrix(m_cpy);
 	free_matrix(matrix);
 	return (0);
 }
