@@ -89,7 +89,6 @@ int	check_way(char *map)
 	int		reference;
 
 	size = size_map(map);
-	
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
