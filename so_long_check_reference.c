@@ -76,7 +76,10 @@ int	check_matrix_reference_points(char **matrix, char **m_cpy, t_size size)
 	while (i < len)
 	{
 		if (!check_matrix_way(matrix, list_occurrence[i], size))
+		{
+			free(list_occurrence);
 			return (0);
+		}
 		i++;
 	}
 	i = 0;
