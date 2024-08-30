@@ -22,9 +22,9 @@ static void	make_rounds(t_wind *win, t_point point)
 
 	l = 1;
 	r = 1;
-	while ((win->map_matrix[point.y][point.x + r] == '0') && (r < (win->size.w / 50)))
+	while ((win->map_matrix[point.y][point.x + r] == '0'))
 		r++;
-	while ((win->map_matrix[point.y][point.x - l] == '0') && (l < (win->size.h / 50)))
+	while ((win->map_matrix[point.y][point.x - l] == '0'))
 		l++;
 	if (r > l)
 		size = r;
@@ -74,7 +74,7 @@ static t_point	enemy_find_to_player(t_wind *win)
 	return ((t_point){-1, -1});
 }
 
-static void	follow_player(t_wind *win)
+void	follow_player(t_wind *win)
 {
 	t_list *list;
 	t_point point;
@@ -84,6 +84,8 @@ static void	follow_player(t_wind *win)
 		return ;
 	if (*(char *)win->enemy->move->content != point.y + '0')
 	{
+		if (point.x != -1)
+			condition_reverse_enemy(win, point.y);
 		clean_command_enemy(&win->enemy->move);
 		while (point.x--)
 		{

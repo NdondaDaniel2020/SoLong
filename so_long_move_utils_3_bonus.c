@@ -40,3 +40,20 @@ void	death_enemy(t_wind *win)
 		}
 	}
 }
+
+void	condition_reverse_enemy(t_wind *win, int y)
+{
+	t_point	p_enemy;
+
+	p_enemy = find_in_matrix(win->map_matrix, 'A');
+	if ((y + '0') != *(char *)win->enemy->move->content
+		&& (*(char *)win->enemy->move->content == '4'
+		|| *(char *)win->enemy->move->content == '6'))
+	{
+		win->map_matrix[p_enemy.y][p_enemy.x] = '0';
+		if (y == 4)
+			win->map_matrix[p_enemy.y][p_enemy.x + 1] = 'A';
+		else
+			win->map_matrix[p_enemy.y][p_enemy.x - 1] = 'A';
+	}
+}

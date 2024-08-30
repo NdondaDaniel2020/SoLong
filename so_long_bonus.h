@@ -124,6 +124,7 @@ char	*char_lst(char ch);
 
 void	move_player(t_wind *win);
 void	move_up(t_wind *win);
+void	condition_reverse_enemy(t_wind *win, int y);
 int		movement_blocked_left(t_wind *win);
 int		movement_blocked_right(t_wind *win);
 int		condition_move(t_wind *win, int x, int y);
