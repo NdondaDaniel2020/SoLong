@@ -59,6 +59,30 @@ char	**str_to_matrix(char *map)
 	return (map_matrix);
 }
 
+char	**cpy_matrix(char **zone, t_size size)
+{
+	int		l;
+	int		c;
+	char	**new;
+
+	l = 0;
+	new = malloc(sizeof(char *) * (size.h + 1));
+	while (l < size.h)
+	{
+		c = 0;
+		new[l] = malloc(size.w + 1);
+		while (c < size.w)
+		{
+			new[l][c] = zone[l][c];
+			c++;
+		}
+		new[l][size.w] = '\0';
+		l++;
+	}
+	new[l] = NULL;
+	return (new);
+}
+
 void	reset_matrix(char **matrix)
 {
 	int		l;

@@ -41,7 +41,33 @@ int	check_matrix_way(char **m, t_point cur, t_size size)
 	int	w;
 	int	h;
 
-	x = cur.x;
+	x = cur.x;int	check_way(char *map)
+{
+	t_point	end;
+	t_size	size;
+	t_point	begin;
+	char	**matrix;
+	char	**m_cpy;
+
+	size = size_map(map);
+	matrix = str_to_matrix(map);
+	begin = find_in_matrix(matrix, 'P');
+	end = find_in_matrix(matrix, 'E');
+	m_cpy = cpy_matrix(matrix, size);
+	reset_matrix(matrix);
+	flood_fill(matrix, size, begin);
+	if (check_matrix_reference_points(matrix, m_cpy, size)
+		&& check_matrix_way(matrix, end, size)
+		&& check_matrix_way(matrix, begin, size))
+	{
+		free_matrix(m_cpy);
+		free_matrix(matrix);
+		return (1);
+	}
+	free_matrix(m_cpy);
+	free_matrix(matrix);
+	return (0);
+}
 	y = cur.y;
 	w = size.w;
 	h = size.h;
@@ -86,22 +112,24 @@ int	check_way(char *map)
 	t_size	size;
 	t_point	begin;
 	char	**matrix;
-	int		reference;
+	char	**m_cpy;
 
 	size = size_map(map);
 	matrix = str_to_matrix(map);
 	begin = find_in_matrix(matrix, 'P');
 	end = find_in_matrix(matrix, 'E');
+	m_cpy = cpy_matrix(matrix, size);
 	reset_matrix(matrix);
 	flood_fill(matrix, size, begin);
-	reference = check_matrix_reference_points(matrix, size);
-	if (check_matrix_way(matrix, end, size)
-		&& check_matrix_way(matrix, begin, size)
-		&& reference)
+	if (check_matrix_reference_points(matrix, m_cpy, size)
+		&& check_matrix_way(matrix, end, size)
+		&& check_matrix_way(matrix, begin, size))
 	{
+		free_matrix(m_cpy);
 		free_matrix(matrix);
 		return (1);
 	}
+	free_matrix(m_cpy);
 	free_matrix(matrix);
 	return (0);
 }
