@@ -16,7 +16,6 @@ static void	make_rounds(t_wind *win, t_point point, int l, int r)
 {
 	int		size;
 	char	direct;
-	t_list	*list;
 
 	while ((win->map_matrix[point.y][point.x + r] == '0'))
 		r++;
