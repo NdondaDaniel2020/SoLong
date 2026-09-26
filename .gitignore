@@ -1,0 +1,23 @@
+# Compilação e Binários
+*.o
+*.a
+libft/*.a
+libft/*.o
+so_long
+so_long_bonus
+
+# MiniLibX
+minilibx-linux/*.o
+minilibx-linux/*.a
+minilibx-linux/libmlx.a
+minilibx-linux/libmlx_Linux.a
+minilibx-linux/*.so
+
+# Editor e Sistema
+.vscode/
+.DS_Store
+*~
+*.swp
+
+# Portfolio - capturas brutas não otimizadas
+.portfolio/raw-captures/

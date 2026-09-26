@@ -1,0 +1,89 @@
+{
+  "id": "solong",
+  "name": "so_long (Ninja SoLong)",
+  "tagline": {
+    "pt": "Jogo 2D de Plataforma e Aventura em C com MiniLibX, Física de Gravidade, Validação Flood-Fill e IA Inimiga",
+    "en": "2D Platformer & Adventure Game in C with MiniLibX, Gravity Physics, Flood-Fill Validation, and Enemy AI"
+  },
+  "category": "gamedev",
+  "featured": true,
+  "architecture_type": "2D Tile-Based Game Engine with MiniLibX (X11) in C",
+  "about": {
+    "pt": "O so_long (Ninja SoLong) é um jogo 2D de aventura e plataformas desenvolvido em linguagem C utilizando a biblioteca gráfica MiniLibX (X11). No papel de uma ágil Kunoichi (ninja feminina), o jogador deve percorrer dojos e labirintos orientais, recolher todas as estrelas ninja (shurikens) e alcançar o portal místico de escape. O projeto destaca-se pelo parser estrito de mapas .ber com validação de caminho jogável via algoritmo Flood-Fill, gestão manual de janelas e eventos de teclado/fecho em X11, e um modo Bónus completo que introduz física de gravidade em tempo real (sistema de queda e pulo estilo platformer), ciclos de sprites animados, inteligência artificial de patrulha com perseguição de inimigos e um HUD dinâmico na tela desenhando contadores de passos e colecionáveis.",
+    "en": "so_long (Ninja SoLong) is a 2D tile-based platformer and adventure game developed in C using the MiniLibX (X11) graphics library. Controlling an agile Kunoichi (female ninja), the player must navigate oriental dojos and labyrinths, gather all ninja stars (shurikens), and escape through a mystical portal. The project features a strict .ber map parser with path validity verification using the Flood-Fill algorithm, low-level X11 window and keyboard event handling, and a full Bonus expansion introducing real-time gravity physics (platformer jump and fall system), animated sprite loops, patrolling enemy AI with dynamic player pursuit, and an on-screen HUD rendering move counters and collectible stats directly on the canvas."
+  },
+  "highlights": [
+    "Motor de jogo 2D em C puro renderizando sprites e texturas XPM via MiniLibX (X11)",
+    "Validação rigorosa de mapas .ber garantindo perímetro fechado e caminhos válidos através de Flood-Fill",
+    "Física de plataformas no modo Bónus com gravidade contínua, mecânica de pulo e verificação de piso",
+    "Sistema de IA Inimiga com patrulha dinâmica, perseguição do jogador e mecânica de combate por pulo superior",
+    "Animações de sprites para a Kunoichi e inimigos com taxas de atualização fluidas",
+    "HUD dinâmico na tela desenhando contagem de passos e status de estrelas recolhidas em tempo real",
+    "Tratamento robusto de eventos de janela (destruição limpa, escape seguro e libertação total de memória)",
+    "Separação modularizada de código entre Mandatory (top-down) e Bonus (platformer physics)",
+    "Biblioteca auxiliar Libft integrada para parsing e manipulação eficiente de strings e memória"
+  ],
+  "technologies": [
+    "C",
+    "MiniLibX",
+    "X11",
+    "Libft",
+    "Gamedev",
+    "Makefile",
+    "Linux",
+    "Flood-Fill",
+    "Physics Engine"
+  ],
+  "media": {
+    "cover": "cover.webp",
+    "gallery": [
+      {
+        "type": "video",
+        "src": "gallery/demo.mp4",
+        "caption": "Showcase Completo de Gameplay: Física de Plataforma, Movimentação Ninja, Coleta de Shurikens e IA Inimiga"
+      },
+      {
+        "type": "image",
+        "src": "gallery/01-gameplay-corridor.webp",
+        "caption": "Gameplay em Corredor: Kunoichi em Ação no Dojo Ninja"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-level-maze.webp",
+        "caption": "Design de Níveis: Labirinto com Tatames, Obstáculos e Distribuição Estratégica de Colecionáveis"
+      },
+      {
+        "type": "image",
+        "src": "gallery/03-gameplay-desktop.webp",
+        "caption": "Visão Geral da Janela MiniLibX no Ambiente Desktop Linux"
+      },
+      {
+        "type": "image",
+        "src": "gallery/04-bonus-patrol.webp",
+        "caption": "Modo Bónus: Patrulha e Perseguição de Inimigos com Detecção de Proximidade"
+      },
+      {
+        "type": "image",
+        "src": "gallery/05-level-overview.webp",
+        "caption": "Visão Panorâmica de Nível Extenso com Múltiplas Plataformas e Portais"
+      },
+      {
+        "type": "image",
+        "src": "gallery/06-platformer-physics.webp",
+        "caption": "Mecânica de Física 2D: Gravidade, Saltos entre Plataformas e Combate"
+      }
+    ],
+    "videos": [
+      {
+        "id": "demo-solong",
+        "file": "01-demo-solong.mp4",
+        "title": "Demonstração Completa de Gameplay (Modo Bónus e Física)",
+        "description": "Showcase completo do Ninja SoLong: demonstração da movimentação fluida, saltos com gravidade, recolha de shurikens, evasão de inimigos e escape através do portal místico.",
+        "category": "gamedev",
+        "duration": "191s",
+        "size_mb": 1.84,
+        "src": "videos/01-demo-solong.mp4"
+      }
+    ]
+  }
+}
