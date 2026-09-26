@@ -74,7 +74,8 @@ static void	follow_player(t_wind *win)
 	point = enemy_find_to_player(win);
 	if (point.x <= 0 || !win->enemy)
 		return ;
-	if (*(char *)win->enemy->move->content != point.y + '0')
+	if (!win->enemy->move
+		|| *(char *)win->enemy->move->content != point.y + '0')
 	{
 		clean_command_enemy(&win->enemy->move);
 		while (point.x--)
